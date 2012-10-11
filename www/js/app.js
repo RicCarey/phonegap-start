@@ -41,7 +41,7 @@ $(function () {
 
 
     //icon load
-    var negativeHomeContentHeight = 0 - $(".home_content").innerHeight();
+    var negativeHomeContentHeight = 0 - $(".home_content").height();
 
     $("#pharmacy_icon").click(function (e) {
         e.preventDefault;
