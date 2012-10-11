@@ -35,12 +35,7 @@ html,body
  width:100%;  
  image-resolution: 2dppx; 
 }
-.content .nav
-{
- position: fixed;
- top:0;
- margin-top: -100px;   
-}
+
 .landscape .nav ul li
 {
         width:  19.5%;
@@ -143,8 +138,10 @@ border-radius:0.5em 0 0 0;
     float:left;
     margin-right:2em;   
 }
-.page_html
+#nav_toggle
 {
-    background-color: green;
-    overflow: scroll;   
+ position:fixed;
+ top:0;
+ left: 0;
+ background-color: #000000;   
 }

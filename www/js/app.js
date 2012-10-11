@@ -1,6 +1,6 @@
 $(function () {
-    var windowWidth = window.innerWidth;
-    var windowHeight = window.innerHeight;
+    var windowWidth = screen.innerWidth;
+    var windowHeight = screen.innerHeight;
     //orientation
     var scaleMeasure;
     if (windowWidth > windowHeight) {
@@ -29,9 +29,14 @@ $(function () {
         e.preventDefault;
         $("body").removeClass("home");
         $(".nav").height("auto");
-        $(".header").slideUp("slow");
-        $(".nav ul").slideUp("slow");
+        $(".home_content").slideUp("slow");
+
         $(".page_html").load("content/pharmacy_info.htm .page_body");
-        $(".page_html").height(windowHeight);
+    });
+
+    $("#nav_toggle").click(function (e) {
+        e.preventDefault;
+        //$(".nav").slideDown();
+        alert("hello");
     });
 });
