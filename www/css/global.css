@@ -14,13 +14,17 @@ html,body
     background-color: grey;
     width: 80%;
     padding-left:10%;
-    overflow: auto;
+    overflow: hidden;
+    height: auto;
 }
 
 .nav ul
 {
     margin: 0;
-    padding: 0;   
+    padding: 0;  
+    overflow: hidden;
+    display: block; 
+        height: auto;
 }
 .nav ul li
 {
