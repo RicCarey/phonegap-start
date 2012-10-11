@@ -51,8 +51,7 @@ $(function () {
 
     });
     //map stretch
-    $("#map_canvas").width(windowWidth);
-    $("#map_canvas").height(windowHeight);
+  //  $("#map_canvas").height(300px");
 
 
 

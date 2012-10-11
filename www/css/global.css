@@ -145,3 +145,10 @@ border-radius:0.5em 0 0 0;
  left: 0;
  background-color: #000000;   
 }
+
+.map_wrap
+{
+    border: 10px solid #FFFFFF;    
+    margin: 20px;
+    height: 300px;
+}
