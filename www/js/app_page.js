@@ -8,9 +8,9 @@ $(function () {
     });
     $("#tabgroup").hide();
 
-    var navToggleHeight = $("#nav_toggle").height();
+    var navToggleHeight = $("#nav_toggle").innerHeight();
     var negativeNavToggleHeight = 0 - navToggleHeight;
     $("#nav_toggle").css("margin-bottom", negativeNavToggleHeight);
-    $("h1").css("padding-top", navToggleHeight);
+    $(".h1").css("padding-top", navToggleHeight);
 
 });
