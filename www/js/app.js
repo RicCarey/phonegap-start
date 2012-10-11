@@ -43,6 +43,7 @@ $(function () {
     //icon load
     alert($(".header").outerHeight());
     alert($(".nav").outerHeight());
+    alert($(".nav ul").outerHeight());
 
     var negativeHomeContentHeight = 0 - $(".home_content").innerHeight();
     alert(negativeHomeContentHeight);
