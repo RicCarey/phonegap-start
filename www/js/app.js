@@ -50,6 +50,10 @@ $(function () {
         $.getScript("js/app_page.js");
 
     });
+    //map stretch
+    $("#map_canvas").width(windowWidth);
+    $("#map_canvas").height(windowHeight);
+
 
 
 });
