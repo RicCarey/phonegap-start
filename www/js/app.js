@@ -1,6 +1,8 @@
 $(function () {
-    var windowWidth = screen.innerWidth;
-    var windowHeight = screen.innerHeight;
+//    var windowWidth = window.innerWidth;
+    //    var windowHeight = window.innerHeight;
+    var windowWidth = screen.width;
+    var windowHeight = screen.height;
     //orientation
     var scaleMeasure;
     if (windowWidth > windowHeight) {
@@ -32,11 +34,9 @@ $(function () {
         $(".home_content").slideUp("slow");
 
         $(".page_html").load("content/pharmacy_info.htm .page_body");
+        $.getScript("js/app_page.js");
+
     });
 
-    $("#nav_toggle").click(function (e) {
-        e.preventDefault;
-        //$(".nav").slideDown();
-        alert("hello");
-    });
+    
 });
