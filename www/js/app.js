@@ -37,8 +37,9 @@ $(function () {
     //Home nav fit
     var headerHeight = $(".header").height();
     var navHeight = windowHeight - headerHeight;
- //   $(".home .nav").height(navHeight);
-
+    //   $(".home .nav").height(navHeight);
+    var testNavHeight = $(".home .nav").height();
+    $(".home .nav").height(testNavHeight);
 
     //icon load
     var negativeHomeContentHeight = 0 - $(".home_content").innerHeight();
@@ -46,7 +47,7 @@ $(function () {
     $("#pharmacy_icon").click(function (e) {
         e.preventDefault;
 
-        
+
         //$(".home_content").slideUp("slow");
 
         $(".home_content").animate({
@@ -55,9 +56,9 @@ $(function () {
             $("#nav_toggle").css("position", "fixed");
             $("#tabgroup").slideDown(function () {
                 $("body").removeClass("home");
-//                $(".nav").height("auto");
+                //                $(".nav").height("auto");
             });
-            
+
         });
 
         $(".page_html").load("content/pharmacy_info.htm .page_body");
