@@ -37,7 +37,7 @@ $(function () {
     //Home nav fit
     var headerHeight = $(".header").height();
     var navHeight = windowHeight - headerHeight;
-    $(".home .nav").height(navHeight);
+ //   $(".home .nav").height(navHeight);
 
 
     //icon load
