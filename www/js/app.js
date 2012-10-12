@@ -41,12 +41,14 @@ $(function () {
 
 
     //icon load
-    alert($(".header").outerHeight());
-    alert($(".nav").outerHeight());
-    alert($(".nav ul").outerHeight());
+    alert(windowWidth);
+    alert(windowHeight);
 
-    var negativeHomeContentHeight = 0 - $(".home_content").innerHeight();
+
+    var negativeHomeContentHeight = 0 - $(".home_content").outerHeight();
+    
     alert(negativeHomeContentHeight);
+
     $("#pharmacy_icon").click(function (e) {
 
         e.preventDefault;
