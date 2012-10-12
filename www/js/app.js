@@ -43,7 +43,10 @@ $(function () {
 
     var homeContentHeight = $(".home_content").outerHeight();
     var homeContentHeightDiff = windowHeight - homeContentHeight;
-    $(".home_content").height(homeContentHeight + homeContentHeightDiff);
+    
+    if (homeContentHeight < windowHeight) {
+        $(".home_content").height(homeContentHeight + homeContentHeightDiff);
+    }
 
     //icon loada
 
