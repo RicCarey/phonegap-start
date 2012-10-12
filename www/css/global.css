@@ -5,17 +5,29 @@ html,body
     padding: 0;
     margin: 0;
     font-size: 12px;
+    background: #2c256b; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  #2c256b 0%, #090a59 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#2c256b), color-stop(100%,#090a59)); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  #2c256b 0%,#090a59 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,  #2c256b 0%,#090a59 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  #2c256b 0%,#090a59 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center,  #2c256b 0%,#090a59 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c256b', endColorstr='#090a59',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
 }
 .nav
 {
     -webkit-border-radius: 0 0.5em 0 0;
     border-radius: 0 0.5em 0 0; 
     clear: both;
-    background-color: grey;
+    background-color: #008991;
     width: 80%;
     padding-left:10%;
     overflow: hidden;
     height: auto;
+    border: 0.2em #009ba8 solid;
+    border-left: 0;
+    border-bottom: 0;
 }
 
 .nav ul
@@ -122,6 +134,9 @@ background-color: Coral;
     width: 90%; 
     position: fixed;
     bottom: 0;
+    border: 0.2em #7d789e solid;
+    border-left: 0;
+    border-bottom: 0;
 }
 .landscape #tabgroup
 {
@@ -155,6 +170,9 @@ border-radius:0.5em 0 0 0;
     background-color: grey;
     width: 80%;
     padding-left:10%;  
+    border: 0.2em #009ba8 solid;
+    border-left: 0;
+    border-top: 0;
 }
 
 .map_wrap

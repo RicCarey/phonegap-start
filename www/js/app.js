@@ -35,16 +35,17 @@ $(function () {
         $("body").css("font-size", fontSize);
     }
     //Home nav fit
-    var headerHeight = $(".header").height();
-    var navHeight = windowHeight - headerHeight;
-    var currentNavHeight = $(".nav").height();
-    var navDiffernece = navHeight - currentNavHeight;
-    $(".nav li").css("margin-bottom", Math.ceil(navDiffernece / 3));
-    alert(headerHeight);
-    alert(navHeight);
-    alert(currentNavHeight);
-    alert(navDiffernece);
-    //icon load
+    //    var headerHeight = $(".header").height();
+    //    var navHeight = windowHeight - headerHeight;
+    //    var currentNavHeight = $(".nav").height();
+    //    var navDiffernece = navHeight - currentNavHeight;
+    //    $(".nav li").css("margin-bottom", Math.ceil(navDiffernece / 3));
+
+    var homeContentHeight = $(".home_content").outerHeight();
+    var homeContentHeightDiff = windowHeight - homeContentHeight;
+    $(".home_content").height(homeContentHeight + homeContentHeightDiff);
+
+    //icon loada
 
 
     var negativeHomeContentHeight = 0 - $(".home_content").outerHeight();
