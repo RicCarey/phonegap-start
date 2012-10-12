@@ -40,7 +40,10 @@ $(function () {
     var currentNavHeight = $(".nav").height();
     var navDiffernece = navHeight - currentNavHeight;
     $(".nav li").css("margin-bottom", Math.ceil(navDiffernece / 3));
-
+    alert(headerHeight);
+    alert(navHeight);
+    alert(currentNavHeight);
+    alert(navDiffernece);
     //icon load
 
 
