@@ -7,10 +7,10 @@ $(function () {
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        if (navigator.userAgent.indexOf("Firefox") != -1) {
-            windowWidth = window.innerWidth;
-            windowHeight = window.innerHeight;
-        }
+    if (navigator.userAgent.indexOf("Firefox") != -1) {
+        windowWidth = window.innerWidth;
+        windowHeight = window.innerHeight;
+    }
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -37,14 +37,16 @@ $(function () {
     //Home nav fit
     var headerHeight = $(".header").height();
     var navHeight = windowHeight - headerHeight;
-       $(".home .nav").height(navHeight);
-
+    var currentNavHeight = $(".nav").height();
+    var navDiffernece = navHeight - currentNavHeight;
+    $(".nav li").css("margin-bottom", Math.ceil(navDiffernece / 3));
 
     //icon load
 
+
     var negativeHomeContentHeight = 0 - $(".home_content").outerHeight();
     var negativePageHeight = 0 - windowHeight;
-    alert(negativeHomeContentHeight);
+
 
     $("#pharmacy_icon").click(function (e) {
 
