@@ -55,6 +55,9 @@ $(function () {
         $(".home_content").height(homeContentHeight + homeContentHeightDiff);
     }
 
+    alert(windowHeight);
+    alert(homeContentHeight);
+    alert(homeContentHeightDiff);
     //    var iconHeight;
     //    if ($("body").hasClass("portrait")) {
     //         iconHeight = homeContentHeightDiff / 3;
