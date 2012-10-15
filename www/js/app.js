@@ -29,12 +29,12 @@ $(window).load(function(){
 
     //font scale
 
-    if (scaleMeasure > 240) {
-        var scale = scaleMeasure / 240;
-        var fontSize = (12 * scale) + "px";
+//    if (scaleMeasure > 240) {
+//        var scale = scaleMeasure / 240;
+//        var fontSize = (12 * scale) + "px";
 
-        $("body").css("font-size", fontSize);
-    }
+//        $("body").css("font-size", fontSize);
+//    }
     //Home nav fit
 
     //    var headerHeight = $(".header").height();

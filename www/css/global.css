@@ -47,6 +47,7 @@ html,body
 .nav ul li img
 {
 height:100%;
+max-width: 100%;
 }
 .nav ul li .label
 {
