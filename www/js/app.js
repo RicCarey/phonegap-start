@@ -55,7 +55,7 @@ $(function () {
     }
 
 
-    $("nav_footer").click(function () {
+    $("#nav_footer").click(function () {
         alert(windowHeight);
         alert(homeContentHeight);
         alert(homeContentHeightDiff);
