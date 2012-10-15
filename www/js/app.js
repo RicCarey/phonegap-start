@@ -1,6 +1,6 @@
 //NB - this needs to be bind so that the phone doesnt calculate the heights and such without images loaded.
 //$(window).bind("load", function () {
-$(window).load(function(){
+$(window).load(function () {
     var windowWidth = screen.width;
     var windowHeight = screen.height;
 
@@ -17,7 +17,7 @@ $(window).load(function(){
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-//--orientation
+    //--orientation
     var scaleMeasure;
     if (windowWidth > windowHeight) {
         $("body").addClass("landscape");
@@ -27,17 +27,17 @@ $(window).load(function(){
         scaleMeasure = windowWidth;
     }
 
-//--font scale
+    //--font scale
 
-//    if (scaleMeasure > 240) {
-//        var scale = scaleMeasure / 240;
-//        var fontSize = (12 * scale) + "px";
+        if (scaleMeasure > 240) {
+            var scale = scaleMeasure / 240;
+            var fontSize = (12 * scale) + "px";
 
-//        $("body").css("font-size", fontSize);
-//    }
+            $("body").css("font-size", fontSize);
+        }
 
 
-//-- navfit/icons load
+    //-- navfit/icons load
 
     //    var headerHeight = $(".header").height();
     //    var navHeight = windowHeight - headerHeight;
@@ -54,7 +54,7 @@ $(window).load(function(){
     if (homeContentHeight < windowHeight) {
         $(".home_content").height(homeContentHeight + homeContentHeightDiff);
     }
-   //apply height differnece to box to expand down to bottom
+    //apply height differnece to box to expand down to bottom
     $(".expander").height(homeContentHeightDiff);
     $(".expander").show();
     //align labels
@@ -77,24 +77,24 @@ $(window).load(function(){
 
 
 
-  
 
-//content page load
+
+    //content page load
 
     var negativeHomeContentHeight = 0 - $(".home_content").outerHeight(true);
     var negativePageHeight = 0 - windowHeight;
 
+    var pageLoad;
+    $(".nav a").click(function (e) {
 
-    $("#pharmacy_icon").click(function (e) {
-
-        e.preventDefault;
-
-        //$(".home_content").slideUp("slow");
-
+        e.preventDefault();
+        pageLoad = $(this).attr("href");
+        $(".nav").addClass("right_edge_rounded");
+        $("#nav_toggle").show();
         $(".home_content").animate({
             marginTop: negativePageHeight
         }, 2500, function () {
-            $("#nav_toggle").css("position", "fixed");
+            $("#nav_toggle").css("position", "fixed").addClass("fixed_nav_toggle");
             $("#tabgroup").slideDown(function () {
                 $("body").removeClass("home");
                 //                $(".nav").height("auto");
@@ -103,8 +103,9 @@ $(window).load(function(){
         });
 
 
-        $(".page_html").load("content/pharmacy_info.htm .page_body");
+        $(".page_html").load(pageLoad + " .page_body");
         $.getScript("js/app_page.js");
+        $("body").addClass("content-page");
     });
 
 

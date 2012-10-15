@@ -7,29 +7,28 @@ $(function () {
 
     var navToggleHeight = $("#nav_toggle").innerHeight();
     var negativeNavToggleHeight = 0 - navToggleHeight;
-    $("#nav_toggle").css("margin-bottom", negativeNavToggleHeight);
+    //    $("#nav_toggle").css("margin-bottom", negativeNavToggleHeight);
     $(".h1").css("padding-top", navToggleHeight);
 
     var headerHeight = $(".header").height();
     var oldMarignTop;
-    $("#nav_toggle").toggle(
-    function () {
-        $("#nav_toggle").css("position", "relative");
-        oldMarignTop = $(".home_content").css("margin-top");
-        $(".home_content").animate({ marginTop: 0 - headerHeight }, 2500);
-    },
-    function () {
-        $("#nav_toggle").css("position", "fixed");
-        $(".home_content").animate({ marginTop: oldMarignTop }, 2500);
-    });
-    
-    document.addEventListener("backbutton", onBackKeyDown, false);
+//    $("#nav_toggle").toggle(
+//    function () {
+//        $("#nav_toggle").css("position", "relative");
+//        oldMarignTop = $(".home_content").css("margin-top");
+//        $(".home_content").animate({ marginTop: 0 - headerHeight }, 2500);
+//    },
+//    function () {
 
-    function onBackKeyDown() {
-        $("#nav_toggle").css("position", "relative");
-        $(".home_content").animate({ marginTop: 0 }, 2500);
-    }
+//        $(".home_content").animate({ marginTop: oldMarignTop }, 2500, function () {
+//            $("#nav_toggle").css("position", "fixed");
+//        });
+//    });
 
+
+    $(".content-page .nav").draggable({ axis: "y", start: function () {
+        $("#nav_toggle").css("position", "relative");
+    } });
 
 
 });
