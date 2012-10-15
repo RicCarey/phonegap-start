@@ -54,9 +54,14 @@ $(function () {
         $(".home_content").height(homeContentHeight + homeContentHeightDiff);
     }
 
-    alert(windowHeight);
-    alert(homeContentHeight);
-    alert(homeContentHeightDiff);
+
+    $("nav_footer").click(function () {
+        alert(windowHeight);
+        alert(homeContentHeight);
+        alert(homeContentHeightDiff);
+        $(".expander").height(homeContentHeightDiff);
+        $(".expander").show();
+    });
     //    var iconHeight;
     //    if ($("body").hasClass("portrait")) {
     //         iconHeight = homeContentHeightDiff / 3;
@@ -77,7 +82,7 @@ $(function () {
     //    pages[0] = "Contact";
     //    pages[0] = "Website";
 
-    $(".expander").height(homeContentHeightDiff);
+
 
     //   
     //    $(".home_content").append(function () {
