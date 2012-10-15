@@ -17,7 +17,7 @@ $(window).load(function(){
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-    //orientation
+//--orientation
     var scaleMeasure;
     if (windowWidth > windowHeight) {
         $("body").addClass("landscape");
@@ -27,7 +27,7 @@ $(window).load(function(){
         scaleMeasure = windowWidth;
     }
 
-    //font scale
+//--font scale
 
 //    if (scaleMeasure > 240) {
 //        var scale = scaleMeasure / 240;
@@ -35,7 +35,9 @@ $(window).load(function(){
 
 //        $("body").css("font-size", fontSize);
 //    }
-    //Home nav fit
+
+
+//-- navfit/icons load
 
     //    var headerHeight = $(".header").height();
     //    var navHeight = windowHeight - headerHeight;
@@ -45,28 +47,28 @@ $(window).load(function(){
 
 
 
-
+    //get heights without icons
     var homeContentHeight = $(".home_content").outerHeight(true);
     var homeContentHeightDiff = windowHeight - homeContentHeight;
 
     if (homeContentHeight < windowHeight) {
         $(".home_content").height(homeContentHeight + homeContentHeightDiff);
     }
-   
+   //apply height differnece to box to expand down to bottom
     $(".expander").height(homeContentHeightDiff);
     $(".expander").show();
+    //align labels
     var biggestHeight = 0;
     $('.nav li .label').each(function (index) {
         biggestHeight = Math.max(biggestHeight, $(this).outerHeight(true));
     }).css("height", biggestHeight);
-
+    //resize icons
     var iconRows;
     if ($("body").hasClass("portrait")) {
         iconRows = 3;
     } else {
         iconRows = 2;
     }
-
     var iconLabelSpace = biggestHeight * iconRows;
     var totalIconHeight = homeContentHeightDiff - iconLabelSpace;
     $('.nav li .icon').height(totalIconHeight / iconRows);
@@ -75,32 +77,9 @@ $(window).load(function(){
 
 
 
-    //    var pages = new Array();
-    //    pages[0] = "SelfCare";
-    //    pages[0] = "NHS Choices";
-    //    pages[0] = "Pharmacy";
-    //    pages[0] = "GPs";
-    //    pages[0] = "Walk-In<br />Centre";
-    //    pages[0] = "A&E";
-    //    pages[0] = "About";
-    //    pages[0] = "Contact";
-    //    pages[0] = "Website";
+  
 
-
-
-    //   
-    //    $(".home_content").append(function () {
-    //        
-    //        var i;
-    //        for (i = 0; i < 5; i++) {
-    //        i
-    //        }
-    //    });
-
-
-
-    //icon load
-
+//content page load
 
     var negativeHomeContentHeight = 0 - $(".home_content").outerHeight(true);
     var negativePageHeight = 0 - windowHeight;
@@ -114,7 +93,7 @@ $(window).load(function(){
 
         $(".home_content").animate({
             marginTop: negativePageHeight
-        }, 5000, function () {
+        }, 2500, function () {
             $("#nav_toggle").css("position", "fixed");
             $("#tabgroup").slideDown(function () {
                 $("body").removeClass("home");
