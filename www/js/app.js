@@ -55,14 +55,14 @@ $(function () {
         $(".home_content").height(homeContentHeight + homeContentHeightDiff);
     }
 
-    var iconHeight;
-    if ($("body").hasClass("portrait")) {
-         iconHeight = homeContentHeightDiff / 3;
-    } else {
-         iconHeight = homeContentHeightDiff / 2;
-           }
-    $('.nav li .icon').height(iconHeight);
-
+    //    var iconHeight;
+    //    if ($("body").hasClass("portrait")) {
+    //         iconHeight = homeContentHeightDiff / 3;
+    //    } else {
+    //         iconHeight = homeContentHeightDiff / 2;
+    //           }
+    //    $('.nav li .icon').height(iconHeight);
+    $(".expander").height(homeContentHeightDiff);
 
 
 

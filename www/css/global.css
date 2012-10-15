@@ -197,5 +197,9 @@ border-radius:0.5em 0 0 0;
 
 .home_content
 {
- border:10px solid #000000;   
+
+}
+.expander
+{
+ background-color: #FFFFFF;   
 }
