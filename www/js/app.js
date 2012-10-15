@@ -35,20 +35,38 @@ $(function () {
         $("body").css("font-size", fontSize);
     }
     //Home nav fit
+
     //    var headerHeight = $(".header").height();
     //    var navHeight = windowHeight - headerHeight;
     //    var currentNavHeight = $(".nav").height();
     //    var navDiffernece = navHeight - currentNavHeight;
     //    $(".nav li").css("margin-bottom", Math.ceil(navDiffernece / 3));
 
+    //-------------will reuqire uncommenting later \/
+    var biggestHeight = 0;
+    $('.nav li .label').each(function (index) {
+        biggestHeight = Math.max(biggestHeight, $(this).outerHeight(true));
+    }).css("height", biggestHeight);
+
     var homeContentHeight = $(".home_content").outerHeight();
     var homeContentHeightDiff = windowHeight - homeContentHeight;
-    
+
     if (homeContentHeight < windowHeight) {
         $(".home_content").height(homeContentHeight + homeContentHeightDiff);
     }
 
-    //icon loada
+    var iconHeight;
+    if ($("body").hasClass("portrait")) {
+         iconHeight = homeContentHeightDiff / 3;
+    } else {
+         iconHeight = homeContentHeightDiff / 2;
+           }
+    $('.nav li .icon').height(iconHeight).show();
+
+
+
+
+    //icon load
 
 
     var negativeHomeContentHeight = 0 - $(".home_content").outerHeight();
