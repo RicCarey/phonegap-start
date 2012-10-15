@@ -194,3 +194,8 @@ border-radius:0.5em 0 0 0;
  padding-left:5%;
  padding-right: 5%;   
 }
+
+.home_content
+{
+ border:10px solid #000000;   
+}

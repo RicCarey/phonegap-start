@@ -61,7 +61,7 @@ $(function () {
     } else {
          iconHeight = homeContentHeightDiff / 2;
            }
-    $('.nav li .icon').height(iconHeight).show();
+    $('.nav li .icon').height(iconHeight);
 
 
 
