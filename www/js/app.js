@@ -1,16 +1,16 @@
 $(function () {
-    //    var 
-//    var windowWidth = screen.width;
-//    var windowHeight = screen.height;
+
+    var windowWidth = screen.width;
+    var windowHeight = screen.height;
 
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//    if (navigator.userAgent.indexOf("Firefox") != -1) {
+    if (navigator.userAgent.indexOf("Firefox") != -1) {
         windowWidth = window.innerWidth;
         windowHeight = window.innerHeight;
-//    }
+    }
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -62,7 +62,29 @@ $(function () {
     //         iconHeight = homeContentHeightDiff / 2;
     //           }
     //    $('.nav li .icon').height(iconHeight);
+
+
+    //    var pages = new Array();
+    //    pages[0] = "SelfCare";
+    //    pages[0] = "NHS Choices";
+    //    pages[0] = "Pharmacy";
+    //    pages[0] = "GPs";
+    //    pages[0] = "Walk-In<br />Centre";
+    //    pages[0] = "A&E";
+    //    pages[0] = "About";
+    //    pages[0] = "Contact";
+    //    pages[0] = "Website";
+
     $(".expander").height(homeContentHeightDiff);
+
+    //   
+    //    $(".home_content").append(function () {
+    //        
+    //        var i;
+    //        for (i = 0; i < 5; i++) {
+    //        i
+    //        }
+    //    });
 
 
 
