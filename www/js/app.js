@@ -1,3 +1,4 @@
+//NB - this needs to be bind so that the phone doesnt calculate the heights and such without images loaded.
 $(window).bind("load", function () {
     var windowWidth = screen.width;
     var windowHeight = screen.height;
@@ -41,35 +42,36 @@ $(window).bind("load", function () {
     //    var navDiffernece = navHeight - currentNavHeight;
     //    $(".nav li").css("margin-bottom", Math.ceil(navDiffernece / 3));
 
-    //-------------will reuqire uncommenting later \/
+
+
+
+    var homeContentHeight = $(".home_content").outerHeight(true);
+    var homeContentHeightDiff = windowHeight - homeContentHeight;
+
+    if (homeContentHeight < windowHeight) {
+        $(".home_content").height(homeContentHeight + homeContentHeightDiff);
+    }
+   
+    $(".expander").height(homeContentHeightDiff);
+    $(".expander").show();
     var biggestHeight = 0;
     $('.nav li .label').each(function (index) {
         biggestHeight = Math.max(biggestHeight, $(this).outerHeight(true));
     }).css("height", biggestHeight);
 
+    var iconRows;
+    if ($("body").hasClass("portrait")) {
+        iconRows = 3;
+    } else {
+        iconRows = 2;
+    }
+
+    var iconLabelSpace = biggestHeight * iconRows;
+    var totalIconHeight = homeContentHeightDiff - iconLabelSpace;
+    $('.nav li .icon').height(totalIconHeight / iconRows);
 
 
 
-//    $("#nav_footer").click(function () {
-        var homeContentHeight = $(".home_content").outerHeight(true);
-        var homeContentHeightDiff = windowHeight - homeContentHeight;
-
-        if (homeContentHeight < windowHeight) {
-            $(".home_content").height(homeContentHeight + homeContentHeightDiff);
-        }
-        alert(windowHeight);
-        alert(homeContentHeight);
-        alert(homeContentHeightDiff);
-        $(".expander").height(homeContentHeightDiff);
-        $(".expander").show();
-//    });
-    //    var iconHeight;
-    //    if ($("body").hasClass("portrait")) {
-    //         iconHeight = homeContentHeightDiff / 3;
-    //    } else {
-    //         iconHeight = homeContentHeightDiff / 2;
-    //           }
-    //    $('.nav li .icon').height(iconHeight);
 
 
     //    var pages = new Array();
