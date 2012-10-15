@@ -48,7 +48,7 @@ $(function () {
         biggestHeight = Math.max(biggestHeight, $(this).outerHeight(true));
     }).css("height", biggestHeight);
 
-    var homeContentHeight = $(".home_content").outerHeight();
+    var homeContentHeight = $(".home_content").outerHeight(true);
     var homeContentHeightDiff = windowHeight - homeContentHeight;
 
     if (homeContentHeight < windowHeight) {
@@ -69,7 +69,7 @@ $(function () {
     //icon load
 
 
-    var negativeHomeContentHeight = 0 - $(".home_content").outerHeight();
+    var negativeHomeContentHeight = 0 - $(".home_content").outerHeight(true);
     var negativePageHeight = 0 - windowHeight;
 
 
