@@ -78,7 +78,7 @@ $(function () {
     //    pages[0] = "Contact";
     //    pages[0] = "Website";
 
-    $(".expander").height(homeContentHeightDiff).show();
+    $(".expander").height(homeContentHeightDiff);
 
     //   
     //    $(".home_content").append(function () {
