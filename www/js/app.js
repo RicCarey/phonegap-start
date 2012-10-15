@@ -1,5 +1,4 @@
 $(function () {
-    $(".expander").hide();
     var windowWidth = screen.width;
     var windowHeight = screen.height;
 
