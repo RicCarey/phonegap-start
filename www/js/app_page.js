@@ -19,9 +19,18 @@ $(function () {
         $(".home_content").animate({ marginTop: 0 - headerHeight }, 2500);
     },
     function () {
-        $("#nav_toggle").css("position", "relative");
+        $("#nav_toggle").css("position", "fixed");
         $(".home_content").animate({ marginTop: oldMarignTop }, 2500);
     });
+    
+    document.addEventListener("backbutton", onBackKeyDown, false);
+
+    function onBackKeyDown() {
+        $("#nav_toggle").css("position", "relative");
+        $(".home_content").animate({ marginTop: 0 }, 2500);
+    }
+
+
 
 });
 
