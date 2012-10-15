@@ -1,4 +1,4 @@
-$(function () {
+$(window).bind("load", function () {
     var windowWidth = screen.width;
     var windowHeight = screen.height;
 
@@ -50,7 +50,7 @@ $(function () {
 
 
 
-    $("#nav_footer").click(function () {
+//    $("#nav_footer").click(function () {
         var homeContentHeight = $(".home_content").outerHeight(true);
         var homeContentHeightDiff = windowHeight - homeContentHeight;
 
@@ -62,7 +62,7 @@ $(function () {
         alert(homeContentHeightDiff);
         $(".expander").height(homeContentHeightDiff);
         $(".expander").show();
-    });
+//    });
     //    var iconHeight;
     //    if ($("body").hasClass("portrait")) {
     //         iconHeight = homeContentHeightDiff / 3;
