@@ -47,15 +47,16 @@ $(function () {
         biggestHeight = Math.max(biggestHeight, $(this).outerHeight(true));
     }).css("height", biggestHeight);
 
-    var homeContentHeight = $(".home_content").outerHeight(true);
-    var homeContentHeightDiff = windowHeight - homeContentHeight;
 
-    if (homeContentHeight < windowHeight) {
-        $(".home_content").height(homeContentHeight + homeContentHeightDiff);
-    }
 
 
     $("#nav_footer").click(function () {
+        var homeContentHeight = $(".home_content").outerHeight(true);
+        var homeContentHeightDiff = windowHeight - homeContentHeight;
+
+        if (homeContentHeight < windowHeight) {
+            $(".home_content").height(homeContentHeight + homeContentHeightDiff);
+        }
         alert(windowHeight);
         alert(homeContentHeight);
         alert(homeContentHeightDiff);
