@@ -29,12 +29,12 @@ $(window).load(function () {
 
     //--font scale
 
-    //    if (scaleMeasure > 240) {
-    //        var scale = scaleMeasure / 240;
-    //        var fontSize = (12 * scale) + "px";
+    if (scaleMeasure > 240) {
+        var scale = scaleMeasure / 240;
+        var fontSize = (12 * scale) + "px";
 
-    //        $("body").css("font-size", fontSize);
-    //    }
+        $("body").css("font-size", fontSize);
+    }
 
 
     //-- navfit/icons load
@@ -126,13 +126,35 @@ $(window).load(function () {
         }
     });
 
+    //give marign to account for nav toggle div
+    var navToggleHeight = $("#nav_toggle").innerHeight();
+    var negativeNavToggleHeight = 0 - navToggleHeight;
+    $(".page_html, .map_wrap").css("margin-top", navToggleHeight + 20)
+
+    //give marign to account for tabgroup div
+    if ($("body").hasClass("portrait")) {
+        var tabGroupHeight = $("#tabgroup").innerHeight();
+        $(".page_html").css("margin-bottom", tabGroupHeight + 20);
+    }
+
+
     //  map navigate
     $(document).on("click", "#map a", function (e) {
         e.preventDefault();
-        
+
         $(".page_html").fadeOut(400, function () {
             //           $.getScript("js/map.js");
             $(".map_wrap").fadeIn(400, function () {
+
+                var mapPageChrome = navToggleHeight + 20 + tabGroupHeight + 20;
+
+                var mapPaddingTop = $(".map_wrap").css("paddingTop");
+                var mapPadding = parseInt(mapPaddingTop) * 2;
+                var mapHeight = windowHeight - mapPageChrome;
+                var mapNewHeight = mapHeight - mapPadding;
+
+                $(".map_wrap").height(mapNewHeight);
+
                 $('html, body').animate({ scrollTop: 0 }, 'slow');
                 initialize();
                 //close menu if open
@@ -145,6 +167,11 @@ $(window).load(function () {
             });
         });
     });
+
+
+  
+
+
 
 
 

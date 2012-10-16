@@ -163,6 +163,7 @@ max-width: 100%;
     border-left: 0;
     border-bottom: 0;
     display: none;
+    z-index: 9999999;
 }
 .landscape #tabgroup
 {
@@ -229,11 +230,13 @@ border-left: 0.2em #7d789e solid;
 {
  padding-left:5%;
  padding-right: 5%;   
+ line-height: 1.35em;
 }
 
-.home_content
+.h1
 {
-
+    font-size: 1.2em;
+    font-weight: bold;
 }
 .expander
 {
