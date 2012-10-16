@@ -119,6 +119,7 @@ $(window).load(function () {
                 $(".map_wrap").fadeOut(400);
                 $(".page_html").fadeIn(400).load(pageLoad + " .page_body", function () {
                     $("#nav_toggle").click();
+                    $('html, body').animate({ scrollTop: 0 }, 'slow');
                 });
             });
 
@@ -128,9 +129,11 @@ $(window).load(function () {
     //  map navigate
     $(document).on("click", "#map a", function (e) {
         e.preventDefault();
+        
         $(".page_html").fadeOut(400, function () {
             //           $.getScript("js/map.js");
             $(".map_wrap").fadeIn(400, function () {
+                $('html, body').animate({ scrollTop: 0 }, 'slow');
                 initialize();
                 //close menu if open
                 if ($("#nav_toggle").hasClass("fixed_nav_toggle")) {

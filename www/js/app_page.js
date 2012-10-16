@@ -2,9 +2,6 @@
 
 $(function () {
 
-    //hide tab group to slide it back in on laod
-    $("#tabgroup").hide();
-
     //give marign to account for nav toggle div
     var navToggleHeight = $("#nav_toggle").innerHeight();
     var negativeNavToggleHeight = 0 - navToggleHeight;
