@@ -10,7 +10,7 @@ $(window).load(function () {
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     if (navigator.userAgent.indexOf("Firefox") != -1) {
         var windowWidth = window.innerWidth;
-       var windowHeight = window.innerHeight;
+        var windowHeight = window.innerHeight;
     }
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -29,12 +29,12 @@ $(window).load(function () {
 
     //--font scale
 
-//    if (scaleMeasure > 240) {
-//        var scale = scaleMeasure / 240;
-//        var fontSize = (12 * scale) + "px";
+    //    if (scaleMeasure > 240) {
+    //        var scale = scaleMeasure / 240;
+    //        var fontSize = (12 * scale) + "px";
 
-//        $("body").css("font-size", fontSize);
-//    }
+    //        $("body").css("font-size", fontSize);
+    //    }
 
 
     //-- navfit/icons load
@@ -106,7 +106,6 @@ $(window).load(function () {
                 $("#nav_toggle").css("position", "fixed").addClass("fixed_nav_toggle");
                 $("#tabgroup").slideDown(function () {
                     $("body").removeClass("home");
-                    //                $(".nav").height("auto");
                 });
 
             });
@@ -116,7 +115,8 @@ $(window).load(function () {
             $.getScript("js/app_page.js");
             $("body").addClass("content-page");
         } else {
-            $(".page_html, .map_wrap").fadeOut(400, function () {
+            $(".page_html").fadeOut(400, function () {
+                $(".map_wrap").fadeOut(400);
                 $(".page_html").fadeIn(400).load(pageLoad + " .page_body", function () {
                     $("#nav_toggle").click();
                 });
@@ -125,12 +125,12 @@ $(window).load(function () {
         }
     });
 
-    //map navigate
+    //  map navigate
     $(document).on("click", "#map a", function (e) {
         e.preventDefault();
         $(".page_html").fadeOut(400, function () {
- //           $.getScript("js/map.js");
-            $(".map_wrap").fadeIn(400 , function () {
+            //           $.getScript("js/map.js");
+            $(".map_wrap").fadeIn(400, function () {
                 initialize();
                 //close menu if open
                 if ($("#nav_toggle").hasClass("fixed_nav_toggle")) {
@@ -142,7 +142,7 @@ $(window).load(function () {
             });
         });
     });
-   
+
 
 
 });

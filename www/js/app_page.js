@@ -10,7 +10,7 @@ $(function () {
     var negativeNavToggleHeight = 0 - navToggleHeight;
     $(".page_html, .map_wrap").css("margin-top", navToggleHeight + 10)
     
-    //give marign to accoutn for tabgroup div
+    //give marign to account for tabgroup div
     if( $("body").hasClass("portrait")){
         var tabGroupHeight = $("#tabgroup").innerHeight();
         $(".page_html").css("margin-bottom", tabGroupHeight + 10);
@@ -22,7 +22,7 @@ $(function () {
     var oldMarignTop;
     $("#nav_toggle").toggle(
     function () {
-        $("html").scrollTop("0");
+        $("window").scrollTop("0");
         $("#nav_toggle").css("position", "relative").removeClass("fixed_nav_toggle");
         oldMarignTop = $(".home_content").css("margin-top");
         $(".home_content").animate({ marginTop: 0 - headerHeight }, 2500);
