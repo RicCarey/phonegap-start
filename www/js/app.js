@@ -116,7 +116,7 @@ $(window).load(function () {
             $.getScript("js/app_page.js");
             $("body").addClass("content-page");
         } else {
-            $(".page_html, map_wrap").fadeOut(400, function () {
+            $(".page_html, .map_wrap").fadeOut(400, function () {
                 $(".page_html").fadeIn(400).load(pageLoad + " .page_body", function () {
                     $("#nav_toggle").click();
                 });
