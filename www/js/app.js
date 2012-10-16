@@ -29,12 +29,12 @@ $(window).load(function () {
 
     //--font scale
 
-        if (scaleMeasure > 240) {
-            var scale = scaleMeasure / 240;
-            var fontSize = (12 * scale) + "px";
+    if (scaleMeasure > 240) {
+        var scale = scaleMeasure / 240;
+        var fontSize = (12 * scale) + "px";
 
-            $("body").css("font-size", fontSize);
-        }
+        $("body").css("font-size", fontSize);
+    }
 
 
     //-- navfit/icons load
@@ -75,7 +75,12 @@ $(window).load(function () {
 
 
 
-
+    if (windowWidth > windowHeight) {
+        var nhsLogoHeight = $("#nhs_logo").height();
+        var straplineHeight = $("#strapline").height();
+        var straplineMargin = nhsLogoHeight - straplineHeight;
+        $("#strapline").css("margin-top", straplineMargin / 2);
+    };
 
 
 
@@ -85,29 +90,42 @@ $(window).load(function () {
     var negativePageHeight = 0 - windowHeight;
 
     var pageLoad;
-    $(".nav a").click(function (e) {
 
+
+    $(".nav a").click(function (e) {
         e.preventDefault();
         pageLoad = $(this).attr("href");
-        $(".nav").addClass("right_edge_rounded");
-        $("#nav_toggle").show();
-        $(".home_content").animate({
-            marginTop: negativePageHeight
-        }, 2500, function () {
-            $("#nav_toggle").css("position", "fixed").addClass("fixed_nav_toggle");
-            $("#tabgroup").slideDown(function () {
-                $("body").removeClass("home");
-                //                $(".nav").height("auto");
+
+        if ($("body").hasClass("home")) {
+
+            $(".nav").addClass("right_edge_rounded");
+            $("#nav_toggle").show();
+            $(".home_content").animate({
+                marginTop: negativePageHeight
+            }, 2500, function () {
+                $("#nav_toggle").css("position", "fixed").addClass("fixed_nav_toggle");
+                $("#tabgroup").slideDown(function () {
+                    $("body").removeClass("home");
+                    //                $(".nav").height("auto");
+                });
+
             });
 
-        });
 
+            $(".page_html").load(pageLoad + " .page_body");
+            $.getScript("js/app_page.js");
+            $("body").addClass("content-page");
+        } else {
+            $(".page_html").fadeOut(400, function () {
+                $(".page_html").fadeIn(400).load(pageLoad + " .page_body", function () {
+                    $("#nav_toggle").click();
+                });
+            });
 
-        $(".page_html").load(pageLoad + " .page_body");
-        $.getScript("js/app_page.js");
-        $("body").addClass("content-page");
+        }
     });
 
+   
 
 
 });
