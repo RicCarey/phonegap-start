@@ -95,6 +95,8 @@ $(window).load(function () {
     $(".nav a").click(function (e) {
         e.preventDefault();
         pageLoad = $(this).attr("href");
+        var poiType = $(this).attr("data-poitype");
+        $("#map, #list").addClass("disabled");
 
         if ($("body").hasClass("home")) {
 
@@ -106,18 +108,28 @@ $(window).load(function () {
                 $("#nav_toggle").css("position", "fixed").addClass("fixed_nav_toggle");
                 $("#tabgroup").slideDown(function () {
                     $("body").removeClass("home");
+
                 });
 
             });
 
-
-            $(".page_html").load(pageLoad + " .page_body");
+            
+            $(".page_html").load(pageLoad + " .page_body", function () {
+                $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&loc=wrexham&callback=?&type=" + poiType, function (data) {
+                    window.searchResults = data;
+                    $("#map, #list").removeClass("disabled");
+                });
+            });
             $.getScript("js/app_page.js");
             $("body").addClass("content-page");
         } else {
             $(".page_html").fadeOut(400, function () {
                 $(".map_wrap").fadeOut(400);
                 $(".page_html").fadeIn(400).load(pageLoad + " .page_body", function () {
+                    $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&loc=wrexham&callback=?&type=" + poiType, function (data) {
+                        window.searchResults = data;
+                        $("#map, #list").removeClass("disabled");
+                    });
                     $("#nav_toggle").click();
                     $('html, body').animate({ scrollTop: 0 }, 'slow');
                 });
@@ -169,7 +181,7 @@ $(window).load(function () {
     });
 
 
-  
+
 
 
 

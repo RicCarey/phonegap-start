@@ -12,7 +12,7 @@
      <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY7054skOyMxBa6qLaViOlW1GlvHQvg4Y&sensor=true"></script>
      
 </head>
-    <body class="home" onload="initialize()">
+    <body class="home">
         <div class="home_content">
             <div class="header">
                 <div id="nhs_logo">
@@ -25,9 +25,9 @@
             </div>
             <div class="nav">
                 <ul class="expander">
-                    <li id="selfcare"><a href="content/selfcare_info.htm"><div class="icon"><img src="images/selfcare480x2.png" /></div><div class="label">SelfCare</div></a></li>
-                    <li id="nhs_choices"><a href="#care"><div class="icon"><img src="images/selfcare480x2.png" /></div><div class="label">nhs choices</div></a></li>
-                    <li id="pharmacy_icon"><a href="content/pharmacy_info.htm"><div class="icon"><img src="images/selfcare480x2.png" /></div><div class="label">Pharmacy</div></a></li>
+                    <li id="selfcare"><a href="content/selfcare_info.htm" data-poitype="tesswssst"><div class="icon"><img src="images/selfcare480x2.png" /></div><div class="label">SelfCare</div></a></li>
+                    <li id="nhs_choices"><a href="#care" data-poitype="test"><div class="icon"><img src="images/selfcare480x2.png" /></div><div class="label">nhs choices</div></a></li>
+                    <li id="pharmacy_icon"><a href="content/pharmacy_info.htm" data-poitype="test"><div class="icon"><img src="images/selfcare480x2.png" /></div><div class="label">Pharmacy</div></a></li>
                     <li id="gps"><a href="#care"><div class="icon"><img src="images/selfcare480x2.png" /></div><div class="label">GPs</div></a></li>
                     <li id="walk-in-centre"><a href="#care"><div class="icon"><img src="images/selfcare480x2.png" /></div><div class="label">Walk-In<br />Centre</div></a></li>
                     <li id="aande"><a href="#care"><div class="icon"><img src="images/selfcare480x2.png" /></div><div class="label">A&E</div></a></li>
@@ -44,14 +44,14 @@
         <div class="page_html">
 
         </div>
-          <div id="tabgroup">
+        <div id="tabgroup">
                 <div id="info">I</div>
                 <div id="map"><a href="content/map.htm">map</a></div>
                 <div id="list">list</div>
-            </div>
-        <div class="map_wrap">
+         </div>
+         <div class="map_wrap">
             <div id="map_canvas" style="width:100%; height:100%"></div>
-        </div>
+         </div>
          
     </body>
     </html> 
