@@ -1,17 +1,17 @@
 //NB - this needs to be bind so that the phone doesnt calculate the heights and such without images loaded.
 //$(window).bind("load", function () {
 $(window).load(function () {
-    var windowWidth = screen.width;
-    var windowHeight = screen.height;
+//    var windowWidth = screen.width;
+ //   var windowHeight = screen.height;
 
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    if (navigator.userAgent.indexOf("Firefox") != -1) {
-        windowWidth = window.innerWidth;
-        windowHeight = window.innerHeight;
-    }
+ //   if (navigator.userAgent.indexOf("Firefox") != -1) {
+        var windowWidth = window.innerWidth;
+       var windowHeight = window.innerHeight;
+//    }
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -29,12 +29,12 @@ $(window).load(function () {
 
     //--font scale
 
-    if (scaleMeasure > 240) {
-        var scale = scaleMeasure / 240;
-        var fontSize = (12 * scale) + "px";
+//    if (scaleMeasure > 240) {
+//        var scale = scaleMeasure / 240;
+//        var fontSize = (12 * scale) + "px";
 
-        $("body").css("font-size", fontSize);
-    }
+//        $("body").css("font-size", fontSize);
+//    }
 
 
     //-- navfit/icons load
@@ -125,6 +125,23 @@ $(window).load(function () {
         }
     });
 
+    //map navigate
+    $(document).on("click", "#map a", function (e) {
+        e.preventDefault();
+        $(".page_html").fadeOut(400, function () {
+ //           $.getScript("js/map.js");
+            $(".map_wrap").fadeIn(400 , function () {
+                initialize();
+                //close menu if open
+                if ($("#nav_toggle").hasClass("fixed_nav_toggle")) {
+
+                } else {
+                    $("#nav_toggle").click();
+                }
+
+            });
+        });
+    });
    
 
 
