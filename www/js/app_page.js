@@ -22,7 +22,8 @@ $(function () {
     var oldMarignTop;
     $("#nav_toggle").toggle(
     function () {
-        $("window").scrollTop("0");
+        $('html, body').animate({ scrollTop: 0 }, 'slow');
+        //return false;
         $("#nav_toggle").css("position", "relative").removeClass("fixed_nav_toggle");
         oldMarignTop = $(".home_content").css("margin-top");
         $(".home_content").animate({ marginTop: 0 - headerHeight }, 2500);
