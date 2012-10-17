@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NHS Nottingham City App</title>
+    <script type="text/javascript" src="js/jquery1.8.min.js"></script>
+    <script>
+        $(function () {
+            $("#Curve8520").click(function (e) {
+                e.preventDefault();
+
+                $("#iframe").width("320px");
+                $("#iframe").height("240px");
+                document.getElementById("iframe").contentDocument.location.reload(true);
+
+            });
+            $("#iPhone3").click(function (e) {
+                        e.preventDefault();
+                $("#iframe").width("320px");
+                $("#iframe").height("480px");
+                                document.getElementById("iframe").contentDocument.location.reload(true);
+            });
+            $("#bold9790").click(function (e) {
+                        e.preventDefault();
+                $("#iframe").width("480px");
+                $("#iframe").height("360px");
+                                document.getElementById("iframe").contentDocument.location.reload(true);
+            });
+            $("#torch").click(function (e) {
+                        e.preventDefault();
+                $("#iframe").width("480px");
+                $("#iframe").height("640px");
+                                document.getElementById("iframe").contentDocument.location.reload(true);
+            });
+            $("#s2").click(function (e) {
+                        e.preventDefault();
+                $("#iframe").width("480px");
+                $("#iframe").height("800px");
+                                document.getElementById("iframe").contentDocument.location.reload(true);
+            });
+            $("#bold9900").click(function (e) {
+                        e.preventDefault();
+                $("#iframe").width("640px");
+                $("#iframe").height("480px");
+                  document.getElementById("iframe").contentDocument.location.reload(true);
+            });
+            $("#iPhone4").click(function (e) {
+                        e.preventDefault();
+                $("#iframe").width("640px");
+                $("#iframe").height("960px");
+               document.getElementById("iframe").contentDocument.location.reload(true);
+            });
+            $("#iPhone5").click(function (e) {
+                        e.preventDefault();
+                $("#iframe").width("640px");
+                $("#iframe").height("1136px");
+               document.getElementById("iframe").contentDocument.location.reload(true);
+            });
+            $("#s3").click(function (e) {
+                        e.preventDefault();
+                $("#iframe").width("720px");
+                $("#iframe").height("1280px");
+                document.getElementById("iframe").contentDocument.location.reload(true);
+            });
+            $("#note").click(function (e) {
+                        e.preventDefault();
+                $("#iframe").width("800px");
+                $("#iframe").height("1280px");
+                document.getElementById("iframe").contentDocument.location.reload(true);
+            });
+        });
+
+    </script>
+
+</head>
+<body>
+    <iframe src="index.html" name="iframe" id="iframe" width="320" height="480" scrolling="no">
+
+    </iframe>
+    <button id="Curve8520">Curve 8520</button>
+    <button id="iPhone3">iPhone 3</button>
+    <button id="bold9790">Bold 9790</button>
+    <button id="torch">Torch</button>
+    <button id="s2">Galaxy S2</button>
+    <button id="bold9900">Bold 9900</button>
+    <button id="iPhone4">iPhone 4</button>
+    <button id="iPhone5">iPhone 5</button>
+    <button id="s3">Galaxy S3</button>
+    <button id="note">Galaxy Note</button>
+</body>
+</html>

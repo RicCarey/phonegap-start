@@ -1,14 +1,15 @@
 /*global Styles*/
 html
 {
- background: #2c256b; /* Old browsers */
-    background: -moz-radial-gradient(center, ellipse cover,  #2c256b 0%, #090a59 100%); /* FF3.6+ */
-    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#2c256b), color-stop(100%,#090a59)); /* Chrome,Safari4+ */
-    background: -webkit-radial-gradient(center, ellipse cover,  #2c256b 0%,#090a59 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-radial-gradient(center, ellipse cover,  #2c256b 0%,#090a59 100%); /* Opera 12+ */
-    background: -ms-radial-gradient(center, ellipse cover,  #2c256b 0%,#090a59 100%); /* IE10+ */
-    background: radial-gradient(ellipse at center,  #2c256b 0%,#090a59 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c256b', endColorstr='#090a59',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */   
+background: #383987; /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover,  #383987 0%, #090a59 100%); /* FF3.6+ */
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#383987), color-stop(100%,#090a59)); /* Chrome,Safari4+ */
+background: -webkit-radial-gradient(center, ellipse cover,  #383987 0%,#090a59 100%); /* Chrome10+,Safari5.1+ */
+background: -o-radial-gradient(center, ellipse cover,  #383987 0%,#090a59 100%); /* Opera 12+ */
+background: -ms-radial-gradient(center, ellipse cover,  #383987 0%,#090a59 100%); /* IE10+ */
+background: radial-gradient(ellipse at center,  #383987 0%,#090a59 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#383987', endColorstr='#090a59',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
 }
 html,body 
 {
@@ -75,10 +76,11 @@ html,body
  float:left;   
  /*clear:left;*/
 }
-.nav ul li img
+.nav ul li a img
 {
 max-height:100%;
 max-width: 100%;
+border: 0;
 }
 .nav ul li .label
 {
@@ -242,4 +244,25 @@ border-left: 0.2em #7d789e solid;
 .expander
 {
  display: none;   
+}
+.list-ul
+{
+ margin: 0;
+ padding: 0;
+ list-style: none;
+ width: 90%;
+ margin-left: 5%;
+ margin-right: 5%;
+}
+
+.list-ul li
+{
+ background-image: url(../images/list-bg-odd.png);
+ background-repeat: repeat;
+ margin-bottom: 1em;
+ padding: 2%;  
+}
+.list-ul li:nth-child(2n+2)
+{
+ background-image: url(../images/list-bg-even.png);
 }

@@ -113,11 +113,43 @@ $(window).load(function () {
 
             });
 
-            
+
             $(".page_html").load(pageLoad + " .page_body", function () {
                 $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&loc=wrexham&callback=?&type=" + poiType, function (data) {
                     window.searchResults = data;
                     $("#map, #list").removeClass("disabled");
+
+                    $("#info").click(function (event) {
+                        event.preventDefault();
+                        $(".page_html, .map_wrap").fadeOut(400, function () {
+                            $(".page_html").fadeIn(400).load(pageLoad + " .page_body");
+
+                        });
+                        if ($("#nav_toggle").hasClass("fixed_nav_toggle")) {
+
+                        } else {
+                            $("#nav_toggle").click();
+                        }
+
+                    });
+
+                    $("#list").click(function (listEvent) {
+                        listEvent.preventDefault();
+                        $(".map_wrap").fadeOut(400);
+                        $(".page_html").fadeOut(400, function () {
+                            $(".page_html").fadeIn(400).load("content/list.htm .page_body", function () {
+                                listInitialize();
+                            });
+
+                        });
+                        if ($("#nav_toggle").hasClass("fixed_nav_toggle")) {
+
+                        } else {
+                            $("#nav_toggle").click();
+                        }
+
+                    });
+
                 });
             });
             $.getScript("js/app_page.js");
@@ -138,16 +170,7 @@ $(window).load(function () {
         }
     });
 
-    //give marign to account for nav toggle div
-    var navToggleHeight = $("#nav_toggle").innerHeight();
-    var negativeNavToggleHeight = 0 - navToggleHeight;
-    $(".page_html, .map_wrap").css("margin-top", navToggleHeight + 20)
 
-    //give marign to account for tabgroup div
-    if ($("body").hasClass("portrait")) {
-        var tabGroupHeight = $("#tabgroup").innerHeight();
-        $(".page_html").css("margin-bottom", tabGroupHeight + 20);
-    }
 
 
     //  map navigate
@@ -157,8 +180,9 @@ $(window).load(function () {
         $(".page_html").fadeOut(400, function () {
             //           $.getScript("js/map.js");
             $(".map_wrap").fadeIn(400, function () {
-
-                var mapPageChrome = navToggleHeight + 20 + tabGroupHeight + 20;
+                var tabGroupinnerHeight = $("#tabgroup").innerHeight();
+                var naviagtionToggleHeight = $("#nav_toggle").innerHeight();
+                var mapPageChrome = naviagtionToggleHeight + 20 + tabGroupinnerHeight + 20;
 
                 var mapPaddingTop = $(".map_wrap").css("paddingTop");
                 var mapPadding = parseInt(mapPaddingTop) * 2;
