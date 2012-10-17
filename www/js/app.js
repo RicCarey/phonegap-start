@@ -178,8 +178,10 @@ $(window).load(function () {
         e.preventDefault();
 
         $(".page_html").fadeOut(400, function () {
-            //           $.getScript("js/map.js");
+                       $.getScript("js/map.js");
             $(".map_wrap").fadeIn(400, function () {
+                
+              //  alert("map should initalise!");
                 var tabGroupinnerHeight = $("#tabgroup").innerHeight();
                 var naviagtionToggleHeight = $("#nav_toggle").innerHeight();
                 var mapPageChrome = naviagtionToggleHeight + 20 + tabGroupinnerHeight + 20;
@@ -193,6 +195,7 @@ $(window).load(function () {
 
                 $('html, body').animate({ scrollTop: 0 }, 'slow');
                 initialize();
+                
                 //close menu if open
                 if ($("#nav_toggle").hasClass("fixed_nav_toggle")) {
 
