@@ -233,6 +233,8 @@ border-left: 0.2em #7d789e solid;
     border-top: 0; 
     display: none;
     z-index: 9999999;
+    padding: 5%;
+    margin-left:-5%;
 }
 .fixed_nav_toggle
 {
@@ -305,7 +307,6 @@ width:95%;
 height: 0.2em;
 overflow: hidden;
 margin:0;
-padding-bottom: 1em;
 }
 .blueline
 {
@@ -327,4 +328,9 @@ float:left;
 height:100%;
 width: 20%;
 background-color: #D8D700;
+}
+.nav_spacer
+{
+height: 10px; 
+background-color: #000000;  
 }
