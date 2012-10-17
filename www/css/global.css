@@ -60,6 +60,7 @@ html,body
     padding-left: 5%;
     -webkit-box-shadow: 0px 0px 0.5em 0px #000000;
     box-shadow: 0px 0px 0.5em 0px #000000;
+    font-size: 0.8em;
     
 }
 .right_edge_rounded
@@ -86,7 +87,7 @@ html,body
 .nav ul li a
 {
     width: 100%;
- text-shadow: 0px 0px 0.1em #000000;
+ text-shadow: 0px 0px 0.2em #000000;
  /* filter: dropshadow(color=#000000, offx=0, offy=0); */
  color: #FFFFFF;
  text-decoration: none;
@@ -98,6 +99,7 @@ html,body
 }
 .nav ul li .label
 {
+    padding-top: 0.5em;
  width:100%;
  float:left;   
  clear:left;
@@ -148,6 +150,7 @@ border: 0;
 }
 #strapline
 {
+    line-height: 1.3em;
     float: left;
     -webkit-border-radius: 0 0.5em 0.5em 0;
     border-radius: 0 0.5em 0.5em 0; 
@@ -300,7 +303,8 @@ border-left: 0.2em #7d789e solid;
 width:95%;   
 height: 0.2em;
 overflow: hidden;
-margin: 0.5em 0;
+margin:0;
+padding-bottom: 0.5em;
 }
 .blueline
 {

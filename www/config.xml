@@ -2,7 +2,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.icecreates.hello-world"
-        version   = "46">
+        version   = "47">
     <name>Nottingham App</name>
 
     <description>

@@ -181,7 +181,6 @@ $(window).load(function () {
                        $.getScript("js/map.js");
             $(".map_wrap").fadeIn(400, function () {
                 
-              //  alert("map should initalise!");
                 var tabGroupinnerHeight = $("#tabgroup").innerHeight();
                 var naviagtionToggleHeight = $("#nav_toggle").innerHeight();
                 var mapPageChrome = naviagtionToggleHeight + 20 + tabGroupinnerHeight + 20;
