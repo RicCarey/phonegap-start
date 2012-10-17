@@ -105,7 +105,7 @@ $(window).load(function () {
             $(".home_content").animate({
                 marginTop: negativePageHeight
             }, 2500, function () {
-                $("#nav_toggle").css("position", "fixed").addClass("fixed_nav_toggle");
+                $("#nav_toggle").addClass("fixed_nav_toggle");
                 $("#tabgroup").slideDown(function () {
                     $("body").removeClass("home");
 
