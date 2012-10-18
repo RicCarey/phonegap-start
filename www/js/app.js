@@ -69,10 +69,24 @@ $(window).load(function () {
     } else {
         iconRows = 2;
     }
-    var iconLabelSpace = biggestHeight * iconRows;
-    var totalIconHeight = homeContentHeightDiff - iconLabelSpace;
-    $('.nav li .icon').height(totalIconHeight / iconRows);
+    var listAnchorHeight = homeContentHeightDiff / iconRows;
+    $('.nav li a').height(listAnchorHeight);
 
+    var iconHeight = listAnchorHeight - biggestHeight;
+
+    //    var iconLabelSpace = biggestHeight * iconRows;
+    //    var totalIconHeight = homeContentHeightDiff - iconLabelSpace;
+    //    var iconHeight = totalIconHeight / iconRows;
+    //    
+        $('.nav li .icon').height(iconHeight);
+
+        var iconWidth = $(".nav ul li .icon").width();
+
+        if (iconWidth > iconHeight) {
+            $('.nav li .icon img').height(iconHeight).css("maxWidth", iconWidth);
+        } else {
+            $('.nav li .icon img').width(iconWidth).css("maxheight", iconHeight);
+    }
 
 
     if (windowWidth > windowHeight) {
@@ -178,9 +192,9 @@ $(window).load(function () {
         e.preventDefault();
 
         $(".page_html").fadeOut(400, function () {
-                       $.getScript("js/map.js");
+            $.getScript("js/map.js");
             $(".map_wrap").fadeIn(400, function () {
-                
+
                 var tabGroupinnerHeight = $("#tabgroup").innerHeight();
                 var naviagtionToggleHeight = $("#nav_toggle").innerHeight();
                 var mapPageChrome = naviagtionToggleHeight + 20 + tabGroupinnerHeight + 20;
@@ -194,7 +208,7 @@ $(window).load(function () {
 
                 $('html, body').animate({ scrollTop: 0 }, 'slow');
                 initialize();
-                
+
                 //close menu if open
                 if ($("#nav_toggle").hasClass("fixed_nav_toggle")) {
 

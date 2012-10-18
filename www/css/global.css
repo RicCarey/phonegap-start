@@ -91,6 +91,8 @@ html,body
  /* filter: dropshadow(color=#000000, offx=0, offy=0); */
  color: #FFFFFF;
  text-decoration: none;
+ display: block;
+ overflow: hidden;
 }
 .nav ul li .icon
 {
@@ -107,8 +109,8 @@ html,body
 }
 .nav ul li a img
 {
-max-height:100%;
-/*max-width: 100%;*/
+/*max-height:100%;
+max-width: 100%;*/
 border: 0;
 }
 .nav ul li .label
@@ -177,10 +179,11 @@ border: 0;
 }
 #nav_footer
 {
- display:block;
+ display:none;
  clear: both;
  float:left;   
 margin-bottom: 0.5em;
+
 }
 
 /* content pages */
@@ -332,5 +335,5 @@ background-color: #D8D700;
 .nav_spacer
 {
 height: 10px; 
-background-color: #000000;  
+display: block;
 }
