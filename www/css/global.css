@@ -132,6 +132,10 @@ border: 0;
 
 
 /*Homepage*/
+.home_content
+{
+ overflow:hidden;   
+}
 .header
 {
  overflow: hidden;   
