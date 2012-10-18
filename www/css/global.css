@@ -173,12 +173,14 @@ border: 0;
 .landscape #strapline
 {
     width: 40%;
+      font-size: 1.20em;
 }
 .portrait #strapline
 {
     
   width: 90%; 
   margin: 0.5em 0; 
+
 }
 #nav_footer
 {
@@ -341,7 +343,8 @@ display: none;
 }
 .page_html
 {
- z-index: 0;   
+ z-index: 0; 
+ display: none;  
 }
 .nav_footer_strap
 {
