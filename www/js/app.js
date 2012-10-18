@@ -1,7 +1,7 @@
 //NB - this needs to be bind so that the phone doesnt calculate the heights and such without images loaded.
 //$(window).bind("load", function () {
 $(window).load(function () {
-    $(html).on("touchmove", false);
+    $("html").on("touchmove", false);
 
     //    var windowWidth = screen.width;
     var screenHeight = screen.height;
