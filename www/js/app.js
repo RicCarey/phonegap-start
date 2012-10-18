@@ -171,12 +171,14 @@ $(window).load(function () {
         } else {
             $(".page_html").fadeOut(400, function () {
                 $(".map_wrap").fadeOut(400);
+                $("#nav_toggle").click();
+
                 $(".page_html").fadeIn(400).load(pageLoad + " .page_body", function () {
                     $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&loc=wrexham&callback=?&type=" + poiType, function (data) {
                         window.searchResults = data;
                         $("#map, #list").removeClass("disabled");
                     });
-                    $("#nav_toggle").click();
+                    
                     $('html, body').animate({ scrollTop: 0 }, 'slow');
                 });
             });

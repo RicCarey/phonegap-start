@@ -64,7 +64,7 @@ html,body
     position: static;
     top: 0;
     left: 0;
-    
+    z-index: 9999999999999999999999999999999999999999999999999999999;
 }
 .right_edge_rounded
 {
@@ -336,6 +336,15 @@ background-color: #D8D700;
 }
 .nav_spacer
 {
-height: 10px; 
+height: 35px; 
 display: block;
+}
+.page_html
+{
+ z-index: 0;   
+}
+.nav_footer_strap
+{
+ padding-bottom: 0.25em;   
+ padding-top: 0.25em;
 }
