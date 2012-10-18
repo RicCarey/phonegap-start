@@ -179,11 +179,11 @@ border: 0;
 }
 #nav_footer
 {
- display:none;
+ display:block;
  clear: both;
  float:left;   
 margin-bottom: 0.5em;
-
+width:100%;
 }
 
 /* content pages */
