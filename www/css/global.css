@@ -132,10 +132,7 @@ border: 0;
 
 
 /*Homepage*/
-.home_content
-{
- overflow:hidden;   
-}
+
 .header
 {
  overflow: hidden;   
@@ -356,3 +353,15 @@ display: none;
  padding-top: 0.25em; */
  
 }
+body
+{
+background-color: #000000;    
+ }
+ .home_content
+ {
+  background-color: #929292;
+ }
+ home_content
+ {
+  background-color:#FFFFFF;   
+ }
