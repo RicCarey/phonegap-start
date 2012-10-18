@@ -340,11 +340,11 @@ background-color: #D8D700;
 }
 .nav_spacer
 {
-height:60px; 
+height:10px; 
 display: block;
 float:left;
 width: 100%;
-background-color: #000000;
+background-color: transparent;
 }
 .page_html
 {
