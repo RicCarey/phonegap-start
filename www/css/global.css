@@ -61,7 +61,7 @@ html,body
     -webkit-box-shadow: 0px 0px 0.5em 0px #000000;
     box-shadow: 0px 0px 0.5em 0px #000000;
     font-size: 0.8em;
-    position: static;
+    position: relative;
     top: 0;
     left: 0;
     z-index: 9999999999999999999999999999999999999999999999999999999;
@@ -337,7 +337,7 @@ background-color: #D8D700;
 .nav_spacer
 {
 height: 35px; 
-display: block;
+display: none;
 }
 .page_html
 {
@@ -345,6 +345,7 @@ display: block;
 }
 .nav_footer_strap
 {
- padding-bottom: 0.25em;   
- padding-top: 0.25em;
+ /*padding-bottom: 0.25em;   
+ padding-top: 0.25em; */
+ 
 }
