@@ -78,14 +78,14 @@ $(window).load(function () {
     //    var totalIconHeight = homeContentHeightDiff - iconLabelSpace;
     //    var iconHeight = totalIconHeight / iconRows;
     //    
-        $('.nav li .icon').height(iconHeight);
+    $('.nav li .icon').height(iconHeight);
 
-        var iconWidth = $(".nav ul li .icon").width();
+    var iconWidth = $(".nav ul li .icon").width();
 
-        if (iconWidth > iconHeight) {
-            $('.nav li .icon img').height(iconHeight).css("maxWidth", iconWidth);
-        } else {
-            $('.nav li .icon img').width(iconWidth).css("maxheight", iconHeight);
+    if (iconWidth > iconHeight) {
+        $('.nav li .icon img').height(iconHeight).css("maxWidth", iconWidth);
+    } else {
+        $('.nav li .icon img').width(iconWidth).css("maxheight", iconHeight);
     }
 
 
@@ -104,7 +104,7 @@ $(window).load(function () {
     var negativePageHeight = 0 - windowHeight;
 
     var pageLoad;
-
+    var navMarign = $(".nav").outerHeight(true) - $("#nav_toggle").outerHeight(true) + $("#nav_toggle").outerHeight(true);
 
     $(".nav a").click(function (e) {
         e.preventDefault();
@@ -122,7 +122,7 @@ $(window).load(function () {
                 $("#nav_toggle").addClass("fixed_nav_toggle");
                 $("#tabgroup").slideDown(function () {
                     $("body").removeClass("home");
-
+                    $(".nav").css("position", "fixed").css("marginTop", 0 - navMarign);
                 });
 
             });
@@ -220,7 +220,25 @@ $(window).load(function () {
         });
     });
 
+       //nav toggle business
+    //var headerHeight = $(".header").height();
+   // var oldMarignTop;
+    $("#nav_toggle").toggle(
+    function () {
+        //$('html, body').animate({ scrollTop: 0 }, 'slow');
+        //return false;
+        $("#nav_toggle").removeClass("fixed_nav_toggle");
+     //   oldMarignTop = $(".home_content").css("margin-top");
+    //    $(".home_content").animate({ marginTop: 0 - headerHeight }, 2500);
+          $(".nav").animate({ marginTop: 0 }, 2500);
+    },
+    function () {
 
+        //$(".home_content").animate({ marginTop: oldMarignTop }, 2500, function () {
+        $(".nav").animate({ marginTop: 0 - navMarign }, 2500, function () {
+            $("#nav_toggle").addClass("fixed_nav_toggle");
+        });
+    });
 
 
 
