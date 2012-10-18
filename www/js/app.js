@@ -59,8 +59,8 @@ $(window).load(function () {
 
     if (homeContentHeight < windowHeight) {
 
-        $("html").height(windowHeight);
-        $("body").height(windowHeight);
+//        $("html").height(windowHeight);
+//        $("body").height(windowHeight);
         $(".home_content").height(homeContentHeight + homeContentHeightDiff);
 
     }
