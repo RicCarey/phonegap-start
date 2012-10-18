@@ -2,8 +2,9 @@
 //$(window).bind("load", function () {
 $(window).load(function () {
     var scrollEnabled = false;
-    $("html").on("touchmove", function () {
-        return scrollEnabled;
+    $("html").on("touchmove", function (e) {
+        if (!scrollEnabled) { e.preventDefault(); }
+      //  return scrollEnabled;
     });
 
     //    var windowWidth = screen.width;
