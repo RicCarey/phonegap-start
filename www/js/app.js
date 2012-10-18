@@ -53,6 +53,7 @@ $(window).load(function () {
 
     if (homeContentHeight < windowHeight) {
         $("body").height(windowHeight);
+        $("html").height(windowHeight);
         $(".home_content").height(homeContentHeight + homeContentHeightDiff);
     }
     //apply height differnece to box to expand down to bottom
