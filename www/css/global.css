@@ -281,7 +281,12 @@ border-left: 0.2em #7d789e solid;
 
 .h1
 {
-    font-size: 1.2em;
+    font-size: 1.25em;
+    font-family: DroidSansBold;
+}
+.h2
+{
+    font-size: 1.1em;
     font-family: DroidSansBold;
 }
 .expander
