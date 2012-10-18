@@ -120,7 +120,8 @@ $(window).load(function () {
         $("#map, #list").addClass("disabled");
 
         if ($("body").hasClass("home")) {
-
+            $("html").on("touchmove", true);
+            $("html,body").css("overflow", "auto");
             $(".nav").addClass("right_edge_rounded");
             $("#nav_toggle").show();
             $(".home_content").animate({
