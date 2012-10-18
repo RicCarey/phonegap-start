@@ -52,15 +52,18 @@ $(window).load(function () {
     var homeContentHeightDiff = windowHeight - homeContentHeight;
 
     if (homeContentHeight < windowHeight) {
-       
-        
- 
+
+
+
         var screenDiff = screenHeight - windowHeight;
-        $("html").height(homeContentHeight + homeContentHeightDiff);
-        $("body").height(homeContentHeight + homeContentHeightDiff);
+        $("html").height(windowHeight - screenDiff);
+        $("body").height(windowHeight - screenDiff);
         $(".home_content").height(homeContentHeight + homeContentHeightDiff);
 
     }
+    alert(windowHeight);
+    alert($("html").height());
+    alert($("body").height());
     //apply height differnece to box to expand down to bottom
     $(".expander").height(homeContentHeightDiff);
     $(".expander").show();
