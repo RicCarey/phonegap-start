@@ -16,8 +16,7 @@ $(window).load(function () {
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //REMOVE THIS SNIFFING BEFORE GOING LIVE PLEASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    alert(screenHeight);
-    alert(windowHeight);
+
     //--orientation
     var scaleMeasure;
     if (windowWidth > windowHeight) {
@@ -57,6 +56,8 @@ $(window).load(function () {
         var bodyHeight = $("body").height();
         $("html").height(bodyHeight);
         $(".home_content").height(homeContentHeight + homeContentHeightDiff);
+        var screenDiff = screenHeight - windowHeight;
+        $("html").css("marginBottom", 0 - screenDiff);
     }
     //apply height differnece to box to expand down to bottom
     $(".expander").height(homeContentHeightDiff);
