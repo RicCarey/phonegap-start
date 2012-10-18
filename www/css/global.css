@@ -36,6 +36,7 @@ background: -ms-radial-gradient(center, ellipse cover,  #383987 0%,#090a59 100%)
 background: radial-gradient(ellipse at center,  #383987 0%,#090a59 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#383987', endColorstr='#090a59',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 font-family: DroidSansRegular, arial, ArialMT, serif;
+overflow: hidden;
 }
 html,body 
 {
