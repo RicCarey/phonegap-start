@@ -53,10 +53,11 @@ $(window).load(function () {
 
     if (homeContentHeight < windowHeight) {
        
-        $("body").height(windowHeight);
-        var bodyHeight = $("body").height();
+        
+ 
         var screenDiff = screenHeight - windowHeight;
-        $("html").height(bodyHeight - screenDiff);
+        $("html").height(homeContentHeight + homeContentHeightDiff);
+        $("body").height(homeContentHeight + homeContentHeightDiff);
         $(".home_content").height(homeContentHeight + homeContentHeightDiff);
 
     }
