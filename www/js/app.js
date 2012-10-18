@@ -127,8 +127,8 @@ $(window).load(function () {
 
             });
 
-
-            $(".page_html").load(pageLoad + " .page_body", function () {
+            
+            $(".page_html").show().load(pageLoad + " .page_body", function () {
                 $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&loc=wrexham&callback=?&type=" + poiType, function (data) {
                     window.searchResults = data;
                     $("#map, #list").removeClass("disabled");
@@ -178,7 +178,7 @@ $(window).load(function () {
                         window.searchResults = data;
                         $("#map, #list").removeClass("disabled");
                     });
-                    
+
                     $('html, body').animate({ scrollTop: 0 }, 'slow');
                 });
             });
@@ -222,17 +222,17 @@ $(window).load(function () {
         });
     });
 
-       //nav toggle business
+    //nav toggle business
     //var headerHeight = $(".header").height();
-   // var oldMarignTop;
+    // var oldMarignTop;
     $("#nav_toggle").toggle(
     function () {
         //$('html, body').animate({ scrollTop: 0 }, 'slow');
         //return false;
         $("#nav_toggle").removeClass("fixed_nav_toggle");
-     //   oldMarignTop = $(".home_content").css("margin-top");
-    //    $(".home_content").animate({ marginTop: 0 - headerHeight }, 2500);
-          $(".nav").animate({ marginTop: 0 }, 2500);
+        //   oldMarignTop = $(".home_content").css("margin-top");
+        //    $(".home_content").animate({ marginTop: 0 - headerHeight }, 2500);
+        $(".nav").animate({ marginTop: 0 }, 2500);
     },
     function () {
 
