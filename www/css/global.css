@@ -36,7 +36,7 @@ background: -ms-radial-gradient(center, ellipse cover,  #383987 0%,#090a59 100%)
 background: radial-gradient(ellipse at center,  #383987 0%,#090a59 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#383987', endColorstr='#090a59',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 font-family: DroidSansRegular, arial, ArialMT, serif;
-
+min-height: 100%;
 }
 html,body 
 {
@@ -286,7 +286,6 @@ border-left: 0.2em #7d789e solid;
 }
 .h2
 {
-    font-size: 1.1em;
     font-family: DroidSansBold;
 }
 .expander
@@ -361,4 +360,18 @@ background-color: #008991;
  /*padding-bottom: 0.25em;   
  padding-top: 0.25em; */
  
+}
+.page_html a, .page_html a:visited
+{
+ color: #FFFFFF;
+ text-decoration: underline;   
+}
+.page_html a:hover, .page_html a:active
+{
+    color: #FFFFFF;
+ text-decoration: none;  
+}
+.italics
+{
+ font-style: italic;   
 }

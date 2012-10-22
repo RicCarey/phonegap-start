@@ -68,7 +68,7 @@ $(window).load(function () {
     //resize icons
     var iconRows;
     if ($("body").hasClass("portrait")) {
-        iconRows = 3;
+        iconRows = 4;
     } else {
         iconRows = 2;
     }
@@ -109,7 +109,7 @@ $(window).load(function () {
     var pageLoad;
     var navMarign = $(".nav").outerHeight(true) - $("#nav_toggle").outerHeight(true) + $("#nav_toggle").outerHeight(true);
 
-    $(".nav a").click(function (e) {
+    $(".nav .internal-link a").click(function (e) {
         e.preventDefault();
         pageLoad = $(this).attr("href");
         var poiType = $(this).attr("data-poitype");
@@ -133,7 +133,7 @@ $(window).load(function () {
 
 
             $(".page_html").show().load(pageLoad + " .page_body", function () {
-                $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&loc=wrexham&callback=?&type=" + poiType, function (data) {
+                $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&loc=nottingham&callback=?&type=" + poiType, function (data) {
                     window.searchResults = data;
                     $("#map, #list").removeClass("disabled");
 
@@ -178,7 +178,7 @@ $(window).load(function () {
                 $("#nav_toggle").click();
 
                 $(".page_html").fadeIn(400).load(pageLoad + " .page_body", function () {
-                    $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&loc=wrexham&callback=?&type=" + poiType, function (data) {
+                    $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&loc=nottingham&callback=?&type=" + poiType, function (data) {
                         window.searchResults = data;
                         $("#map, #list").removeClass("disabled");
                     });
