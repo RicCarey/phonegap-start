@@ -1,19 +1,20 @@
 //NB - this needs to be bind so that the phone doesnt calculate the heights and such without images loaded.
 //$(window).bind("load", function () {
 $(window).load(function () {
-    
+
     //disable scrolling
     var scrollEnabled = false;
     $("html").on("touchmove", function (e) {
         if (!scrollEnabled) { e.preventDefault(); }
     });
-    
+
     //screen sizes
-   
-    var screenHeight = screen.height;
-    var windowWidth = window.innerWidth;
-    var windowHeight = window.innerHeight;
-       
+
+    //    var screenHeight = screen.height;
+    //    var windowWidth = window.innerWidth;
+    //    var windowHeight = window.innerHeight;
+    var windowWidth = screen.width;
+    var windowHeight = screen.height;
 
     //--orientation
     var scaleMeasure;
@@ -51,8 +52,8 @@ $(window).load(function () {
 
     if (homeContentHeight < windowHeight) {
 
-//        $("html").height(windowHeight);
-//        $("body").height(windowHeight);
+        //        $("html").height(windowHeight);
+        //        $("body").height(windowHeight);
         $(".home_content").height(homeContentHeight + homeContentHeightDiff);
 
     }
