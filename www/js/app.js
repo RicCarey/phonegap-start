@@ -1,5 +1,8 @@
+
+
 //NB - this needs to be bind so that the phone doesnt calculate the heights and such without images loaded.
 //$(window).bind("load", function () {
+
 $(window).load(function () {
 
     //disable scrolling
@@ -10,11 +13,11 @@ $(window).load(function () {
 
     //screen sizes
 
-    //    var screenHeight = screen.height;
-    //    var windowWidth = window.innerWidth;
-    //    var windowHeight = window.innerHeight;
-    var windowWidth = screen.width;
-    var windowHeight = screen.height;
+    var screenHeight = screen.height;
+    var windowWidth = window.innerWidth;
+    var windowHeight = window.innerHeight;
+    //    var windowWidth = screen.width;
+    //    var windowHeight = screen.height;
 
     //--orientation
     var scaleMeasure;
@@ -99,7 +102,6 @@ $(window).load(function () {
         var straplineMargin = nhsLogoHeight - straplineHeight;
         $("#strapline").css("margin-top", straplineMargin / 2);
     };
-
 
 
     //content page load
@@ -246,9 +248,6 @@ $(window).load(function () {
             $("#nav_toggle").addClass("fixed_nav_toggle");
         });
     });
-
-
-
 
 
 
