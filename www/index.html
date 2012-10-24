@@ -12,7 +12,23 @@
      <script type="text/javascript" src="js/map.js"></script>
      <script type="text/javascript" src="js/list.js"></script>
      <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY7054skOyMxBa6qLaViOlW1GlvHQvg4Y&sensor=true"></script>
-     
+     <script type="text/javascript">
+         $(function () {
+             document.addEventListener("deviceready", onDeviceReadyGeo, false);
+         })
+
+         function onDeviceReadyGeo() {
+             if (navigator.geolocation) {
+                 navigator.geolocation.getCurrentPosition(function (position) {
+                     //success! do something...
+                     alert('success');
+                 }, geoError, { timeout: 15000 });
+             } else {
+                 alert('not supported');
+             }
+         }
+
+     </script>
 </head>
     <body class="home" onload="initialize()">
         <div class="home_content">
