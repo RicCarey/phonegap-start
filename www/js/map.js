@@ -1,7 +1,8 @@
 var infowindow = null;
 
 function initialize() {
-  
+
+    centreMap();
 
     var mapOptions = {
         zoom: 11,
