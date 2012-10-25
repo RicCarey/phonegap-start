@@ -52,9 +52,9 @@ function initialize() {
 
 
         google.maps.event.addListener(marker, 'click', function () {
+            map.setCenter(this.position);
             infowindow.setContent(this.html);
             infowindow.open(map, this);
-
         });  
     }
 
