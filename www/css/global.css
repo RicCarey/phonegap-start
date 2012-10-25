@@ -375,3 +375,10 @@ background-color: #008991;
 {
  font-style: italic;   
 }
+.search
+{
+ position: fixed;
+ left: 0;
+ top: 50%;
+ background-color: #000000;
+}

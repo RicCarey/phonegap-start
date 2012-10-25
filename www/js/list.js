@@ -1,19 +1,47 @@
 function listInitialize() {
     
     var listPois = window.searchResults.poi;
+
+
     for (var i = 0; i < listPois.length; i++) {
         var listPoi = listPois[i];
-        $(".list-ul").append('<li><div>' + listPoi.name + '</div>' +
-            '<ul><li>something else' + '</li></ul></li>'
-        );
 
-//        var marker = new google.maps.Marker({
-//            position: new google.maps.LatLng(poi.lat, poi.lon),
-//            map: map,
-//            title: 
-//        });
 
-   }
+
+        var key;
+        for (var d = 0, len = listPoi.detailsGroupOrder.length; d < len; d++) {
+            var key = listPoi.detailsGroupOrder[d];
+            //key, listPoi.details[key], listPoi.detailsPropertyOrder[key];
+        }
+
+        $(".list-ul").append('<li><div>' + listPoi.name + '</div>'
+                    + key
+                    + '<br />'
+                    + '<ul class="details'+ i + '"></ul></li>'
+                );
+
+        //listPoi.distance
+
+        for (var p = 0, propLength = listPoi.detailsPropertyOrder[key].length; p < propLength; p++) {
+            var propKey = listPoi.detailsPropertyOrder[key];
+            $(".details" + i).append('<li><div>' + propKey[p] + '</div>' + listPoi.details[key][propKey[p]] + '</li>');
+        }
+    }
+
+//    if (poi.details) {
+//        for (var i = 0, len = poi.detailsGroupOrder.length; i < len; i++) {
+//            var key = poi.detailsGroupOrder[i];
+//            AllSections.push(createSection(key, poi.details[key], poi.detailsPropertyOrder[key]));
+//        }
+//    }
+
+
+//    for (var key in p) {
+//        if (p.hasOwnProperty(key)) {
+//            alert(key + " -> " + p[key]);
+//        }
+//    }
+
 
 
     //list toggle

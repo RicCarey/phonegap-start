@@ -1,4 +1,50 @@
 
+    // Wait for PhoneGap to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+    // PhoneGap is ready
+    //
+
+    function onDeviceReady() {
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    }
+    //define location variables
+    var jsonLocation;
+    var postcodeSearch;
+    var centreOnLat = 52;
+    var centreOnLong = 0;
+   
+    if (postcodeSearch == null) {
+        //jsonLocation = "lon=" + centreOnLong + "&lat=" + centreOnLat;
+        jsonLocation = "loc=nottingham";
+    } else {
+        jsonLocation = "loc=" + postcodeSearch;
+    }
+    // onSuccess Geolocation
+    //
+
+    function onSuccess(position) {
+        //    var element = document.getElementById('geolocation');
+        //    element.innerHTML = 'Latitude: ' + position.coords.latitude + '<br />' +
+        //                            'Longitude: ' + position.coords.longitude + '<br />' +
+        //                            'Altitude: ' + position.coords.altitude + '<br />' +
+        //                            'Accuracy: ' + position.coords.accuracy + '<br />' +
+        //                            'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '<br />' +
+        //                            'Heading: ' + position.coords.heading + '<br />' +
+        //                            'Speed: ' + position.coords.speed + '<br />' +
+        //                            'Timestamp: ' + new Date(position.timestamp) + '<br />';
+        centreOnLat = position.coords.latitude;
+        centreOnLong = position.coords.longitude;
+
+    }
+
+    // onError Callback receives a PositionError object
+    //
+    function onError(error) {
+        alert("error like centreOnLat centreOnLong")
+        alert('code: ' + error.code + '\n' +
+                  'message: ' + error.message + '\n');
+    }
 
 
 //NB - this needs to be bind so that the phone doesnt calculate the heights and such without images loaded.
@@ -86,14 +132,14 @@ $(window).load(function () {
     //    var totalIconHeight = homeContentHeightDiff - iconLabelSpace;
     //    var iconHeight = totalIconHeight / iconRows;
     //    
-    $('.nav li .icon').height(iconHeight);
+    $('.nav li .icon').height(Math.ceil(iconHeight));
 
     var iconWidth = $(".nav ul li .icon").width();
 
     if (iconWidth > iconHeight) {
-        $('.nav li .icon img').height(iconHeight).css("maxWidth", iconWidth);
+        $('.nav li .icon img').height(Math.ceil(iconHeight)).css("maxWidth", Math.ceil(iconWidth));
     } else {
-        $('.nav li .icon img').width(iconWidth).css("maxheight", iconHeight);
+        $('.nav li .icon img').width(Math.ceil(iconWidth)).css("maxheight", (iconHeight));
     }
 
 
@@ -137,7 +183,7 @@ $(window).load(function () {
 
 
             $(".page_html").show().load(pageLoad + " .page_body", function () {
-                $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&loc=nottingham&callback=?&type=" + poiType, function (data) {
+                $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&" + jsonLocation + "&callback=?&type=" + poiType, function (data) {
                     window.searchResults = data;
                     $("#map, #list").removeClass("disabled");
 
@@ -182,7 +228,7 @@ $(window).load(function () {
                 $("#nav_toggle").click();
 
                 $(".page_html").fadeIn(400).load(pageLoad + " .page_body", function () {
-                    $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&loc=nottingham&callback=?&type=" + poiType, function (data) {
+                    $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&" + jsonLocation + "&callback=?&type=" + poiType, function (data) {
                         window.searchResults = data;
                         $("#map, #list").removeClass("disabled");
                     });
