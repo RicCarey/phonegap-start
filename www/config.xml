@@ -3,7 +3,7 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.icecreates.hello-world"
         version   = "80">
-    <name>Nottingham App</name>
+    <name>NHS Nottingham App</name>
 
     <description>
         Hello World sample application that responds to the deviceready event. Forked By Ric 

@@ -5,62 +5,61 @@
     <meta name="HandheldFriendly" content="true" />
     <title>NHS Nottingham City App</title>
     <link href="css/global.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript">
-
-        // Wait for PhoneGap to load
-        //
-        document.addEventListener("deviceready", onDeviceReady, false);
-        // PhoneGap is ready
-        //
-
-        function onDeviceReady() {
-            navigator.geolocation.getCurrentPosition(onSuccess, onError);
-        }
-        //define location variables
-        var jsonLocation;
-        var postcodeSearch;
-        var centreOnLat;
-        var centreOnLong;
-
-        function centreMap() {
-            if (postcodeSearch == null || postcodeSearch == "") {
-                if (centreOnLong == null || centreOnLong == "") {
-                    jsonLocation = "loc=nottingham";
-                } else {
-                    jsonLocation = "lon=" + centreOnLong + "&lat=" + centreOnLat;
-                }
-            } else {
-                jsonLocation = "loc=" + postcodeSearch;
-            }
-        }
-
-        // onSuccess Geolocation
-        //
-
-        function onSuccess(position) {
-            centreOnLat = position.coords.latitude;
-            centreOnLong = position.coords.longitude;
-            centreMap();
-        }
-
-        // onError Callback receives a PositionError object
-        //
-        function onError(error) {
-            alert("GPS unavailable, please use the postcode search to customise results.")
-            jsonLocation = "loc=nottingham";
-            postcodeSearch = 'nottingham';
-        }
-
-        
-     </script>
-    <script type="text/javascript" src="phonegap.js"></script>
+     <script type="text/javascript" src="phonegap.js"></script>
      <script type="text/javascript" src="js/jquery1.8.min.js"></script>
      <script type="text/javascript" src="js/jquery-ui-1.9.0.custom.min.js"></script>
      <script type="text/javascript" src="js/app.js"></script>
      <script type="text/javascript" src="js/map.js"></script>
      <script type="text/javascript" src="js/list.js"></script>
      <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY7054skOyMxBa6qLaViOlW1GlvHQvg4Y&sensor=true"></script>
-     
+      <script type="text/javascript">
+
+          // Wait for PhoneGap to load
+          //
+          document.addEventListener("deviceready", onDeviceReady, false);
+          // PhoneGap is ready
+          //
+
+          function onDeviceReady() {
+              navigator.geolocation.getCurrentPosition(onSuccess, onError);
+          }
+          //define location variables
+          var jsonLocation;
+          var postcodeSearch;
+          var centreOnLat;
+          var centreOnLong;
+
+          function centreMap() {
+              if (postcodeSearch == null || postcodeSearch == "") {
+                  if (centreOnLong == null || centreOnLong == "") {
+                      jsonLocation = "loc=nottingham";
+                  } else {
+                      jsonLocation = "lon=" + centreOnLong + "&lat=" + centreOnLat;
+                  }
+              } else {
+                  jsonLocation = "loc=" + postcodeSearch;
+              }
+          }
+
+          // onSuccess Geolocation
+          //
+
+          function onSuccess(position) {
+              centreOnLat = position.coords.latitude;
+              centreOnLong = position.coords.longitude;
+              centreMap();
+          }
+
+          // onError Callback receives a PositionError object
+          //
+          function onError(error) {
+              alert("GPS unavailable, please use the postcode search to customise results.")
+              jsonLocation = "loc=nottingham";
+              postcodeSearch = 'nottingham';
+          }
+
+        
+     </script>
      </head>
     <body class="home">
         <div class="home_content">
