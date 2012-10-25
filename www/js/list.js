@@ -14,17 +14,15 @@ function listInitialize() {
             //key, listPoi.details[key], listPoi.detailsPropertyOrder[key];
         }
 
-        $(".list-ul").append('<li><div>' + listPoi.name + '</div>'
-                    + key
-                    + '<br />'
-                    + '<ul class="details'+ i + '"></ul></li>'
+        $(".list-ul").append('<li><div class="listtoggle">' + listPoi.name + '</div>'
+                    + '<ul class="details' + i + '"><li class="detail_title">' + key + '</ul></li>'
                 );
 
         //listPoi.distance
 
         for (var p = 0, propLength = listPoi.detailsPropertyOrder[key].length; p < propLength; p++) {
             var propKey = listPoi.detailsPropertyOrder[key];
-            $(".details" + i).append('<li><div>' + propKey[p] + '</div>' + listPoi.details[key][propKey[p]] + '</li>');
+            $(".details" + i).append('<li><label>' + propKey[p] + ':</label><div class="details_info">' + listPoi.details[key][propKey[p]] + '</div></li>');
         }
     }
 
@@ -45,8 +43,7 @@ function listInitialize() {
 
 
     //list toggle
-    $(".list-ul > li > ul").hide();
-    $(".list-ul > li > div").click(function () {
+    $(".listtoggle").click(function () {
         if ($(this).parent().children("ul").hasClass("slid_down")) {
             $(this).parent().children("ul").removeClass("slid_down").slideUp();
         } else {

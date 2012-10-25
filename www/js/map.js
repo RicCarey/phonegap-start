@@ -1,4 +1,4 @@
-
+var infowindow = null;
 
 function initialize() {
   
@@ -30,26 +30,38 @@ function initialize() {
       mapOptions);
 
     var pois = window.searchResults.poi;
+
+
+
+   var contentString = null;
+
+   infowindow = new google.maps.InfoWindow({
+	content: "holding..."
+	});
+
     for (var i = 0; i < pois.length; i++) {
         var poi = pois[i];
 
         var marker = new google.maps.Marker({
             position: new google.maps.LatLng(poi.lat, poi.lon),
             map: map,
-            title: poi.name
+            title: poi.name,
+            html: '<div class="poi-description">' + poi.name + '</div>'
         });
 
-        var contentString = '<div class="poi-description">' + 'poi' + '</div>';
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
-        });
+
 
         google.maps.event.addListener(marker, 'click', function () {
-            infowindow.open(map, marker);
-        }); 
+            infowindow.setContent(this.html);
+            infowindow.open(map, this);
+
+        });  
     }
-        
+
+           
 
 }
+
+
 
 

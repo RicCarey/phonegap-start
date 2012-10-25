@@ -248,7 +248,7 @@ $(window).load(function () {
         e.preventDefault();
 
         $(".page_html").fadeOut(400, function () {
-            $.getScript("js/map.js");
+//            $.getScript("js/map.js");
             $(".map_wrap").fadeIn(400, function () {
 
                 var tabGroupinnerHeight = $("#tabgroup").innerHeight();
