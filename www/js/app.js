@@ -127,6 +127,7 @@ $(window).load(function () {
         e.preventDefault();
         pageLoad = $(this).attr("href");
         var poiType = $(this).attr("data-poitype");
+        centreMap();
 
         if ($("body").hasClass("home")) {
             scrollEnabled = true;

@@ -32,11 +32,14 @@
           function centreMap() {
               if (postcodeSearch == null || postcodeSearch == "") {
                   if (centreOnLong == null || centreOnLong == "") {
+                      //if geolocation empty default back to nots
                       jsonLocation = "loc=nottingham";
                   } else {
+                  //use geolocation
                       jsonLocation = "lon=" + centreOnLong + "&lat=" + centreOnLat;
                   }
               } else {
+                  //postcodesearch
                   jsonLocation = "loc=" + postcodeSearch;
               }
           }
