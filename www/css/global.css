@@ -67,6 +67,17 @@ html,body
     left: 0;
     z-index: 9999999999999999999999999999999999999999999999999999999;
 }
+.nav:after
+{
+ position: absolute;
+ bottom: 0;
+ left: 0;
+ right: 0;
+ height: 10%; 
+ background-color: Black;
+ display: block; 
+     z-index: 99999999999999999999999999999999999999999999999999999999;  
+}
 .landscape .nav
 {
      padding-left: 2%;
@@ -211,6 +222,8 @@ width:100%;
     border-bottom: 0;
     display: none;
     z-index: 9999999;
+    overflow: hidden;
+    margin-bottom: 0;
 }
 .landscape #tabgroup
 {
