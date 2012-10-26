@@ -69,8 +69,8 @@ html,body
 }
 .landscape .nav
 {
-     padding-left: 2%;
-     width: 86%;   
+     padding-left: 1%;
+     width: 87%;   
 }
 .right_edge_rounded
 {
@@ -81,7 +81,7 @@ html,body
 .nav ul
 {
     margin: 0;
-    padding: 0;  
+    padding: 0;
     overflow: hidden;
 }
 .nav ul li
@@ -130,7 +130,7 @@ border: 0;
 
 .landscape .nav ul li
 {
-        width:  16%;
+        width:  16.5%;
 }
 .portrait .nav ul li
 {
@@ -150,7 +150,7 @@ border: 0;
 }
 .landscape #nhs_logo
 {
-    width: 45%;
+    width: 30%;
     padding-right: 12%;
 }
 .portrait #nhs_logo
@@ -300,7 +300,7 @@ border-left: 0.2em #7d789e solid;
     color: #000000;
 }
 .landscape .map_wrap{
- margin-left:2%;
+ margin-left:1%;
 }
 .content_wrap
 {
@@ -310,7 +310,7 @@ border-left: 0.2em #7d789e solid;
 }
 .landscape .content_wrap
 {
-   padding-left:2%;  
+   padding-left:1%;  
 }
 .h1
 {
