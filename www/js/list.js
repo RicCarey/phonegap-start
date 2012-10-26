@@ -45,10 +45,10 @@ function listInitialize() {
     //list toggle
     $(".listtoggle").click(function () {
         if ($(this).parent().children("ul").hasClass("slid_down")) {
-            $(this).parent().children("ul").removeClass("slid_down").slideUp();
+            $(this).parent().children("ul").slideUp().removeClass("slid_down");
         } else {
             $(".slid_down").slideUp().removeClass("slid_down");
-            $(this).parent().children("ul").addClass("slid_down").slideDown();
+            $(this).parent().children("ul").slideDown().addClass("slid_down");
         }
 
     });

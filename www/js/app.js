@@ -62,6 +62,7 @@ $(window).load(function () {
     }
 
     //apply height differnece to box to expand down to bottom
+    var expanderMargin = $(".nav ul").css("marginTop");
     $(".expander").height(homeContentHeightDiff);
     $(".expander").show();
     //align labels

@@ -67,6 +67,30 @@
                 $("#iframe").height("1280px");
                 document.getElementById("iframe").contentDocument.location.reload(true);
             });
+            $("#ipad").click(function (e) {
+                e.preventDefault();
+                $("#iframe").width("2048px");
+                $("#iframe").height("1536px");
+                document.getElementById("iframe").contentDocument.location.reload(true);
+            });
+            $("#ipadold").click(function (e) {
+                e.preventDefault();
+                $("#iframe").width("1024px");
+                $("#iframe").height("768px");
+                document.getElementById("iframe").contentDocument.location.reload(true);
+            });
+            $("#ipadoldport").click(function (e) {
+                e.preventDefault();
+                $("#iframe").width("768px");
+                $("#iframe").height("1024px");
+                document.getElementById("iframe").contentDocument.location.reload(true);
+            });
+            $("#ipadnewport").click(function (e) {
+                e.preventDefault();
+                $("#iframe").width("1536px");
+                $("#iframe").height("2048px");
+                document.getElementById("iframe").contentDocument.location.reload(true);
+            });
         });
 
     </script>
@@ -86,5 +110,9 @@
     <button id="iPhone5">iPhone 5</button>
     <button id="s3">Galaxy S3</button>
     <button id="note">Galaxy Note</button>
+        <button id="ipadold">ipad old</button>
+    <button id="ipad">ipad new</button>
+       <button id="ipadoldport">ipad old port</button>
+              <button id="ipadnewport">ipad new port</button>
 </body>
 </html>

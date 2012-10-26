@@ -1,0 +1,127 @@
+/*Portrait*/
+
+@media screen and (min-height: 0px)   
+{
+   .portrait .nav 
+   {
+      background-image: url("../images/nav/portrait/320.jpg");   
+   }
+   .portrait #tabgroup{ 
+        background-image: url("../images/tabgroup/portrait/320.png");
+   }
+}
+@media screen and (min-height: 321px)   
+{
+  .portrait .nav 
+   {
+      background-image: url("../images/nav/portrait/480.jpg");   
+   }
+      .portrait #tabgroup{ 
+        background-image: url("../images/tabgroup/portrait/480.png");
+   }
+}
+@media screen and (min-height: 481px)   
+{
+  .portrait .nav 
+   {
+     background-image: url("../images/nav/portrait/640.jpg");   
+   }
+      .portrait #tabgroup{ 
+        background-image: url("../images/tabgroup/portrait/640.png");
+   }
+}
+@media screen and (min-height: 641px)   
+{
+ .portrait .nav 
+   {
+    background-image: url("../images/nav/portrait/960.jpg");     
+   } 
+      .portrait #tabgroup{ 
+        background-image: url("../images/tabgroup/portrait/960.png");
+   }
+}
+@media screen and (min-height: 961px)   
+{
+  .portrait .nav 
+   {
+      background-image: url("../images/nav/portrait/1280.jpg");   
+   } 
+      .portrait #tabgroup{ 
+        background-image: url("../images/tabgroup/portrait/1280.png");
+   }
+}
+@media screen and (min-height: 1281px)   
+{
+  .portrait .nav  
+   {
+     background-image: url("../images/nav/portrait/1978.jpg");      
+   } 
+      .portrait #tabgroup{ 
+        background-image: url("../images/tabgroup/portrait/1536.png");
+   }
+}
+
+/*Landscape*/
+
+@media screen and (min-width: 0px)   
+{
+   .landscape .nav 
+   {
+      background-image: url("../images/nav/landscape/320.jpg");   
+   }
+   .landscape #tabgroup{ 
+        background-image: url("../images/tabgroup/landscape/320.png");
+   }
+}
+@media screen and (min-width: 321px)   
+{
+  .landscape .nav 
+   {
+      background-image: url("../images/nav/landscape/480.jpg");   
+   }
+      .landscape #tabgroup{ 
+        background-image: url("../images/tabgroup/landscape/480.png");
+   }
+}
+@media screen and (min-width: 481px)   
+{
+  .landscape .nav 
+   {
+     background-image: url("../images/nav/landscape/640.jpg");   
+   }
+      .landscape #tabgroup{ 
+        background-image: url("../images/tabgroup/landscape/640.png");
+   }
+}
+@media screen and (min-width: 641px)   
+{
+ .landscape .nav 
+   {
+    background-image: url("../images/nav/landscape/960.jpg");     
+   } 
+      .landscape #tabgroup{ 
+        background-image: url("../images/tabgroup/landscape/960.png");
+   }
+}
+@media screen and (min-width: 961px)   
+{
+  .landscape .nav 
+   {
+      background-image: url("../images/nav/landscape/1280.jpg");   
+   } 
+      .landscape #tabgroup{ 
+        background-image: url("../images/tabgroup/landscape/1280.png");
+   }
+}
+@media screen and (min-width: 1281px)   
+{
+  .landscape .nav  
+   {
+     background-image: url("../images/nav/landscape/1978.jpg");      
+   } 
+      .landscape #tabgroup{ 
+        background-image: url("../images/tabgroup/landscape/1536.png");
+   }
+}
+
+
