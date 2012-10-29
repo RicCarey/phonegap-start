@@ -115,6 +115,43 @@ $(window).load(function () {
     }
 
 
+    //icon resize
+
+    //get high density 
+    var dpr = 1;
+
+    if (window.devicePixelRatio !== undefined) {
+        dpr = window.devicePixelRatio;
+    }
+
+
+    var absoluteImageSize = Math.ceil(iconHeight);
+    var imageSize;
+    //calc which image to get
+    if (167 < absoluteImageSize) {
+        //ipad
+        imageSize = 284;
+    } else if (105 < absoluteImageSize && absoluteImageSize < 165) {
+        //s3
+        imageSize = 166;
+    } else if (65 < absoluteImageSize && absoluteImageSize < 105) {
+        //iphone4
+        imageSize = 105;
+    } else if (absoluteImageSize < 65) {
+        //smaller
+        imageSize = 65;
+    }
+    //if high density use double 
+    if (dpr < 1) {
+        imageSize = imageSize * 2;
+    }
+    //swap images
+    var newImageHref;
+
+    $('.iconSrcSwap').each(function (index) {
+        $(this).attr("src", $(this).attr("src").replace("/size/", "/" + imageSize + "/"));
+    });
+    alert(imageSize);
 
     //content page load
 
