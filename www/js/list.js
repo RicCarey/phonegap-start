@@ -33,7 +33,6 @@ function listInitialize() {
 
     //list toggle
     $(".listtoggle").click(function () {
-        //        alert("hello world");
         if ($(this).parent().children("ul").hasClass("slid_down")) {
             $(this).parent().children("ul").slideUp().removeClass("slid_down");
         } else {
