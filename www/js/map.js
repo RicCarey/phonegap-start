@@ -59,10 +59,10 @@ function initialize() {
         });  
     }
 
-    var poiId;
+
     $(document).on("click", ".poi-description a", function (e) {
         e.preventDefault();
-        poiId = $(this).attr("data-id");
+        window.poiId = $(this).attr("data-id");
                  $(".map_wrap").fadeOut(400, function () {
                                     $(".page_html").fadeIn(400).load("content/list.htm .page_body", function () {
                                         listInitialize();

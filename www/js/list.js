@@ -24,39 +24,33 @@ function listInitialize() {
             var propKey = listPoi.detailsPropertyOrder[key];
             $(".details" + i).append('<li><label>' + propKey[p] + ':</label><div class="details_info">' + listPoi.details[key][propKey[p]].replace("/n","<br />/n") + '</div></li>');
         }
+
+       
     }
 
-//    if (poi.details) {
-//        for (var i = 0, len = poi.detailsGroupOrder.length; i < len; i++) {
-//            var key = poi.detailsGroupOrder[i];
-//            AllSections.push(createSection(key, poi.details[key], poi.detailsPropertyOrder[key]));
-//        }
-//    }
-
-
-//    for (var key in p) {
-//        if (p.hasOwnProperty(key)) {
-//            alert(key + " -> " + p[key]);
-//        }
-//    }
 
 
 
     //list toggle
     $(".listtoggle").click(function () {
-        alert("hello world");
+        //        alert("hello world");
         if ($(this).parent().children("ul").hasClass("slid_down")) {
             $(this).parent().children("ul").slideUp().removeClass("slid_down");
         } else {
             $(".slid_down").slideUp().removeClass("slid_down");
+            var detailsZeroParent = $(".details0").parent();
+            var detailsZeroOffset = detailsZeroParent.offset();
+            var detailsZeroOffsetDouble = detailsZeroOffset.top * 1.5;
+            var listToggleOffset = $(this).offset();
+            $(window).scrollTop(listToggleOffset.top - detailsZeroOffset.top);
             $(this).parent().children("ul").slideDown().addClass("slid_down");
         }
 
     });
 
-//    if (!window.poiId == null || !window.poiId == "") {
-//        $("#poiid_" + poiId).click();
-//    }
+    if (!window.poiId == null || !window.poiId == "") {
+        $("#" + window.poiId).click();
+    }
 
 }
 
