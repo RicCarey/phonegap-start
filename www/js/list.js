@@ -1,5 +1,5 @@
 function listInitialize() {
-    
+
     var listPois = window.searchResults.poi;
 
 
@@ -14,7 +14,7 @@ function listInitialize() {
             //key, listPoi.details[key], listPoi.detailsPropertyOrder[key];
         }
 
-        $(".list-ul").append('<li><div class="listtoggle">' + listPoi.name + '</div>'
+        $(".list-ul").append('<li><div class="listtoggle" id="poiid_' + listPoi.id + '">' + listPoi.name + '</div>'
                     + '<ul class="details' + i + '"><li class="detail_title">' + key + '</ul></li>'
                 );
 
@@ -22,7 +22,7 @@ function listInitialize() {
 
         for (var p = 0, propLength = listPoi.detailsPropertyOrder[key].length; p < propLength; p++) {
             var propKey = listPoi.detailsPropertyOrder[key];
-            $(".details" + i).append('<li><label>' + propKey[p] + ':</label><div class="details_info">' + listPoi.details[key][propKey[p]] + '</div></li>');
+            $(".details" + i).append('<li><label>' + propKey[p] + ':</label><div class="details_info">' + listPoi.details[key][propKey[p]].replace("/n","<br />/n") + '</div></li>');
         }
     }
 
@@ -44,6 +44,7 @@ function listInitialize() {
 
     //list toggle
     $(".listtoggle").click(function () {
+        alert("hello world");
         if ($(this).parent().children("ul").hasClass("slid_down")) {
             $(this).parent().children("ul").slideUp().removeClass("slid_down");
         } else {
@@ -53,6 +54,9 @@ function listInitialize() {
 
     });
 
+//    if (!window.poiId == null || !window.poiId == "") {
+//        $("#poiid_" + poiId).click();
+//    }
 
 }
 

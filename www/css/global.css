@@ -418,12 +418,16 @@ height:100%;
 width: 20%;
 background-color: #D8D700;
 }
-.nav_spacer
+.nav_spacer, .nav_spacer_float
 {
-height:10px; 
+height:10%; 
 display: block;
-float:left;
 width: 100%;
+}
+.nav_spacer_float
+{
+float:left;
+
 }
 .page_html
 {
@@ -433,7 +437,7 @@ width: 100%;
 .nav_footer_strap
 {
 font-style: italic;
- 
+margin-bottom: 0.5em;
 }
 .page_html a, .page_html a:visited
 {
@@ -465,7 +469,7 @@ font-style: italic;
 {
  display: none;   
 }
-.disabled
+.portrait #tabgroup .disabled, .landscape #tabgroup .disabled
 {
  display: none;   
 }
