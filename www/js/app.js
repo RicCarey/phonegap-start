@@ -142,7 +142,7 @@ $(document).ready(function () {
         imageSize = 65;
     }
     //if high density use double 
-    if (dpr < 1) {
+    if (dpr > 1) {
         imageSize = imageSize * 2;
     }
     //swap images
