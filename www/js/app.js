@@ -1,22 +1,66 @@
-function docReady() {
-    $("body").removeClass("landscape, portrait");
+//fire after resize
+var waitForFinalEvent = (function () {
+    var timers = {};
+    return function (callback, ms, uniqueId) {
+        if (!uniqueId) {
+            uniqueId = "Don't call this twice without a uniqueId";
+        }
+        if (timers[uniqueId]) {
+            clearTimeout(timers[uniqueId]);
+        }
+        timers[uniqueId] = setTimeout(callback, ms);
+    };
+})();
 
-    //disable scrolling
-    var scrollEnabled = false;
-    $("html").on("touchmove", function (e) {
-        if (!scrollEnabled) { e.preventDefault(); }
-    });
+//Global Variables
+var scrollEnabled;
+var screenHeight;
+var windowWidth;
+var windowHeight;
+var scaleMeasure;
+var scale;
+var fontSize;
+var homeContentHeight;
+var homeContentHeightDiff;
+var expanderMargin;
+var biggestHeight;
+var iconRows;
+var listAnchorHeight;
+var iconHeight;
+var iconWidth;
+var nhsLogoHeight;
+var straplineHeight;
+var straplineMargin;
+var dpr;
+var absoluteImageSize;
+var imageSize;
+var newImageHref;
+var negativeHomeContentHeight;
+var negativePageHeight;
+var pageLoad;
+var navMarign;
+var tabGroupinnerHeight;
+
+var naviagtionToggleHeight;
+var mapPageChrome;
+
+var mapPaddingTop;
+var mapPadding;
+var mapHeight;
+var mapNewHeight;
+
+function windowResize() {
+   
+
 
     //screen sizes
+     screenHeight = screen.height;
+     windowWidth = window.innerWidth;
+     windowHeight = window.innerHeight;
 
-    var screenHeight = screen.height;
-    var windowWidth = window.innerWidth;
-    var windowHeight = window.innerHeight;
-    //    var windowWidth = screen.width;
-    //    var windowHeight = screen.height;
 
     //--orientation
-    var scaleMeasure;
+    
     if (windowWidth > windowHeight) {
         $("body").addClass("landscape");
         scaleMeasure = windowHeight;
@@ -28,63 +72,47 @@ function docReady() {
     //--font scale
 
     if (scaleMeasure > 240) {
-        var scale = scaleMeasure / 240;
-        var fontSize = (12 * scale) + "px";
+         scale = scaleMeasure / 240;
+         fontSize = (12 * scale) + "px";
 
         $("body").css("font-size", fontSize);
     }
 
 
-    //-- navfit/icons load
-
-    //    var headerHeight = $(".header").height();
-    //    var navHeight = windowHeight - headerHeight;
-    //    var currentNavHeight = $(".nav").height();
-    //    var navDiffernece = navHeight - currentNavHeight;
-    //    $(".nav li").css("margin-bottom", Math.ceil(navDiffernece / 3));
-
-
-
     //get heights without icons
-    var homeContentHeight = $(".home_content").outerHeight(true);
-    var homeContentHeightDiff = windowHeight - homeContentHeight;
+     homeContentHeight = $(".home_content").outerHeight(true);
+     homeContentHeightDiff = windowHeight - homeContentHeight;
 
     if (homeContentHeight < windowHeight) {
 
-        //        $("html").height(windowHeight);
-        //        $("body").height(windowHeight);
-        $(".home_content").height(homeContentHeight + homeContentHeightDiff);
+          $(".home_content").height(homeContentHeight + homeContentHeightDiff);
 
     }
 
     //apply height differnece to box to expand down to bottom
-    var expanderMargin = $(".nav ul").css("marginTop");
+    expanderMargin = $(".nav ul").css("marginTop");
     $(".expander").height(homeContentHeightDiff);
     $(".expander").show();
     //align labels
-    var biggestHeight = 0;
+     biggestHeight = 0;
     $('.nav li .label').each(function (index) {
         biggestHeight = Math.max(biggestHeight, $(this).outerHeight(true));
     }).css("height", biggestHeight);
     //resize icons
-    var iconRows;
+
     if ($("body").hasClass("portrait")) {
         iconRows = 4;
     } else {
         iconRows = 2;
     }
-    var listAnchorHeight = homeContentHeightDiff / iconRows;
+    listAnchorHeight = homeContentHeightDiff / iconRows;
     $('.nav li a').height(listAnchorHeight);
 
-    var iconHeight = listAnchorHeight - biggestHeight;
+     iconHeight = listAnchorHeight - biggestHeight;
 
-    //    var iconLabelSpace = biggestHeight * iconRows;
-    //    var totalIconHeight = homeContentHeightDiff - iconLabelSpace;
-    //    var iconHeight = totalIconHeight / iconRows;
-    //    
     $('.nav li .icon').height(Math.ceil(iconHeight));
 
-    var iconWidth = $(".nav ul li .icon").width();
+    iconWidth = $(".nav ul li .icon").width();
 
     if (iconWidth > iconHeight) {
         $('.nav li .icon img').height(Math.ceil(iconHeight)).css("maxWidth", Math.ceil(iconWidth));
@@ -94,14 +122,15 @@ function docReady() {
     $("#nav_toggle").show();
 
     if (windowWidth > windowHeight) {
-        var nhsLogoHeight = $("#nhs_logo").height();
-        var straplineHeight = $("#strapline").height();
-        var straplineMargin = nhsLogoHeight - straplineHeight;
+         nhsLogoHeight = $("#nhs_logo").height();
+         straplineHeight = $("#strapline").height();
+         straplineMargin = nhsLogoHeight - straplineHeight;
         $("#strapline").css("margin-top", straplineMargin / 2);
     };
     //tabgroup calc
     if ($("body").hasClass("portrait")) {
         $('#tabgroup, #tabgroup img').height(Math.ceil(iconHeight));
+        $('#tabgroup').width(windowWidth * 0.9)
     } else {
         $('#tabgroup').width(windowWidth * 0.10).height(windowHeight - $("#nav_toggle").outerHeight(true));
         $('#tabgroup img').width(windowWidth * 0.10)
@@ -114,15 +143,15 @@ function docReady() {
     //icon resize
 
     //get high density 
-    var dpr = 1;
+     dpr = 1;
 
     if (window.devicePixelRatio !== undefined) {
         dpr = window.devicePixelRatio;
     }
 
 
-    var absoluteImageSize = Math.ceil(iconHeight);
-    var imageSize;
+    absoluteImageSize = Math.ceil(iconHeight);
+
     //calc which image to get
     if (167 < absoluteImageSize) {
         //ipad
@@ -142,7 +171,7 @@ function docReady() {
         imageSize = imageSize * 2;
     }
     //swap images
-    var newImageHref;
+   
 
     $('.iconSrcSwap').each(function (index) {
         $(this).attr("src", $(this).attr("src").replace("/size/", "/" + imageSize + "/"));
@@ -151,12 +180,69 @@ function docReady() {
 
     //content page load
 
-    var negativeHomeContentHeight = 0 - $(".home_content").outerHeight(true);
-    var negativePageHeight = 0 - windowHeight;
+     negativeHomeContentHeight = 0 - $(".home_content").outerHeight(true);
+     negativePageHeight = 0 - windowHeight;
 
-    var pageLoad;
-    var navMarign = $(".nav").outerHeight(true) - $("#nav_toggle").outerHeight(true);
+     navMarign = $(".nav").outerHeight(true) - $("#nav_toggle").outerHeight(true);
 
+
+
+
+
+
+    //  map navigate
+    $(document).on("click", "#map a", function (e) {
+        e.preventDefault();
+
+        $(".page_html").fadeOut(400, function () {
+            //            $.getScript("js/map.js");
+            $(".map_wrap").fadeIn(400, function () {
+                 tabGroupinnerHeight = 10;
+
+                if ($("body").hasClass("portrait")) {
+                    tabGroupinnerHeight = $("#tabgroup").innerHeight() + 20;
+                }
+                 naviagtionToggleHeight = $("#nav_toggle").innerHeight();
+                 mapPageChrome = naviagtionToggleHeight + 20 + tabGroupinnerHeight;
+
+                 mapPaddingTop = $(".map_wrap").css("paddingTop");
+                 mapPadding = parseInt(mapPaddingTop) * 2;
+                 mapHeight = windowHeight - mapPageChrome;
+                 mapNewHeight = mapHeight - mapPadding;
+
+                $(".map_wrap").height(mapNewHeight);
+
+
+
+                $('html, body').animate({ scrollTop: 0 }, 'slow');
+                initialize();
+                searchForm();
+                //close menu if open
+                if ($("#nav_toggle").hasClass("fixed_nav_toggle")) {
+
+                } else {
+                    $("#nav_toggle").click();
+                }
+
+            });
+        });
+    });
+
+
+};
+
+//NB - this needs to be bind so that the phone doesnt calculate the heights and such without images loaded.
+//$(window).bind("load", function () {
+
+//$(window).load(function () {
+$(document).ready(function () {
+    //disable scrolling
+     scrollEnabled = false;
+    $("html").on("touchmove", function (e) {
+        if (!scrollEnabled) { e.preventDefault(); }
+    });
+
+    windowResize();
     $(".nav .internal-link a").click(function (e) {
         e.preventDefault();
         pageLoad = $(this).attr("href");
@@ -247,47 +333,6 @@ function docReady() {
         }
     });
 
-
-
-
-    //  map navigate
-    $(document).on("click", "#map a", function (e) {
-        e.preventDefault();
-
-        $(".page_html").fadeOut(400, function () {
-            //            $.getScript("js/map.js");
-            $(".map_wrap").fadeIn(400, function () {
-                var tabGroupinnerHeight = 10;
-
-                if ($("body").hasClass("portrait")) {
-                    tabGroupinnerHeight = $("#tabgroup").innerHeight() + 20;
-                }
-                var naviagtionToggleHeight = $("#nav_toggle").innerHeight();
-                var mapPageChrome = naviagtionToggleHeight + 20 + tabGroupinnerHeight;
-
-                var mapPaddingTop = $(".map_wrap").css("paddingTop");
-                var mapPadding = parseInt(mapPaddingTop) * 2;
-                var mapHeight = windowHeight - mapPageChrome;
-                var mapNewHeight = mapHeight - mapPadding;
-
-                $(".map_wrap").height(mapNewHeight);
-
-
-
-                $('html, body').animate({ scrollTop: 0 }, 'slow');
-                initialize();
-                searchForm();
-                //close menu if open
-                if ($("#nav_toggle").hasClass("fixed_nav_toggle")) {
-
-                } else {
-                    $("#nav_toggle").click();
-                }
-
-            });
-        });
-    });
-
     //nav toggle business
     //var headerHeight = $(".header").height();
     // var oldMarignTop;
@@ -307,19 +352,23 @@ function docReady() {
             $("#nav_toggle").addClass("fixed_nav_toggle");
         });
     });
-};
-
-//NB - this needs to be bind so that the phone doesnt calculate the heights and such without images loaded.
-//$(window).bind("load", function () {
-
-//$(window).load(function () {
-$(document).ready(function () {
-    docReady();
-
 });
 
 $(window).resize(function () {
-    docReady();
+    waitForFinalEvent(function () {
+        $("body").removeClass("landscape").removeClass("portrait");
+        $(".expander").hide();
+        $("#nav_toggle").hide();
+        $(".home_content").height("auto");
+        $('.nav li .icon img').height("auto").css("maxWidth", "auto").width("auto").css("maxHeight", "auto");
+        $('.nav li .label').height("auto");
+        $("#tabgroup img").height("auto").width("auto");
+        $("#tabgroup").width("1px").height("1px");
+        $(".page_html").width("auto");
+        $(".map_wrap").width("auto");
+        windowResize();
+
+    }, 500, "1");
 });
 
 function searchForm() {
