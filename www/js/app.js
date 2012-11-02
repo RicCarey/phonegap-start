@@ -366,6 +366,7 @@ $(window).resize(function () {
         $("#tabgroup").width("1px").height("1px");
         $(".page_html").width("auto");
         $(".map_wrap").width("auto");
+        iconHeight = 0;
         windowResize();
 
     }, 500, "1");
