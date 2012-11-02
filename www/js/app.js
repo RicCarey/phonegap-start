@@ -4,7 +4,7 @@
 //$(window).bind("load", function () {
 
 //$(window).load(function () {
- $(document).ready(function() {
+$(document).ready(function () {
     //disable scrolling
     var scrollEnabled = false;
     $("html").on("touchmove", function (e) {
@@ -164,7 +164,7 @@
     $(".nav .internal-link a").click(function (e) {
         e.preventDefault();
         pageLoad = $(this).attr("href");
-        var poiType = $(this).attr("data-poitype");
+        window.poiType = $(this).attr("data-poitype");
         centreMap();
 
         if ($("body").hasClass("home")) {
@@ -174,7 +174,7 @@
             $("#nav_toggle").show();
             $(".home_content").animate({
                 marginTop: negativePageHeight
-            }, 2500, function () {
+            }, 1250, function () {
                 $("#nav_toggle").addClass("fixed_nav_toggle");
                 $("#tabgroup").slideDown(function () {
                     $("body").removeClass("home");
@@ -185,9 +185,9 @@
 
 
             $(".page_html").show().load(pageLoad + " .page_body", function () {
-                $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&" + jsonLocation + "&callback=?&type=" + poiType, function (data) {
+                $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&" + window.jsonLocation + "&callback=?&limit=15&type=" + window.poiType, function (data) {
                     window.searchResults = data;
-                    if (poiType == "" || poiType == null) {
+                    if (window.poiType == "" || window.poiType == null) {
                         $("#map, #list").addClass("disabled");
                     } else {
                         $("#map, #list").removeClass("disabled");
@@ -213,6 +213,7 @@
                         $(".page_html").fadeOut(400, function () {
                             $(".page_html").fadeIn(400).load("content/list.htm .page_body", function () {
                                 listInitialize();
+                                searchForm();
                             });
 
                         });
@@ -234,9 +235,9 @@
                 $("#nav_toggle").click();
 
                 $(".page_html").fadeIn(400).load(pageLoad + " .page_body", function () {
-                    $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&" + jsonLocation + "&callback=?&type=" + poiType, function (data) {
+                    $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&" + window.jsonLocation + "&callback=?&limit=15&type=" + window.poiType, function (data) {
                         window.searchResults = data;
-                        if (poiType == "" || poiType == null) {
+                        if (window.poiType == "" || window.poiType == null) {
                             $("#map, #list").addClass("disabled");
                         } else {
                             $("#map, #list").removeClass("disabled");
@@ -279,7 +280,7 @@
 
                 $('html, body').animate({ scrollTop: 0 }, 'slow');
                 initialize();
-
+                searchForm();
                 //close menu if open
                 if ($("#nav_toggle").hasClass("fixed_nav_toggle")) {
 
@@ -301,12 +302,12 @@
         $("#nav_toggle").removeClass("fixed_nav_toggle");
         //   oldMarignTop = $(".home_content").css("margin-top");
         //    $(".home_content").animate({ marginTop: 0 - headerHeight }, 2500);
-        $(".nav").animate({ marginTop: 0 }, 2500);
+        $(".nav").animate({ marginTop: 0 }, 1250);
     },
     function () {
 
         //$(".home_content").animate({ marginTop: oldMarignTop }, 2500, function () {
-        $(".nav").animate({ marginTop: 0 - navMarign }, 2500, function () {
+        $(".nav").animate({ marginTop: 0 - navMarign }, 1250, function () {
             $("#nav_toggle").addClass("fixed_nav_toggle");
         });
     });
@@ -314,3 +315,33 @@
 
 
 });
+
+function searchForm() {
+    
+    $(".search").show("slide", { direction: "left" }, 500);
+    $("#first_search_label").click(function () {
+        $("#first_search_label").hide();
+        $(".searchform").show("slide", { direction: "left" }, 500);
+    });
+    $("#second_search_label").click(function () {
+        $(".searchform").hide("slide", { direction: "left" }, 500, function () {
+            $("#first_search_label").show();
+        });
+        
+    });
+
+    $("#postcodesearchform").submit(function (e) {
+        e.preventDefault();
+        window.postcodeSearch = $("#postocdeSearch").val();
+        centreMap();
+        $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&" + window.jsonLocation + "&callback=?&limit=15&type=" + window.poiType, function (data) {
+            window.searchResults = data;
+            listInitialize();
+            initialize();
+            $("#second_search_label").click();
+        });
+
+    });
+    
+
+};

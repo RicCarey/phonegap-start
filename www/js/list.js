@@ -1,5 +1,5 @@
 function listInitialize() {
-
+    $(".list-ul li").remove();
     var listPois = window.searchResults.poi;
 
 

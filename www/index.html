@@ -25,23 +25,22 @@
               navigator.geolocation.getCurrentPosition(onSuccess, onError);
           }
           //define location variables
-          var jsonLocation;
-          var postcodeSearch;
+         
           var centreOnLat;
           var centreOnLong;
 
           function centreMap() {
-              if (postcodeSearch == null || postcodeSearch == "") {
+              if (window.postcodeSearch == null || window.postcodeSearch == "") {
                   if (centreOnLong == null || centreOnLong == "") {
                       //if geolocation empty default back to nots
-                      jsonLocation = "loc=nottingham";
+                      window.jsonLocation = "loc=nottingham";
                   } else {
                   //use geolocation
-                      jsonLocation = "lon=" + centreOnLong + "&lat=" + centreOnLat;
+                      window.jsonLocation = "lon=" + centreOnLong + "&lat=" + centreOnLat;
                   }
               } else {
                   //postcodesearch
-                  jsonLocation = "loc=" + postcodeSearch;
+                  window.jsonLocation = "loc=" + window.postcodeSearch;
               }
           }
 
@@ -58,8 +57,8 @@
           //
           function onError(error) {
               alert("GPS unavailable, please use the postcode search to customise results.")
-              jsonLocation = "loc=nottingham";
-              postcodeSearch = 'nottingham';
+              window.jsonLocation = "loc=nottingham";
+              window.postcodeSearch = 'nottingham';
           }
 
         
@@ -118,12 +117,13 @@
          </div>
          <div class="search">
             <div class="searchform">
-                <form method="post" action="#">
-                    <input type="text" name="postocdeSearch" />
-                    <input type="submit" />
+                <form method="post" action="#" name="postcodesearchform" id="postcodesearchform">
+                    <input type="text" name="postocdeSearch" id="postocdeSearch" />
+                    <input type="submit" id="postcodeSubmit" />
                 </form>
+                <div class="label" id="second_search_label"><img src="images/search.png" /></div>
             </div>
-            <div class="label">s</div>
+            <div class="label" id="first_search_label"><img src="images/search.png" /></div>
          </div>
          <div class="map_wrap">
             <div id="map_canvas" style="width:100%; height:100%"></div>

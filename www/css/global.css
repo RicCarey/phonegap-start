@@ -59,8 +59,8 @@ html,body
     border-left: 0;
     border-bottom: 0;
     padding-left: 5%;
-    /*-webkit-box-shadow: 0px 0px 0.5em 0px #000000;
-    box-shadow: 0px 0px 0.5em 0px #000000;*/
+    -webkit-box-shadow: 0px 0px 0.5em 0px #000000;
+    box-shadow: 0px 0px 0.5em 0px #000000;
     font-size: 0.8em;
     position: relative;
     top: 0;
@@ -203,7 +203,8 @@ width:100%;
 /* content pages */
 #tabgroup
 {
-    
+    -webkit-box-shadow: 0px 0px 0.5em 0px #000000;
+    box-shadow: 0px 0px 0.5em 0px #000000; 
     background-color: #736c95;
     border: 0.2em #736c95 solid;
     width: 90%; 
@@ -313,9 +314,15 @@ border-left: 0.2em #736c95 solid;
  padding-right: 5%;   
  line-height: 1.35em;
 }
+.content_wrap p
+{
+ margin-top: 0;
+ margin-bottom: 1em;   
+}
 .landscape .content_wrap
 {
-   padding-left:1%;  
+   padding-left:1%;
+   padding-right: 1%;  
 }
 .h1
 {
@@ -459,7 +466,38 @@ margin-bottom: 0.5em;
  position: fixed;
  left: 0;
  top: 50%;
- background-color: #000000;
+z-index: 9999;
+ display: none;
+ overflow: hidden;
+     -webkit-border-radius: 0 0.5em 0.5em 0;
+    border-radius: 0 0.5em 0.5em 0;    
+    width: 90%;
+    overflow: hidden;
+    height: auto;
+ 
+}
+.search .label
+{
+    float: left;
+     background-color: #00676C;
+     width:10%;
+     
+}
+.search .searchform
+{
+    width: 100%;
+    float: left;
+     background-color: #00676C;
+}
+#postcodesearchform #postocdeSearch
+{
+ float:left;   
+ width: 70%;
+}
+#postcodesearchform #postcodeSubmit
+{
+ float:left;  
+ width: 10%; 
 }
 .poi-description
 {
@@ -473,4 +511,14 @@ margin-bottom: 0.5em;
 .portrait #tabgroup .disabled, .landscape #tabgroup .disabled
 {
  display: none;   
+}
+.img
+{
+    margin-top: 0.5em;
+    margin-bottom: 0.5em; 
+    width: 90%; 
+     -webkit-box-shadow: 0px 0px 0.5em 0px #000000;
+    box-shadow: 0px 0px 0.5em 0px #000000;  
+    background-color: #FFFFFF;
+    padding: 5%;
 }
