@@ -1,10 +1,6 @@
+function docReady() {
+    $("body").removeClass("landscape, portrait");
 
-
-//NB - this needs to be bind so that the phone doesnt calculate the heights and such without images loaded.
-//$(window).bind("load", function () {
-
-//$(window).load(function () {
-$(document).ready(function () {
     //disable scrolling
     var scrollEnabled = false;
     $("html").on("touchmove", function (e) {
@@ -311,9 +307,19 @@ $(document).ready(function () {
             $("#nav_toggle").addClass("fixed_nav_toggle");
         });
     });
+};
 
+//NB - this needs to be bind so that the phone doesnt calculate the heights and such without images loaded.
+//$(window).bind("load", function () {
 
+//$(window).load(function () {
+$(document).ready(function () {
+    docReady();
 
+});
+
+$(window).resize(function () {
+    docReady();
 });
 
 function searchForm() {
