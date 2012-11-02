@@ -151,7 +151,7 @@ $(document).ready(function () {
     $('.iconSrcSwap').each(function (index) {
         $(this).attr("src", $(this).attr("src").replace("/size/", "/" + imageSize + "/"));
     });
-    alert(imageSize);
+
 
     //content page load
 
