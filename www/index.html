@@ -23,7 +23,13 @@
 
           function onDeviceReady() {
               navigator.geolocation.getCurrentPosition(onSuccess, onError);
+              document.addEventListener("menubutton", onMenuKeyDown, false);
+              document.addEventListener("searchbutton", onSearchKeyDown, false);
+              document.addEventListener("backbutton", onBackKeyDown, false);
+
           }
+
+
           //define location variables
          
           var centreOnLat;
@@ -60,6 +66,29 @@
               window.jsonLocation = "loc=nottingham";
               window.postcodeSearch = 'nottingham';
           }
+
+          function onMenuKeyDown() {
+              if ($("body").hasClass("content-page")) {
+                  $("#nav_toggle").click();
+              }
+          }
+          function onSearchKeyDown() {
+              if ($(".search").is(':hidden')) { } else {
+                  if ($("#first_search_label").is(':hidden')){
+                     $("#second_search_label").click();   
+                }else{
+                    $("#first_search_label").click();
+                }
+              }
+          }
+
+          function onBackKeyDown() {
+                $(".nav").css("position", "relative").css("marginTop", "0");
+                 $(".home_content").animate({
+                    marginTop: negativePageHeight
+                }, 1250);
+          }
+
 
         
      </script>
