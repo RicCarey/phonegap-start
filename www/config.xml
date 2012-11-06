@@ -2,8 +2,8 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.icecreates.hello-world"
-        version   = "99.6">
-    <name>NHS Nottingham App</name>
+        version   = "100">
+    <name>NHS Nottingham App v2</name>
 
     <description>
         Hello World sample application that responds to the deviceready event. Forked By Ric 

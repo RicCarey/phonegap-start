@@ -208,7 +208,7 @@ width:100%;
     border: 0.2em #736c95 solid;
     width: 90%; 
     position: fixed;
-    bottom: 0;
+    bottom: -5px;
     border-left: 0;
     border-bottom: 0;
     display: none;
@@ -232,10 +232,10 @@ border-left: 0.2em #736c95 solid;
 .portrait #tabgroup
 {
         padding-left: 5%;
-     float: left;
      -webkit-border-radius: 0 0.5em 0 0;
      border-radius: 0 0.5em 0 0; 
      background-image: url(../images/tabgroup/1280.png);
+     left: 0;
 }
 
 .portrait #tabgroup div
