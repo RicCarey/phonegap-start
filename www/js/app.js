@@ -48,6 +48,7 @@ var mapPaddingTop;
 var mapPadding;
 var mapHeight;
 var mapNewHeight;
+var navHeight;
 
 function windowResize() {
    
@@ -91,6 +92,15 @@ function windowResize() {
 
     //apply height differnece to box to expand down to bottom
     expanderMargin = $(".nav ul").css("marginTop");
+
+    if ($("body").hasClass("content-page")) {
+        homeContentHeightDiff = windowHeight - $("#nhs_logo").height();
+        homeContentHeightDiff = homeContentHeightDiff - 40;
+        navHeight = $(".nav").height();
+        $(".home_content").css("marginTop", 0 - $(".home_content").height());
+      
+    }
+    
     $(".expander").height(homeContentHeightDiff);
     $(".expander").show();
     //align labels
@@ -185,7 +195,19 @@ function windowResize() {
 
      navMarign = $(".nav").outerHeight(true) - $("#nav_toggle").outerHeight(true);
 
+     if ($("body").hasClass("content-page")) {
 
+
+         if ($("body").hasClass("show_nav")) {
+
+             $(".nav").css("marginTop", 0);
+
+         } else {
+             $(".nav").css("marginTop", 0);
+             navMarign = $(".nav").outerHeight(true) - $("#nav_toggle").outerHeight(true);
+             $(".nav").css("marginTop", 0 - navMarign);
+         }
+     }
 
 
 
@@ -226,6 +248,7 @@ function windowResize() {
 
             });
         });
+
     });
 
 
@@ -334,23 +357,21 @@ $(document).ready(function () {
     });
 
     //nav toggle business
-    //var headerHeight = $(".header").height();
-    // var oldMarignTop;
+   
     $("#nav_toggle").toggle(
     function () {
-        //$('html, body').animate({ scrollTop: 0 }, 'slow');
-        //return false;
+       
         $("#nav_toggle").removeClass("fixed_nav_toggle");
-        //   oldMarignTop = $(".home_content").css("margin-top");
-        //    $(".home_content").animate({ marginTop: 0 - headerHeight }, 2500);
+        $("body").addClass("show_nav");
         $(".nav").animate({ marginTop: 0 }, 1250);
     },
     function () {
 
-        //$(".home_content").animate({ marginTop: oldMarignTop }, 2500, function () {
         $(".nav").animate({ marginTop: 0 - navMarign }, 1250, function () {
             $("#nav_toggle").addClass("fixed_nav_toggle");
+
         });
+        $("body").removeClass("show_nav");
     });
 });
 
@@ -365,8 +386,10 @@ $(window).resize(function () {
         $("#tabgroup img").height("auto").width("auto");
         $("#tabgroup").width("1px").height("1px");
         $(".page_html").width("auto");
-        $(".map_wrap").width("auto");
+        $(".map_wrap").width("84%");
         iconHeight = 0;
+   //     $(".nav").css("marginTop", "0");
+        $(".home_content").css("marginTop", "0");
         windowResize();
 
     }, 500, "1");
