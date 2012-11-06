@@ -59,7 +59,7 @@ function windowResize() {
      windowWidth = window.innerWidth;
      windowHeight = window.innerHeight;
 
-     $('meta[name=viewport]').attr('content', 'width=' + windowWidth + ', initial-scale=1, maximum-scale=1, user-scalable=no, height=' + windowHeight + ', target-densityDpi=device-dpi');
+//     $('meta[name=viewport]').attr('content', 'width=' + windowWidth + ', initial-scale=1, maximum-scale=1, user-scalable=no, height=' + windowHeight + ', target-densityDpi=device-dpi');
 
     //--orientation
     
@@ -396,6 +396,57 @@ $(window).resize(function () {
 
     }, 500, "1");
 });
+
+function doOnOrientationChange() {
+    switch (window.orientation) {
+        case -90:
+        case 90:
+            waitForFinalEvent(function () {
+
+                $("body").removeClass("landscape").removeClass("portrait");
+                $(".expander").hide();
+                $("#nav_toggle").hide();
+                $(".home_content").height("auto");
+                $('.nav li .icon img').height("auto").css("maxWidth", "auto").width("auto").css("maxHeight", "auto");
+                $('.nav li .label').height("auto");
+                $("#tabgroup img").height("auto").width("auto");
+                $("#tabgroup").width("1px").height("1px");
+                $(".page_html").width("auto");
+                $(".map_wrap").width("84%");
+                iconHeight = 0;
+                //     $(".nav").css("marginTop", "0");
+                $(".home_content").css("marginTop", "0");
+                windowResize();
+
+            }, 500, "1");
+            break;
+        default:
+            waitForFinalEvent(function () {
+
+                $("body").removeClass("landscape").removeClass("portrait");
+                $(".expander").hide();
+                $("#nav_toggle").hide();
+                $(".home_content").height("auto");
+                $('.nav li .icon img').height("auto").css("maxWidth", "auto").width("auto").css("maxHeight", "auto");
+                $('.nav li .label').height("auto");
+                $("#tabgroup img").height("auto").width("auto");
+                $("#tabgroup").width("1px").height("1px");
+                $(".page_html").width("auto");
+                $(".map_wrap").width("84%");
+                iconHeight = 0;
+                //     $(".nav").css("marginTop", "0");
+                $(".home_content").css("marginTop", "0");
+                windowResize();
+
+            }, 500, "1");
+            break;
+    }
+}
+
+window.onorientationchange = function () {
+    doOnOrientationChange();
+};
+
 
 function searchForm() {
     
