@@ -59,6 +59,7 @@ function windowResize() {
      windowWidth = window.innerWidth;
      windowHeight = window.innerHeight;
 
+     $('meta[name=viewport]').attr('content', 'width=' + windowWidth + ', initial-scale=1, maximum-scale=1, user-scalable=no, height=' + windowHeight + ', target-densityDpi=device-dpi');
 
     //--orientation
     
@@ -377,7 +378,7 @@ $(document).ready(function () {
 
 $(window).resize(function () {
     waitForFinalEvent(function () {
-        $('meta[name=viewport]').attr('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, height=device-height, target-densityDpi=device-dpi');
+        
         $("body").removeClass("landscape").removeClass("portrait");
         $(".expander").hide();
         $("#nav_toggle").hide();
