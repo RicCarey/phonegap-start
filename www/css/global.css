@@ -265,7 +265,7 @@ border-left: 0.2em #736c95 solid;
 #nav_toggle
 {
         cursor: pointer;
-    position:static;
+    position:relative;
     top:0;
     left: 0;
     right: 0;
@@ -470,8 +470,7 @@ margin-bottom: 0.5em;
 z-index: 9999;
  display: none;
  overflow: hidden;
-     -webkit-border-radius: 0 0.5em 0.5em 0;
-    border-radius: 0 0.5em 0.5em 0;    
+
     width: 90%;
     overflow: hidden;
     height: auto;
@@ -482,7 +481,8 @@ z-index: 9999;
     float: left;
      background-color: #00676C;
      width:10%;
-     
+    -webkit-border-radius: 0 0.5em 0.5em 0;
+    border-radius: 0 0.5em 0.5em 0;    
 }
 .search .searchform
 {
@@ -522,4 +522,24 @@ z-index: 9999;
     box-shadow: 0px 0px 0.5em 0px #000000;  
     background-color: #FFFFFF;
     padding: 5%;
+}
+.poi-description a
+{
+    color: #000000;
+    text-decoration: underline;
+    display: block;
+}
+#nav_toggle img
+{
+position: absolute;
+top: 50%; 
+right: 0;
+}
+.rotated
+{
+-moz-transform: scale(1) rotate(180deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+-webkit-transform: scale(1) rotate(180deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+-o-transform: scale(1) rotate(180deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+-ms-transform: scale(1) rotate(180deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+transform: scale(1) rotate(180deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg); 
 }

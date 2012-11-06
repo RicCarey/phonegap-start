@@ -122,7 +122,7 @@ function windowResize() {
      iconHeight = listAnchorHeight - biggestHeight;
 
     $('.nav li .icon').height(Math.ceil(iconHeight));
-
+    $('#nav_toggle img').height(Math.ceil(iconHeight)/2).css("marginTop", 0 - Math.ceil(iconHeight)/4);
     iconWidth = $(".nav ul li .icon").width();
 
     if (iconWidth > iconHeight) {
@@ -261,7 +261,7 @@ function windowResize() {
 //$(window).load(function () {
 $(document).ready(function () {
     //disable scrolling
-     scrollEnabled = false;
+    scrollEnabled = false;
     $("html").on("touchmove", function (e) {
         if (!scrollEnabled) { e.preventDefault(); }
     });
@@ -358,10 +358,10 @@ $(document).ready(function () {
     });
 
     //nav toggle business
-   
+
     $("#nav_toggle").toggle(
     function () {
-       
+        $("#nav_toggle img").addClass("rotated");
         $("#nav_toggle").removeClass("fixed_nav_toggle");
         $("body").addClass("show_nav");
         $(".nav").animate({ marginTop: 0 }, 1250);
@@ -372,6 +372,7 @@ $(document).ready(function () {
             $("#nav_toggle").addClass("fixed_nav_toggle");
 
         });
+        $("#nav_toggle img").removeClass("rotated");
         $("body").removeClass("show_nav");
     });
 });
