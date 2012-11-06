@@ -66,9 +66,11 @@ function windowResize() {
     if (windowWidth > windowHeight) {
         $("body").addClass("landscape");
         scaleMeasure = windowHeight;
+        $('meta[name=viewport]').attr('width=device-height, initial-scale=1.0, user-scalable=no, height=device-width, target-densityDpi=device-dpi');
     } else {
         $("body").addClass("portrait");
         scaleMeasure = windowWidth;
+        $('meta[name=viewport]').attr('width=device-width, initial-scale=1.0, user-scalable=no, height=device-height, target-densityDpi=device-dpi');
     }
 
     //--font scale
@@ -361,7 +363,7 @@ $(document).ready(function () {
 
     $("#nav_toggle").toggle(
     function () {
-        $("#nav_toggle img").addClass("rotated");
+        $("#nav_toggle img").attr("src", "images/icons/" + imageSize + "/toggle_rotated.png"); 
         $("#nav_toggle").removeClass("fixed_nav_toggle");
         $("body").addClass("show_nav");
         $(".nav").animate({ marginTop: 0 }, 1250);
@@ -372,7 +374,7 @@ $(document).ready(function () {
             $("#nav_toggle").addClass("fixed_nav_toggle");
 
         });
-        $("#nav_toggle img").removeClass("rotated");
+        $("#nav_toggle img").attr("src", "images/icons/" + imageSize + "/toggle.png"); 
         $("body").removeClass("show_nav");
     });
 });
