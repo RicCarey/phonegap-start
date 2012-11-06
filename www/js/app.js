@@ -447,6 +447,7 @@ window.onorientationchange = function () {
     doOnOrientationChange();
 };
 
+window.onload = doOnOrientationChange();
 
 function searchForm() {
     
