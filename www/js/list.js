@@ -22,7 +22,7 @@ function listInitialize() {
 
         for (var p = 0, propLength = listPoi.detailsPropertyOrder[key].length; p < propLength; p++) {
             var propKey = listPoi.detailsPropertyOrder[key];
-            $(".details" + i).append('<li><label>' + propKey[p] + ':</label><div class="details_info">' + listPoi.details[key][propKey[p]].replace("/n","<br />/n") + '</div></li>');
+            $(".details" + i).append('<li><label>' + propKey[p] + ':</label><div class="details_info">' + listPoi.details[key][propKey[p]].replace("/r","<br />/r") + '</div></li>');
         }
 
        
