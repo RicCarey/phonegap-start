@@ -66,11 +66,11 @@ function windowResize() {
     if (windowWidth > windowHeight) {
         $("body").addClass("landscape");
         scaleMeasure = windowHeight;
-        $('meta[name=viewport]').attr('width=device-height, initial-scale=1.0, user-scalable=no, height=device-width, target-densityDpi=device-dpi');
+        $('meta[name=viewport]').attr('content', 'width=device-height, initial-scale=1.0, user-scalable=no, height=device-width, target-densityDpi=device-dpi');
     } else {
         $("body").addClass("portrait");
         scaleMeasure = windowWidth;
-        $('meta[name=viewport]').attr('width=device-width, initial-scale=1.0, user-scalable=no, height=device-height, target-densityDpi=device-dpi');
+        $('meta[name=viewport]').attr('content', 'width=device-width, initial-scale=1.0, user-scalable=no, height=device-height, target-densityDpi=device-dpi');
     }
 
     //--font scale
