@@ -472,34 +472,51 @@ z-index: 9999;
  display: none;
  overflow: hidden;
 
-    width: 90%;
     overflow: hidden;
     height: auto;
+        -webkit-border-radius: 0 0.5em 0.5em 0;
+    border-radius: 0 0.5em 0.5em 0;    
  
 }
 .search .label
 {
     float: left;
      background-color: #00676C;
-     width:10%;
     -webkit-border-radius: 0 0.5em 0.5em 0;
     border-radius: 0 0.5em 0.5em 0;    
 }
+
+.search .label
+{
+    display: block;
+    padding: 0.25em;    
+}
+
 .search .searchform
 {
     width: 100%;
     float: left;
      background-color: #00676C;
+     position: relative;
 }
+#second_search_label
+{
+float:right;    
+}
+
 #postcodesearchform #postocdeSearch
 {
  float:left;   
  width: 70%;
+ height: 30px;
+margin-top: 17px;
 }
 #postcodesearchform #postcodeSubmit
 {
  float:left;  
- width: 10%; 
+ width: 15%; 
+ height: 40px;
+margin-top: 15px;
 }
 .poi-description
 {

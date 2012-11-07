@@ -3,11 +3,14 @@ var infowindow = null;
 function initialize() {
     $("#map_canvas").remove();
     $(".map_wrap").append('<div id="map_canvas" style="width:100%; height:100%"></div>');
-    centreMap();
+    
+    var latlngbounds = new google.maps.LatLngBounds();
 
+    centreMap();
+    var centreOn = new google.maps.LatLng(window.searchResults.location.lat, window.searchResults.location.lon);
     var mapOptions = {
         zoom: 11,
-        center: new google.maps.LatLng(window.searchResults.location.lat, window.searchResults.location.lon),
+        center: centreOn,
 
         mapTypeControl: false,
         //                mapTypeControlOptions: {
@@ -31,9 +34,12 @@ function initialize() {
     var map = new google.maps.Map(document.getElementById("map_canvas"),
       mapOptions);
 
+
     var pois = window.searchResults.poi;
 
-
+ 
+    map.setCenter(centreOn);
+    latlngbounds.extend(centreOn);
 
    var contentString = null;
 
@@ -41,17 +47,19 @@ function initialize() {
 	content: "holding..."
 	});
 
+
     for (var i = 0; i < pois.length; i++) {
         var poi = pois[i];
+        var point = new google.maps.LatLng(poi.lat, poi.lon);
 
         var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(poi.lat, poi.lon),
+            position: point,
             map: map,
             title: poi.name,
             html: '<div class="poi-description"><a href="#" data-id="poiid_' + poi.id +'">' + poi.name + '</a></div>'
         });
 
-
+        latlngbounds.extend(point);
 
         google.maps.event.addListener(marker, 'click', function () {
             map.setCenter(this.position);
@@ -59,7 +67,24 @@ function initialize() {
             infowindow.open(map, this);
         });  
     }
+    var centre = function () {
 
+        map.fitBounds(latlngbounds);
+
+
+  
+        var fixZoom = function () {
+            if (map.getZoom() > 15) {
+                map.setZoom(15);
+            }
+        }
+
+        setTimeout(fixZoom, 200);
+        fixZoom();
+
+    }
+
+    centre();
 
     $(document).on("click", ".poi-description a", function (e) {
         e.preventDefault();
