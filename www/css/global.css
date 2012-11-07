@@ -533,8 +533,9 @@ background-color: #009BA8;
 border-radius: 0.5em; 
 border: 0.2em solid #49b5bf;
 color: #FFFFFF;
-       font-family: DroidSansBold;  
-       margin-left: 5%;
+font-family: DroidSansBold;  
+ margin-left: 5%;
+-webkit-appearance: none;
 }
 .poi-description
 {
