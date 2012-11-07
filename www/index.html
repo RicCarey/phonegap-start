@@ -83,18 +83,7 @@
           }
 
           function onBackKeyDown() {
-                $(".nav").css("position", "relative").css("marginTop", "0");
-                $(".home_content").animate({
-                    marginTop: 0
-                }, 1250, function () {
-                    $("body").addClass("home").removeClass("content-page");
-                    $("#tabgroup").hide();
-                    $(".content_wrap").remove();
-                    alert("complete");
-                    
-                                       //                    scrollEnabled = false;
-                });
-                
+              window.location.reload(); 
           }
 
 
