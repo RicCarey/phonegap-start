@@ -1,4 +1,9 @@
 function listInitialize() {
+
+    if (!window.searchResults) {
+        alert("An error has occurred attempting to load the list data, please try restarting the app.");
+    }
+
     $(".list-ul li").remove();
     var listPois = window.searchResults.poi;
 
@@ -31,21 +36,42 @@ function listInitialize() {
 
 
 
+
+
     //list toggle
-    $(".listtoggle").click(function () {
+    var lst = $(".listtoggle").click(function () {
         if ($(this).parent().children("ul").hasClass("slid_down")) {
             $(this).parent().children("ul").slideUp().removeClass("slid_down");
         } else {
+
+            var top = $(this).data("scollPos");
+            var functionScroolToView = function () {
+                $("html, body").animate({ scrollTop: top }, function () {
+                    $(window).scrollTop(top);
+                });
+            }
+
             $(".slid_down").slideUp().removeClass("slid_down");
-            var detailsZeroParent = $(".details0").parent();
-            var detailsZeroOffset = detailsZeroParent.offset();
-            var detailsZeroOffsetDouble = detailsZeroOffset.top * 1.5;
-            var listToggleOffset = $(this).offset();
-            $(window).scrollTop(listToggleOffset.top - detailsZeroOffset.top);
-            $(this).parent().children("ul").slideDown().addClass("slid_down");
+            $(this).parent().children("ul").slideDown(function () {
+                functionScroolToView();
+            }).addClass("slid_down");
+            functionScroolToView();
+
         }
 
     });
+    function caclulateScollOffsets() {
+        var detailsZeroParent = $(".details0").parent();
+        var detailsZeroOffset = detailsZeroParent.offset();
+        lst.each(function (i) {
+
+            var listToggleOffset = $(this).parent().offset();
+            var top = (listToggleOffset.top - detailsZeroOffset.top);
+            $(this).data("scollPos", top);
+        });
+    }
+    caclulateScollOffsets();
+    $(window).on("resizeWindow", caclulateScollOffsets);
 
     if (!window.poiId == null || !window.poiId == "") {
         $("#" + window.poiId).click();

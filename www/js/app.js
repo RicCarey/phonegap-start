@@ -271,6 +271,7 @@ function windowResize() {
 
         });
 
+        $(window).trigger("resizeWindow");
     }  
 };
 
@@ -447,13 +448,15 @@ function searchForm() {
     
     $(".search").show("slide", { direction: "left" }, 500);
     $("#first_search_label").click(function () {
-        $(".search").width("90%");
+        $(".search").width("75%");
         $("#first_search_label").hide();
         $(".searchform").show("slide", { direction: "left" }, 500);
+        $("#postocdeSearch").focus();
     });
     $("#second_search_label").click(function () {
         
         $(".searchform").hide("slide", { direction: "left" }, 500, function () {
+            $("#postocdeSearch").blur();
             $("#first_search_label").show();
             $(".search").width("auto");
         });

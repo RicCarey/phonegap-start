@@ -471,39 +471,50 @@ margin-bottom: 0.5em;
 z-index: 9999;
  display: none;
  overflow: hidden;
-
-    overflow: hidden;
     height: auto;
         -webkit-border-radius: 0 0.5em 0.5em 0;
     border-radius: 0 0.5em 0.5em 0;    
- 
 }
 .search .label
 {
-    float: left;
      background-color: #00676C;
     -webkit-border-radius: 0 0.5em 0.5em 0;
     border-radius: 0 0.5em 0.5em 0;    
-}
-
-.search .label
-{
     display: block;
     padding: 0.25em;    
+    top: 
 }
 
 .search .searchform
 {
     width: 100%;
     float: left;
-     background-color: #00676C;
      position: relative;
+             -webkit-border-radius: 0 0.5em 0.5em 0;
+    border-radius: 0 0.5em 0.5em 0;    
+    overflow: hidden;
 }
 #second_search_label
 {
-float:right;    
+    float: right;
+    position: relative;
+    right: 0;
+    top: 0;
+    width: 26px;  
 }
-
+.forminner
+{
+background-color: #00676C;
+    display: block;
+    float: left;
+    left: 0;
+    overflow: hidden;
+    position: relative;
+     width: 85%;
+     height: 100%;
+             -webkit-border-radius: 0 0.5em 0.5em 0;
+    border-radius: 0 0.5em 0.5em 0;    
+}
 #postcodesearchform #postocdeSearch
 {
  float:left;   
@@ -514,9 +525,16 @@ margin-top: 17px;
 #postcodesearchform #postcodeSubmit
 {
  float:left;  
- width: 15%; 
+ width: 10%; 
  height: 40px;
 margin-top: 15px;
+background-color: #009BA8;
+-webkit-border-radius: 0.5em;
+border-radius: 0.5em; 
+border: 0.2em solid #49b5bf;
+color: #FFFFFF;
+       font-family: DroidSansBold;  
+       margin-left: 5%;
 }
 .poi-description
 {
