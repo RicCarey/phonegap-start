@@ -386,7 +386,8 @@ $(document).ready(function () {
 
 $(window).resize(function () {
     waitForFinalEvent(function () {
-
+    
+    //reset before recalc
         $("body").removeClass("landscape").removeClass("portrait");
         $(".expander").hide();
         $("#nav_toggle").hide();
@@ -398,15 +399,16 @@ $(window).resize(function () {
         $(".page_html").width("auto");
         $(".map_wrap").width("84%");
         iconHeight = 0;
-        //     $(".nav").css("marginTop", "0");
         $(".home_content").css("marginTop", "0");
+        
         windowResize();
+        
 
         //check if width has changed if it hasnt its most likley the keyboard is on screen so we dont want to resize the viewport or it will mess up on android
         if (windowWidth == lastScreenWidth) {
-            alert("width hasnt changed");
+            //keep viewport the same instead of changing so the screen isnt resized.
+            $('meta[name=viewport]').attr('content', 'width=' + lastScreenWidth + ', initial-scale=1.0, user-scalable=no, height=' + lastScreenHeight + ', target-densityDpi=device-dpi');
         } else {
-            alert("it has changed");
             lastScreenHeight = windowHeight;
             lastScreenWidth = windowWidth;
         }
