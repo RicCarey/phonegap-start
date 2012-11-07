@@ -518,14 +518,14 @@ background-color: #00676C;
 #postcodesearchform #postocdeSearch
 {
  float:left;   
- width: 70%;
+ width: 60%;
  height: 30px;
 margin-top: 17px;
 }
 #postcodesearchform #postcodeSubmit
 {
  float:left;  
- width: 10%; 
+ width: 15%; 
  height: 40px;
 margin-top: 15px;
 background-color: #009BA8;
