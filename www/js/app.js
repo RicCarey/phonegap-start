@@ -393,7 +393,7 @@ $(window).resize(function () {
 
 
         //check if width has changed if it hasnt its most likley the keyboard is on screen so we dont want to resize the viewport or it will mess up on android
-        if (windowWidth == lastScreenWidth && windowHeight != lastScreenHeight) {
+        if (window.innerWidth == lastScreenWidth && window.innerHeight != lastScreenHeight) {
             //keep viewport the same instead of changing so the screen isnt resized.
             $('meta[name=viewport]').attr('content', 'width=' + lastScreenWidth + ', initial-scale=1.0, user-scalable=no, height=' + lastScreenHeight + ', target-densityDpi=device-dpi');
             alert("width hasntchanged");
@@ -450,6 +450,7 @@ function doOnOrientationChange() {
                 //     $(".nav").css("marginTop", "0");
                 $(".home_content").css("marginTop", "0");
                 windowResize();
+                alert("orienattion landscape");
 
             }, 500, "1");
             break;
@@ -470,6 +471,7 @@ function doOnOrientationChange() {
                 //     $(".nav").css("marginTop", "0");
                 $(".home_content").css("marginTop", "0");
                 windowResize();
+                alert("orienattion default");
 
             }, 500, "1");
             break;
