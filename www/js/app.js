@@ -368,7 +368,7 @@ $(document).ready(function () {
 
     $("#nav_toggle").toggle(
     function () {
-        $("#nav_toggle img").attr("src", "images/icons/" + imageSize + "/toggle_rotated.png"); 
+        $("#nav_toggle img").attr("src", "images/icons/" + imageSize + "/toggle_rotated.png");
         $("#nav_toggle").removeClass("fixed_nav_toggle");
         $("body").addClass("show_nav");
         $(".nav").animate({ marginTop: 0 }, 1250);
@@ -379,8 +379,17 @@ $(document).ready(function () {
             $("#nav_toggle").addClass("fixed_nav_toggle");
 
         });
-        $("#nav_toggle img").attr("src", "images/icons/" + imageSize + "/toggle.png"); 
+        $("#nav_toggle img").attr("src", "images/icons/" + imageSize + "/toggle.png");
         $("body").removeClass("show_nav");
+    });
+
+    $("#postocdeSearch").focus(function (e) {
+        e.preventDefault();
+        alert("on focus");
+    });
+    $("#postocdeSearch").blur(function (e) {
+        e.preventDefault();
+        alert("on blur");
     });
 });
 
@@ -392,15 +401,15 @@ $(window).resize(function () {
         
 
 
-        //check if width has changed if it hasnt its most likley the keyboard is on screen so we dont want to resize the viewport or it will mess up on android
-        if (window.innerWidth == lastScreenWidth && window.innerHeight != lastScreenHeight) {
-            //keep viewport the same instead of changing so the screen isnt resized.
-            $('meta[name=viewport]').attr('content', 'width=' + lastScreenWidth + ', initial-scale=1.0, user-scalable=no, height=' + lastScreenHeight + ', target-densityDpi=device-dpi');
-            alert("width hasntchanged");
-            lastScreenHeight = window.innerHeight;
-            lastScreenWidth = window.innerWidth;
-     
-        } else {
+//        //check if width has changed if it hasnt its most likley the keyboard is on screen so we dont want to resize the viewport or it will mess up on android
+//        if (window.innerWidth == lastScreenWidth && window.innerHeight != lastScreenHeight) {
+//            //keep viewport the same instead of changing so the screen isnt resized.
+//            $('meta[name=viewport]').attr('content', 'width=' + lastScreenWidth + ', initial-scale=1.0, user-scalable=no, height=' + lastScreenHeight + ', target-densityDpi=device-dpi');
+//            alert("width hasntchanged");
+//            lastScreenHeight = window.innerHeight;
+//            lastScreenWidth = window.innerWidth;
+//     
+//        } else {
             //reset before recalc
             $("body").removeClass("landscape").removeClass("portrait");
             $(".expander").hide();
@@ -418,14 +427,14 @@ $(window).resize(function () {
 
            
 
-            lastScreenHeight = windowHeight;
-            lastScreenWidth = windowWidth;
+//            lastScreenHeight = windowHeight;
+//            lastScreenWidth = windowWidth;
 
             windowResize();
 
-            alert("width changed");
+//            alert("width changed");
 
-        }
+//        }
 
     }, 500, "1");
 });
