@@ -583,8 +583,12 @@ right: 0;
 -ms-transform: scale(1) rotate(180deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
 transform: scale(1) rotate(180deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg); 
 }
-.introduction_text
+.portrait .introduction_text
 {
 padding-left: 5%;
 padding-right: 5%;    
+}
+.landscape .introduction_text {
+    margin-left: 1%;
+    padding: 0;
 }

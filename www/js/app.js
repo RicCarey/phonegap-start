@@ -169,6 +169,7 @@ function windowResize() {
             //account for tabgroup width in content
             $(".page_html").width(windowWidth * 0.88);
             $(".map_wrap").width(windowWidth * 0.78);
+            $(".introduction_text").width(windowWidth * 0.88);
         }
 
 
