@@ -3,6 +3,26 @@ function listInitialize() {
     if (!window.searchResults) {
         alert("An error has occurred attempting to load the list data, please try restarting the app.");
     }
+    var locationText;
+    if (window.poiType == "Nots-pharmacies") {
+        locationText = "Pharmacies"
+
+    } else if (window.poiType == "Nots-gps") {
+        locationText = "GPs"
+
+    } else if (window.poiType == "Nots-walkin-centre") {
+        locationText = "Walk In Centres"
+
+    } else if (window.poiType == "Nots-AE") {
+        locationText = "A&Es"
+
+    } else if (window.poiType == "Nots-C-Card-Sex-health") {
+        locationText = "Sexual Health C-Card Scheme"
+    }
+
+    $(".introduction_text_content").remove();
+    $(".introduction_text").append('<div class="introduction_text_content">Showing the nearest ' + window.searchResults.poi.length + ' result(s) for ' + locationText + '. Try searching to refine results.</div> ').fadeIn();
+
 
     $(".list-ul li").remove();
     var listPois = window.searchResults.poi;

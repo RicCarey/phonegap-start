@@ -52,7 +52,9 @@ var navHeight;
 var lastScreenHeight;
 var lastScreenWidth;
 var resizeEnabled = true;
-
+var navToggleHeight;
+var negativeNavToggleHeight;
+var tabGroupHeight;
 function windowResize() {
     if (resizeEnabled) {
 
@@ -159,7 +161,7 @@ function windowResize() {
         };
         //tabgroup calc
         if ($("body").hasClass("portrait")) {
-            $('#tabgroup, #tabgroup img').height(Math.ceil(iconHeight));
+            $('#tabgroup, #tabgroup img').height(Math.ceil(iconHeight) / 1.5)
             $('#tabgroup').width(windowWidth * 0.9)
         } else {
             $('#tabgroup').width(windowWidth * 0.10).height(windowHeight - $("#nav_toggle").outerHeight(true));
@@ -247,10 +249,10 @@ function windowResize() {
                     naviagtionToggleHeight = $("#nav_toggle").innerHeight();
                     mapPageChrome = naviagtionToggleHeight + 20 + tabGroupinnerHeight;
 
-                    mapPaddingTop = $(".map_wrap").css("paddingTop");
+                    mapPaddingTop = $(".map_wrap").css("paddingTop") ;
                     mapPadding = parseInt(mapPaddingTop) * 2;
                     mapHeight = windowHeight - mapPageChrome;
-                    mapNewHeight = mapHeight - mapPadding;
+                    mapNewHeight = mapHeight - (mapPadding + 20);
 
                     $(".map_wrap").height(mapNewHeight);
 
@@ -270,6 +272,19 @@ function windowResize() {
             });
 
         });
+
+        //give marign to account for nav toggle div
+        navToggleHeight = $("#nav_toggle").innerHeight();
+        negativeNavToggleHeight = 0 - navToggleHeight;
+        $(".page_html, .introduction_text").css("margin-top", navToggleHeight + 20)
+        //account for intotext
+
+
+        //give marign to account for tabgroup div
+        if ($("body").hasClass("portrait")) {
+            tabGroupHeight = $("#tabgroup").innerHeight();
+            $(".page_html").css("margin-bottom", tabGroupHeight + 20);
+        }
 
         $(window).trigger("resizeWindow");
     }  
@@ -321,6 +336,7 @@ $(document).ready(function () {
                     $("#info").click(function (event) {
                         event.preventDefault();
                         $(".page_html, .map_wrap").fadeOut(400, function () {
+                            $(".introduction_text").hide();
                             $(".page_html").fadeIn(400).load(pageLoad + " .page_body");
 
                         });
@@ -340,6 +356,7 @@ $(document).ready(function () {
                             $(".page_html").fadeIn(400).load("content/list.htm .page_body", function () {
                                 listInitialize();
                                 searchForm();
+                                $(".list-ul").css("marginTop", 0 - (navToggleHeight));
                             });
 
                         });
@@ -358,6 +375,7 @@ $(document).ready(function () {
         } else {
             $(".page_html").fadeOut(400, function () {
                 $(".map_wrap").fadeOut(400);
+                $(".introduction_text").fadeOut(400);
                 $("#nav_toggle").click();
                 $(".search").fadeOut(400);
                 $(".page_html").fadeIn(400).load(pageLoad + " .page_body", function () {
