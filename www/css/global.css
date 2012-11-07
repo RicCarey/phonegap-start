@@ -536,6 +536,7 @@ color: #FFFFFF;
 font-family: DroidSansBold;  
  margin-left: 5%;
 -webkit-appearance: none;
+font-size: 12px;
 }
 .poi-description
 {

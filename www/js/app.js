@@ -448,7 +448,7 @@ function searchForm() {
     
     $(".search").show("slide", { direction: "left" }, 500);
     $("#first_search_label").click(function () {
-        $(".search").width("75%");
+        $(".search").width("90%");
         $("#first_search_label").hide();
         $(".searchform").show("slide", { direction: "left" }, 500);
         $("#postocdeSearch").focus();
