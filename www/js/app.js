@@ -386,31 +386,45 @@ $(document).ready(function () {
 
 $(window).resize(function () {
     waitForFinalEvent(function () {
-    
-    //reset before recalc
-        $("body").removeClass("landscape").removeClass("portrait");
-        $(".expander").hide();
-        $("#nav_toggle").hide();
-        $(".home_content").height("auto");
-        $('.nav li .icon img').height("auto").css("maxWidth", "auto").width("auto").css("maxHeight", "auto");
-        $('.nav li .label').height("auto");
-        $("#tabgroup img").height("auto").width("auto");
-        $("#tabgroup").width("1px").height("1px");
-        $(".page_html").width("auto");
-        $(".map_wrap").width("84%");
-        iconHeight = 0;
-        $(".home_content").css("marginTop", "0");
-        
-        windowResize();
+
         
 
+        
+
+
         //check if width has changed if it hasnt its most likley the keyboard is on screen so we dont want to resize the viewport or it will mess up on android
-        if (windowWidth == lastScreenWidth) {
+        if (windowWidth == lastScreenWidth && windowHeight != lastScreenHeight) {
             //keep viewport the same instead of changing so the screen isnt resized.
             $('meta[name=viewport]').attr('content', 'width=' + lastScreenWidth + ', initial-scale=1.0, user-scalable=no, height=' + lastScreenHeight + ', target-densityDpi=device-dpi');
+            alert("width hasntchanged");
+            lastScreenHeight = window.innerHeight;
+            lastScreenWidth = window.innerWidth;
+     
         } else {
+            //reset before recalc
+            $("body").removeClass("landscape").removeClass("portrait");
+            $(".expander").hide();
+            $("#nav_toggle").hide();
+            $(".home_content").height("auto");
+            $('.nav li .icon img').height("auto").css("maxWidth", "auto").width("auto").css("maxHeight", "auto");
+            $('.nav li .label').height("auto");
+            $("#tabgroup img").height("auto").width("auto");
+            $("#tabgroup").width("1px").height("1px");
+            $(".page_html").width("auto");
+            $(".map_wrap").width("84%");
+            iconHeight = 0;
+            $(".home_content").css("marginTop", "0");
+
+
+           
+
             lastScreenHeight = windowHeight;
             lastScreenWidth = windowWidth;
+
+            windowResize();
+
+            alert("width changed");
+
         }
 
     }, 500, "1");
