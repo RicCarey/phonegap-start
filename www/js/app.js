@@ -344,7 +344,7 @@ $(document).ready(function () {
                             $(".introduction_text").hide();
                             $(".list_html").hide();
                             $(".page_html").fadeIn(400).load(pageLoad + " .page_body");
-
+                            $("#second_search_label").click();  
                         });
 
                         if ($("#nav_toggle").hasClass("fixed_nav_toggle")) {
