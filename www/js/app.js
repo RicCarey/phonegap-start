@@ -163,13 +163,15 @@ function windowResize() {
         if ($("body").hasClass("portrait")) {
             $('#tabgroup, #tabgroup img').height(Math.ceil(iconHeight) / 1.5)
             $('#tabgroup').width(windowWidth * 0.9)
+            $(".introduction_text").width("auto");
         } else {
             $('#tabgroup').width(windowWidth * 0.10).height(windowHeight - $("#nav_toggle").outerHeight(true));
             $('#tabgroup img').width(windowWidth * 0.10)
             //account for tabgroup width in content
             $(".page_html").width(windowWidth * 0.86);
-            $(".map_wrap").width(windowWidth * 0.78);
-            $(".introduction_text").width(windowWidth * 0.88);
+            $(".list_html").width(windowWidth * 0.86);
+            $(".map_wrap").width(windowWidth * 0.72);
+            $(".introduction_text").width(windowWidth * 0.78);
         }
 
 
@@ -188,26 +190,26 @@ function windowResize() {
         //calc which image to get
         if (167 < absoluteImageSize) {
             //ipad
-            imageSize = 284;
+            window.imageSize = 284;
         } else if (105 < absoluteImageSize && absoluteImageSize < 167) {
             //s3
-            imageSize = 166;
+            window.imageSize = 166;
         } else if (65 < absoluteImageSize && absoluteImageSize < 105) {
             //iphone4
-            imageSize = 105;
+            window.imageSize = 105;
         } else if (absoluteImageSize < 65) {
             //smaller
-            imageSize = 65;
+            window.imageSize = 65;
         }
         //if high density use double 
         if (dpr > 1) {
-            imageSize = imageSize * 2;
+            window.imageSize = widnow.imageSize * 2;
         }
         //swap images
 
 
         $('.iconSrcSwap').each(function (index) {
-            $(this).attr("src", $(this).attr("src").replace("/size/", "/" + imageSize + "/"));
+            $(this).attr("src", $(this).attr("src").replace("/size/", "/" + window.imageSize + "/"));
         });
 
 
@@ -240,6 +242,7 @@ function windowResize() {
             e.preventDefault();
 
             $(".page_html").fadeOut(400, function () {
+                $(".list_html").fadeOut(400);
                 //            $.getScript("js/map.js");
                 $(".map_wrap").fadeIn(400, function () {
                     tabGroupinnerHeight = 10;
@@ -253,9 +256,9 @@ function windowResize() {
                     mapPaddingTop = $(".map_wrap").css("paddingTop") ;
                     mapPadding = parseInt(mapPaddingTop) * 2;
                     mapHeight = windowHeight - mapPageChrome;
-                    mapNewHeight = mapHeight - (mapPadding + 20);
+                    window.mapNewHeight = mapHeight - (mapPadding + 20);
 
-                    $(".map_wrap").height(mapNewHeight);
+                    //$(".map_wrap").height(mapNewHeight);
 
 
 
@@ -284,7 +287,8 @@ function windowResize() {
         //give marign to account for tabgroup div
         if ($("body").hasClass("portrait")) {
             tabGroupHeight = $("#tabgroup").innerHeight();
-            $(".page_html").css("margin-bottom", tabGroupHeight + 20);
+            $(".page_html").css("margin-bottom", tabGroupHeight + 30);
+            $(".list_html").css("margin-bottom", tabGroupHeight + 20);
         }
 
         $(window).trigger("resizeWindow");
@@ -354,10 +358,10 @@ $(document).ready(function () {
                         listEvent.preventDefault();
                         $(".map_wrap").fadeOut(400);
                         $(".page_html").fadeOut(400, function () {
-                            $(".page_html").fadeIn(400).load("content/list.htm .page_body", function () {
+                            $(".list_html").fadeIn(400).load("content/list.htm .page_body", function () {
                                 listInitialize();
                                 searchForm();
-                                $(".list-ul").css("marginTop", 0 - (navToggleHeight));
+//                                $(".list-ul").css("marginTop", 0 - (navToggleHeight));
                             });
 
                         });
@@ -377,6 +381,7 @@ $(document).ready(function () {
             $(".page_html").fadeOut(400, function () {
                 $(".map_wrap").fadeOut(400);
                 $(".introduction_text").fadeOut(400);
+                $(".list_html").fadeOut(400);
                 $("#nav_toggle").click();
                 $(".search").fadeOut(400);
                 $(".page_html").fadeIn(400).load(pageLoad + " .page_body", function () {
@@ -400,7 +405,7 @@ $(document).ready(function () {
 
     $("#nav_toggle").toggle(
     function () {
-        $("#nav_toggle img").attr("src", "images/icons/" + imageSize + "/toggle_rotated.png");
+        $("#nav_toggle img").attr("src", "images/icons/" + window.imageSize + "/toggle_rotated.png");
         $("#nav_toggle").removeClass("fixed_nav_toggle");
         $("body").addClass("show_nav");
         $(".nav").animate({ marginTop: 0 }, 1250);
@@ -411,7 +416,7 @@ $(document).ready(function () {
             $("#nav_toggle").addClass("fixed_nav_toggle");
 
         });
-        $("#nav_toggle img").attr("src", "images/icons/" + imageSize + "/toggle.png");
+        $("#nav_toggle img").attr("src", "images/icons/" + window.imageSize + "/toggle.png");
         $("body").removeClass("show_nav");
     });
 
@@ -488,6 +493,9 @@ function searchForm() {
         centreMap();
         $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&" + window.jsonLocation + "&callback=?&limit=15&type=" + window.poiType, function (data) {
             window.searchResults = data;
+            if (!window.searchResults.location) {
+                alert("The location you have searched for has not been recognised, try another location.");
+            }
             listInitialize();
             initialize();
             $("#second_search_label").click();

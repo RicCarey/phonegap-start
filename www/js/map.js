@@ -27,7 +27,7 @@ function initialize() {
        
     $(".introduction_text_content").remove();
     $(".introduction_text").append('<div class="introduction_text_content">Showing the nearest ' + window.searchResults.poi.length + ' result(s) for ' + locationText + '. Try searching to refine results.</div> ').fadeIn();
-    var mapWrapHeight = $(".map_wrap").height() - $(".introduction_text").height();
+    var mapWrapHeight = window.mapNewHeight - $(".introduction_text").height();
     $(".map_wrap").height(mapWrapHeight);
     var latlngbounds = new google.maps.LatLngBounds();
 
@@ -115,7 +115,7 @@ function initialize() {
         e.preventDefault();
         window.poiId = $(this).attr("data-id");
                  $(".map_wrap").fadeOut(400, function () {
-                                    $(".page_html").fadeIn(400).load("content/list.htm .page_body", function () {
+                                    $(".list_html").fadeIn(400).load("content/list.htm .page_body", function () {
                                         listInitialize();
                                        
                                     });

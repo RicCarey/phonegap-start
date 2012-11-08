@@ -49,32 +49,37 @@ function listInitialize() {
             var propKey = listPoi.detailsPropertyOrder[key];
             $(".details" + i).append('<li><label>' + propKey[p] + ':</label><div class="details_info">' + listPoi.details[key][propKey[p]].replace(/\r\n|\r|\n/g, "<br />") + '</div></li>');
         }
-
+       
        
     }
 
-
-
-
+    $('#nav_toggle img').clone().appendTo(".listtoggle");
+    $(".listtoggle").css("paddingRight", $('#nav_toggle img').width());
+    
 
 
     //list toggle
     var lst = $(".listtoggle").click(function () {
         if ($(this).parent().children("ul").hasClass("slid_down")) {
             $(this).parent().children("ul").slideUp().removeClass("slid_down");
+            $(this).children("img").attr("src", "images/icons/" + window.imageSize + "/toggle.png");
         } else {
 
             var top = $(this).data("scollPos");
             var functionScroolToView = function () {
-                $("html, body").animate({ scrollTop: top }, function () {
-                    $(window).scrollTop(top);
-                });
+//                $("html").animate({ scrollTop: top }, function () {
+                   $(window).scrollTop(top);
+//                });
             }
 
             $(".slid_down").slideUp().removeClass("slid_down");
+            $(".listtoggle img").attr("src", "images/icons/" + window.imageSize + "/toggle.png");
+
             $(this).parent().children("ul").slideDown(function () {
                 functionScroolToView();
             }).addClass("slid_down");
+
+            $(this).children("img").attr("src", "images/icons/" + window.imageSize + "/toggle_rotated.png");
             functionScroolToView();
 
         }
@@ -96,7 +101,7 @@ function listInitialize() {
     if (!window.poiId == null || !window.poiId == "") {
         $("#" + window.poiId).click();
     }
-
+    
 }
 
 
