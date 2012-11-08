@@ -203,7 +203,7 @@ function windowResize() {
         }
         //if high density use double 
         if (dpr > 1) {
-            window.imageSize = widnow.imageSize * 2;
+            window.imageSize = window.imageSize * 2;
         }
         //swap images
 
