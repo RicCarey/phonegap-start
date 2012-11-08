@@ -4,7 +4,9 @@ function initialize() {
 
     if (!window.searchResults){
         alert("An error has occurred attempting to load Google Maps, please restart the app.");
+        $(".map_wrap").remove();
     }
+
     $("#map_canvas").remove();
     $(".map_wrap").append('<div id="map_canvas" style="width:100%; height:100%"></div>');
     var locationText;
