@@ -530,9 +530,10 @@ background-color: #00676C;
 #postcodesearchform #postocdeSearch
 {
  float:left;   
- width: 60%;
+ width: 55%;
  height: 30px;
 margin-top: 17px;
+margin-left: 5%;
 }
 #postcodesearchform #postcodeSubmit
 {
@@ -602,4 +603,8 @@ padding-right: 5%;
 .landscape .introduction_text {
     margin-left: 6%;
     padding: 0;
+}
+.details_info a
+{
+    color: #FFFFFF;
 }
