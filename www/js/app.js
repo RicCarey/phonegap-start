@@ -300,7 +300,7 @@ function windowResize() {
 
 //$(window).load(function () {
 $(document).ready(function () {
-    alert("hello");
+    alert("hello v138");
     //disable scrolling
     scrollEnabled = false;
     $("html").on("touchmove", function (e) {
@@ -500,8 +500,13 @@ function searchForm() {
         $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&" + window.jsonLocation + "&callback=?&limit=15&type=" + window.poiType, function (data) {
             window.searchResults = data;
             if (!window.searchResults.location) {
-                alert("The location you have searched for has not been recognised, try another location.");
-                
+                navigator.notification.alert(
+                    "The location you have searched for has not been recognised, try another location.",
+                    //callBackFunctionB, // Specify a function to be called 
+                    'Error',
+                    "OK"
+                );
+                               
             } else {
                 listInitialize();
                 initialize();

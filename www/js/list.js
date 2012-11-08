@@ -1,7 +1,12 @@
 function listInitialize() {
 
     if (!window.searchResults) {
-        alert("An error has occurred attempting to load the list data, please try restarting the app.");
+        navigator.notification.alert(
+                    "An error has occurred attempting to load the list data, please try restarting the app.",
+                    //callBackFunctionB, // Specify a function to be called 
+                    'Error',
+                    "OK"
+                );
     }
     var locationText;
     if (window.poiType == "Nots-pharmacies") {
@@ -21,7 +26,7 @@ function listInitialize() {
     }
 
     $(".introduction_text_content").remove();
-    $(".introduction_text").append('<div class="introduction_text_content">Showing the nearest ' + window.searchResults.poi.length + ' result(s) for ' + locationText + '. Try searching to refine results.</div> ').fadeIn();
+    $(".introduction_text").append('<div class="introduction_text_content">Showing the nearest ' + window.searchResults.poi.length + ' result(s) for ' + locationText + '.</div> ').fadeIn();
 
 
     $(".list-ul li").remove();

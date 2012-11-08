@@ -3,7 +3,12 @@ var infowindow = null;
 function initialize() {
 
     if (!window.searchResults){
-        alert("An error has occurred attempting to load Google Maps, please restart the app.");
+        navigator.notification.alert(
+                    "An error has occurred attempting to load Google Maps, please restart the app.",
+                    //callBackFunctionB, // Specify a function to be called 
+                    'Error',
+                    "OK"
+                );
         $(".map_wrap").remove();
     }
 
