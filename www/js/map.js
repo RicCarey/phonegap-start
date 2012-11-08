@@ -3,16 +3,7 @@ var infowindow = null;
 function initialize() {
 
     if (!window.searchResults){
-        alert("An error has occurred attempting to load Google Maps, please try restarting the app, if entering your location manually fails.");
-        window.jsonLocation = prompt("Enter your location");
-        $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&loc=" + window.jsonLocation + "&callback=?&limit=15&type=" + window.poiType, function (data) {
-            window.searchResults = data;
-            if (!window.searchResults) 
-                    {
-                        $(".map_wrap").remove();
-                    }
-        });
-
+        alert("An error has occurred attempting to load Google Maps, please restart the app.");
     }
     $("#map_canvas").remove();
     $(".map_wrap").append('<div id="map_canvas" style="width:100%; height:100%"></div>');
