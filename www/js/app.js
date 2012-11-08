@@ -300,7 +300,7 @@ function windowResize() {
 
 //$(window).load(function () {
 $(document).ready(function () {
-    alert("hello v138");
+    alert("hello v139");
     //disable scrolling
     scrollEnabled = false;
     $("html").on("touchmove", function (e) {
@@ -430,8 +430,33 @@ $(document).ready(function () {
     });
     $("#postocdeSearch").blur(function () {
         resizeEnabled = true;
-        $("#postcodesearchform").submit();
     });
+    //search submit
+    $("#postcodesearchform").submit(function (e) {
+        e.preventDefault();
+        window.postcodeSearch = $("#postocdeSearch").val();
+        $("#second_search_label").click();
+        centreMap();
+        $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&" + window.jsonLocation + "&callback=?&limit=15&type=" + window.poiType, function (data) {
+            window.searchResults = data;
+            if (!window.searchResults.location) {
+                navigator.notification.confirm(
+                    "The location you have searched for has not been recognised, try another location.",
+                    function () {
+                        //do nothing
+                    },
+                    'Error',
+                    "OK"
+                );
+
+            } else {
+                listInitialize();
+                initialize();
+            }
+        });
+
+    });
+
 });
 
 $(window).resize(function () {
@@ -480,10 +505,13 @@ function searchForm() {
     $("#first_search_label").click(function () {
         $(".search").width("90%");
         $("#first_search_label").hide();
-        $(".searchform").show("slide", { direction: "left" }, 500);
+        $(".searchform").show("slide", { direction: "left" }, 500, function () {
+            $("#postocdeSearch").focus();
+        });
+
     });
     $("#second_search_label").click(function () {
-        
+        $("#postocdeSearch").blur();
         $(".searchform").hide("slide", { direction: "left" }, 500, function () {
           
             $("#first_search_label").show();
@@ -492,28 +520,7 @@ function searchForm() {
         
     });
 
-    $("#postcodesearchform").submit(function (e) {
-        e.preventDefault();
-        window.postcodeSearch = $("#postocdeSearch").val();
-        $("#second_search_label").click();
-        centreMap();
-        $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&" + window.jsonLocation + "&callback=?&limit=15&type=" + window.poiType, function (data) {
-            window.searchResults = data;
-            if (!window.searchResults.location) {
-                navigator.notification.alert(
-                    "The location you have searched for has not been recognised, try another location.",
-                    //callBackFunctionB, // Specify a function to be called 
-                    'Error',
-                    "OK"
-                );
-                               
-            } else {
-                listInitialize();
-                initialize();
-            }
-        });
-
-    });
+    
     
 
 };
