@@ -332,7 +332,7 @@ $(document).ready(function () {
 
             $(".page_html").show().load(pageLoad + " .page_body", function () {
                 $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&" + window.jsonLocation + "&callback=?&limit=15&type=" + window.poiType, function (data) {
-                    window.searchResults = data;
+                   window.searchResults = data;
                     if (window.poiType == "" || window.poiType == null) {
                         $("#map, #list").addClass("disabled");
                     } else {
