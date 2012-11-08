@@ -167,7 +167,7 @@ function windowResize() {
             $('#tabgroup').width(windowWidth * 0.10).height(windowHeight - $("#nav_toggle").outerHeight(true));
             $('#tabgroup img').width(windowWidth * 0.10)
             //account for tabgroup width in content
-            $(".page_html").width(windowWidth * 0.88);
+            $(".page_html").width(windowWidth * 0.86);
             $(".map_wrap").width(windowWidth * 0.78);
             $(".introduction_text").width(windowWidth * 0.88);
         }
@@ -371,7 +371,7 @@ $(document).ready(function () {
 
                 });
             });
-            $.getScript("js/app_page.js");
+         
             $("body").addClass("content-page");
         } else {
             $(".page_html").fadeOut(400, function () {
