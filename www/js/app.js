@@ -342,6 +342,7 @@ $(document).ready(function () {
                         event.preventDefault();
                         $(".page_html, .map_wrap").fadeOut(400, function () {
                             $(".introduction_text").hide();
+                            $(".list_html").hide();
                             $(".page_html").fadeIn(400).load(pageLoad + " .page_body");
 
                         });
