@@ -300,6 +300,7 @@ function windowResize() {
 
 //$(window).load(function () {
 $(document).ready(function () {
+    alert("hello");
     //disable scrolling
     scrollEnabled = false;
     $("html").on("touchmove", function (e) {
@@ -345,8 +346,8 @@ $(document).ready(function () {
                             $(".list_html").hide();
                             $(".search").hide();
                             $(".page_html").fadeIn(400).load(pageLoad + " .page_body");
-               
-                            
+
+
                         });
 
                         if ($("#nav_toggle").hasClass("fixed_nav_toggle")) {
