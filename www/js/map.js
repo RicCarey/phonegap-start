@@ -7,9 +7,10 @@ function initialize() {
         window.jsonLocation = prompt("Enter your location");
         $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&loc=" + window.jsonLocation + "&callback=?&limit=15&type=" + window.poiType, function (data) {
             window.searchResults = data;
-                    if (!window.searchResults) {
+            if (!window.searchResults) 
+                    {
                         $(".map_wrap").remove();
-                    });
+                    }
         });
 
     }
