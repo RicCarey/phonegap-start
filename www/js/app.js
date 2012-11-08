@@ -164,6 +164,7 @@ function windowResize() {
             $('#tabgroup, #tabgroup img').height(Math.ceil(iconHeight) / 1.5)
             $('#tabgroup').width(windowWidth * 0.9)
             $(".introduction_text").width("auto");
+            $(".page_html, .list_html").width("auto");
         } else {
             $('#tabgroup').width(windowWidth * 0.10).height(windowHeight - $("#nav_toggle").outerHeight(true));
             $('#tabgroup img').width(windowWidth * 0.10)
@@ -300,7 +301,7 @@ function windowResize() {
 
 //$(window).load(function () {
 $(document).ready(function () {
-    alert("hello v139");
+    alert("hello v140");
     //disable scrolling
     scrollEnabled = false;
     $("html").on("touchmove", function (e) {
@@ -364,8 +365,9 @@ $(document).ready(function () {
                         $(".page_html").fadeOut(400, function () {
                             $(".list_html").fadeIn(400).load("content/list.htm .page_body", function () {
                                 listInitialize();
-                                //searchForm();
-                                $(".search").hide();
+                                $("#second_search_label").click();
+                                searchForm();
+                                //                                
                                 //                                $(".list-ul").css("marginTop", 0 - (navToggleHeight));
                             });
 
@@ -438,10 +440,10 @@ $(document).ready(function () {
         $("#second_search_label").click();
         centreMap();
         $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&" + window.jsonLocation + "&callback=?&limit=15&type=" + window.poiType, function (data) {
-            window.searchResults = data;
-            if (!window.searchResults.location) {
-                navigator.notification.confirm(
-                    "The location you have searched for has not been recognised, try another location.",
+            window.tempSearchResults = data;
+            if (!window.tempSearchResults.location) {
+                showMessage(
+                   "The location you have searched for has not been recognised, try another location.",
                     function () {
                         //do nothing
                     },
@@ -450,6 +452,7 @@ $(document).ready(function () {
                 );
 
             } else {
+                window.searchResults = window.tempSearchResults;
                 listInitialize();
                 initialize();
             }
@@ -520,7 +523,29 @@ function searchForm() {
         
     });
 
-    
-    
+
+
 
 };
+
+function showMessage(message, callback, title, buttonName) {
+
+    title = title || "default title";
+    buttonName = buttonName || 'OK';
+
+    if (navigator.notification && navigator.notification.alert) {
+
+        navigator.notification.alert(
+            message,    // message
+            callback,   // callback
+            title,      // title
+            buttonName  // buttonName
+        );
+
+    } else {
+
+        alert(message);
+//        invoke(callback)
+    }
+
+}
