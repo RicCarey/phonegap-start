@@ -2,11 +2,11 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.icecreates.hello-world"
-        version   = "141">
-    <name>NHS Nottingham App v2</name>
+        version   = "1">
+    <name>NHS Nottingham Health App</name>
 
     <description>
-        Hello World sample application that responds to the deviceready event. Forked By Ric 
+     description to be sent over once confirmed by comms team. 
     </description>
 
     <author href="http://www.icecreates.com" email="media@icecreates.com">
