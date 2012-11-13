@@ -739,9 +739,10 @@ function initialize() {
 //            locationText = "Sexual Health C-Card Scheme";
 //            break;
 //        }
-        $(".introduction_text_content").remove();
+//        $(".introduction_text_content").remove();
 
-        $(".introduction_text").append('<div class="introduction_text_content">Showing the nearest ' + window.searchResults.poi.length + ' result(s) to "' + (window.searchResults.location.name || window.searchResults.location.postcode).toUpperCase() + '" for ' + locationText + '.</div> ').fadeIn();
+//        $(".introduction_text").append('<div class="introduction_text_content">Showing the nearest ' + window.searchResults.poi.length + ' result(s) to "' + (window.searchResults.location.name || window.searchResults.location.postcode).toUpperCase() + '" for ' + locationText + '.</div> ').fadeIn();
+    alert(locationText);
         var mapWrapHeight = window.mapNewHeight - $(".introduction_text").height();
         $(".map_wrap").height(mapWrapHeight);
         var latlngbounds = new google.maps.LatLngBounds();
