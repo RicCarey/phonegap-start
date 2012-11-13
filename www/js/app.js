@@ -685,6 +685,7 @@ var infowindow = null;
 function initialize() {
 
     if (!window.searchResults) {
+        alert("no search results");
         //        showMessage(
         //       
         //                    "An error has occurred attempting to load Google Maps, please restart the app.",
@@ -700,6 +701,7 @@ function initialize() {
         }, 'Error', "OK");
         //        $(".map_wrap").remove();
     } else {
+        alert("search results");
         $("#map_canvas").remove();
         $(".map_wrap").append('<div id="map_canvas" style="width:100%; height:100%"></div>');
         var locationText;
