@@ -10,26 +10,43 @@ function listInitialize() {
 
         navigator.notification.alert("An error has occurred attempting to load the list data, please try restarting the app.", function () { }, 'Error', "OK")
     }
+//    var locationText;
+//    if (window.poiType == "Nots-pharmacies") {
+//        locationText = "Pharmacies"
+
+//    } else if (window.poiType == "Nots-gps") {
+//        locationText = "GPs"
+
+//    } else if (window.poiType == "Nots-walkin-centre") {
+//        locationText = "Walk In Centres"
+
+//    } else if (window.poiType == "Nots-AE") {
+//        locationText = "A&Es"
+
+//    } else if (window.poiType == "Nots-C-Card-Sex-health") {
+//        locationText = "Sexual Health C-Card Scheme"
+//    }
+
+//    $(".introduction_text_content").remove();
+//    $(".introduction_text").append('<div class="introduction_text_content">Showing the nearest ' + window.searchResults.poi.length + ' result(s) to "' + (window.searchResults.location.name || window.searchResults.location.postcode).toUpperCase() + '" for ' + locationText + '.</div> ').fadeIn();
+   
     var locationText;
     if (window.poiType == "Nots-pharmacies") {
-        locationText = "Pharmacies"
+        locationText = "Pharmacies";
 
     } else if (window.poiType == "Nots-gps") {
-        locationText = "GPs"
+        locationText = "GPs";
 
     } else if (window.poiType == "Nots-walkin-centre") {
-        locationText = "Walk In Centres"
+        locationText = "Walk In Centres";
 
     } else if (window.poiType == "Nots-AE") {
-        locationText = "A&Es"
+        locationText = "A&Es";
 
     } else if (window.poiType == "Nots-C-Card-Sex-health") {
-        locationText = "Sexual Health C-Card Scheme"
+        locationText = "Sexual Health C-Card Scheme";
     }
-
-    $(".introduction_text_content").remove();
-    $(".introduction_text").append('<div class="introduction_text_content">Showing the nearest ' + window.searchResults.poi.length + ' result(s) to "' + (window.searchResults.location.name || window.searchResults.location.postcode).toUpperCase() + '" for ' + locationText + '.</div> ').fadeIn();
-
+       $(".introduction_text").append('<div class="introduction_text_content">Showing the nearest result(s) for ' + locationText + '.</div> ').fadeIn();
 
     $(".list-ul li").remove();
     var listPois = window.searchResults.poi;
