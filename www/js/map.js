@@ -14,8 +14,7 @@ function initialize() {
         $(".map_wrap").remove();
     }
 
-    $("#map_canvas").remove();
-    $(".map_wrap").append('<div id="map_canvas" style="width:100%; height:100%"></div>');
+     $(".map_wrap").append('<div id="map_canvas" style="width:100%; height:100%"></div>');
     var locationText;
     if (window.poiType == "Nots-pharmacies") {
         locationText = "Pharmacies"
@@ -32,8 +31,9 @@ function initialize() {
      }else if (window.poiType == "Nots-C-Card-Sex-health") {
         locationText = "Sexual Health C-Card Scheme"
     }
-       
+
     $(".introduction_text_content").remove();
+
     $(".introduction_text").append('<div class="introduction_text_content">Showing the nearest ' + window.searchResults.poi.length + ' result(s) to "' + (window.searchResults.location.name || window.searchResults.location.postcode).toUpperCase() + '" for ' + locationText + '.</div> ').fadeIn();
     var mapWrapHeight = window.mapNewHeight - $(".introduction_text").height();
     $(".map_wrap").height(mapWrapHeight);
