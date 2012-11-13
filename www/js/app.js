@@ -301,7 +301,7 @@ function windowResize() {
 
 //$(window).load(function () {
 $(document).ready(function () {
-    alert("hello v140");
+    showMessage("hello v140", function () { }, "title", "buttonName");
     //disable scrolling
     scrollEnabled = false;
     $("html").on("touchmove", function (e) {
@@ -548,4 +548,4 @@ function showMessage(message, callback, title, buttonName) {
 //        invoke(callback)
     }
 
-}
+};
