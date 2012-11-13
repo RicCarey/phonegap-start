@@ -703,7 +703,7 @@ function initialize() {
         }, 'Error', "OK");
         //        $(".map_wrap").remove();
     } else {
-        alert("search results");
+       
 //        $("#map_canvas").remove();
 //        $(".map_wrap").append('<div id="map_canvas" style="width:100%; height:100%"></div>');
 //        var locationText;
@@ -729,7 +729,7 @@ function initialize() {
 //        var mapWrapHeight = window.mapNewHeight - $(".introduction_text").height();
  //       $(".map_wrap").height(mapWrapHeight);
         var latlngbounds = new google.maps.LatLngBounds();
-        alert("before centre map");
+      
         centreMap();
         var centreOn = new google.maps.LatLng(window.searchResults.location.lat, window.searchResults.location.lon);
         var mapOptions = {
