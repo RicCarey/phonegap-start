@@ -706,28 +706,28 @@ function initialize() {
         alert("search results");
 //        $("#map_canvas").remove();
 //        $(".map_wrap").append('<div id="map_canvas" style="width:100%; height:100%"></div>');
-        var locationText;
-        if (window.poiType == "Nots-pharmacies") {
-            locationText = "Pharmacies"
+//        var locationText;
+//        if (window.poiType == "Nots-pharmacies") {
+//            locationText = "Pharmacies"
 
-        } else if (window.poiType == "Nots-gps") {
-            locationText = "GPs"
+//        } else if (window.poiType == "Nots-gps") {
+//            locationText = "GPs"
 
-        } else if (window.poiType == "Nots-walkin-centre") {
-            locationText = "Walk In Centres"
+//        } else if (window.poiType == "Nots-walkin-centre") {
+//            locationText = "Walk In Centres"
 
-        } else if (window.poiType == "Nots-AE") {
-            locationText = "A&Es"
+//        } else if (window.poiType == "Nots-AE") {
+//            locationText = "A&Es"
 
-        } else if (window.poiType == "Nots-C-Card-Sex-health") {
-            locationText = "Sexual Health C-Card Scheme"
-        }
+//        } else if (window.poiType == "Nots-C-Card-Sex-health") {
+//            locationText = "Sexual Health C-Card Scheme"
+//        }
 
-        $(".introduction_text_content").remove();
+//        $(".introduction_text_content").remove();
 
-        $(".introduction_text").append('<div class="introduction_text_content">Showing the nearest ' + window.searchResults.poi.length + ' result(s) to "' + (window.searchResults.location.name || window.searchResults.location.postcode).toUpperCase() + '" for ' + locationText + '.</div> ').fadeIn();
-        var mapWrapHeight = window.mapNewHeight - $(".introduction_text").height();
-        $(".map_wrap").height(mapWrapHeight);
+//        $(".introduction_text").append('<div class="introduction_text_content">Showing the nearest ' + window.searchResults.poi.length + ' result(s) to "' + (window.searchResults.location.name || window.searchResults.location.postcode).toUpperCase() + '" for ' + locationText + '.</div> ').fadeIn();
+//        var mapWrapHeight = window.mapNewHeight - $(".introduction_text").height();
+ //       $(".map_wrap").height(mapWrapHeight);
         var latlngbounds = new google.maps.LatLngBounds();
         alert("before centre map");
         centreMap();
