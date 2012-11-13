@@ -301,7 +301,7 @@ function windowResize() {
 
 //$(window).load(function () {
 $(document).ready(function () {
-    showMessage("hello v140", function () { }, "title", "buttonName");
+    alert("New v3");
     //disable scrolling
     scrollEnabled = false;
     $("html").on("touchmove", function (e) {
@@ -442,15 +442,15 @@ $(document).ready(function () {
         $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&" + window.jsonLocation + "&callback=?&limit=15&type=" + window.poiType, function (data) {
             window.tempSearchResults = data;
             if (!window.tempSearchResults.location) {
-                showMessage(
-                   "The location you have searched for has not been recognised, try another location.",
-                    function () {
-                        //do nothing
-                    },
-                    'Error',
-                    "OK"
-                );
-
+                //                showMessage(
+                //                   "The location you have searched for has not been recognised, try another location.",
+                //                    function () {
+                //                        //do nothing
+                //                    },
+                //                    'Error',
+                //                    "OK"
+                //                );
+                navigator.notification.alert("The location you have searched for has not been recognised, try another location.", function () { }, 'Error', "OK");
             } else {
                 window.searchResults = window.tempSearchResults;
                 listInitialize();
@@ -528,24 +528,24 @@ function searchForm() {
 
 };
 
-function showMessage(message, callback, title, buttonName) {
+//function showMessage(message, callback, title, buttonName) {
 
-    title = title || "default title";
-    buttonName = buttonName || 'OK';
+//    title = title || "default title";
+//    buttonName = buttonName || 'OK';
 
-    if (navigator.notification && navigator.notification.alert) {
+//    if (navigator.notification && navigator.notification.alert) {
 
-        navigator.notification.alert(
-            message,    // message
-            callback,   // callback
-            title,      // title
-            buttonName  // buttonName
-        );
+//        navigator.notification.alert(
+//            message,    // message
+//            callback,   // callback
+//            title,      // title
+//            buttonName  // buttonName
+//        );
 
-    } else {
+//    } else {
 
-        alert(message);
-//        invoke(callback)
-    }
+//        alert(message);
+////        invoke(callback)
+//    }
 
-};
+//};

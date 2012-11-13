@@ -3,13 +3,14 @@ var infowindow = null;
 function initialize() {
 
     if (!window.searchResults){
-        showMessage(
-       
-                    "An error has occurred attempting to load Google Maps, please restart the app.",
-                    function(){},
-                    'Error',
-                    "OK"
-                );
+//        showMessage(
+//       
+//                    "An error has occurred attempting to load Google Maps, please restart the app.",
+//                    function(){},
+//                    'Error',
+//                    "OK"
+        //                );
+        navigator.notification.alert("An error has occurred attempting to load Google Maps, please restart the app.", function () { }, 'Error', "OK");
         $(".map_wrap").remove();
     }
 

@@ -1,13 +1,14 @@
 function listInitialize() {
 
     if (!window.searchResults) {
-          showMessage(
-                    "An error has occurred attempting to load the list data, please try restarting the app.",
-                    function(){},
-                    'Error',
-                    "OK"
-                );
-       
+//          showMessage(
+//                    "An error has occurred attempting to load the list data, please try restarting the app.",
+//                    function(){},
+//                    'Error',
+//                    "OK"
+        //                );
+
+        navigator.notification.alert("An error has occurred attempting to load the list data, please try restarting the app.", function () { }, 'Error', "OK")
     }
     var locationText;
     if (window.poiType == "Nots-pharmacies") {
