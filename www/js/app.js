@@ -724,19 +724,19 @@ function initialize() {
         //        }
     switch (window.poiType) {
         case "Nots-pharmacies":
-            locationText = "Pharmacies"
+            locationText = "Pharmacies";
             break;
-       case "Nots-gps":
-            locationText = "GPs"
+        case "Nots-gps":
+            locationText = "GPs";
             break;
         case "Nots-walkin-centre":
-            locationText = "Walk In Centres"
+            locationText = "Walk In Centres";
             break;
-        case  "Nots-AE":
-            locationText = "A&Es"
+        case "Nots-AE":
+            locationText = "A&Es";
             break;
         case "Nots-C-Card-Sex-health":
-            locationText = "Sexual Health C-Card Scheme"
+            locationText = "Sexual Health C-Card Scheme";
             break;
         }
         $(".introduction_text_content").remove();
