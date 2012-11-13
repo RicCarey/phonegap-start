@@ -693,7 +693,7 @@ function initialize() {
         //                    'Error',
         //                    "OK"
         //                );
-        navigator.notification.alert("An error has occurred attempting to load Google Maps, please restart the app.", function () {
+        navigator.notification.alert("An error has occurred attempting to load Google Maps, please restart the app, if the map does not eventually load.", function () {
             $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&" + window.jsonLocation + "&callback=?&limit=15&type=" + window.poiType, function (data) {
                 window.searchResults = data;
                 $(".map_wrap").remove();
@@ -706,7 +706,7 @@ function initialize() {
        
 //        $("#map_canvas").remove();
 //        $(".map_wrap").append('<div id="map_canvas" style="width:100%; height:100%"></div>');
-//        var locationText;
+        var locationText;
 //        if (window.poiType == "Nots-pharmacies") {
 //            locationText = "Pharmacies"
 
@@ -721,13 +721,29 @@ function initialize() {
 
 //        } else if (window.poiType == "Nots-C-Card-Sex-health") {
 //            locationText = "Sexual Health C-Card Scheme"
-//        }
+        //        }
+    switch (window.poiType) {
+        case "Nots-pharmacies":
+            locationText = "Pharmacies"
+            break;
+       case "Nots-gps":
+            locationText = "GPs"
+            break;
+        case "Nots-walkin-centre":
+            locationText = "Walk In Centres"
+            break;
+        case  "Nots-AE":
+            locationText = "A&Es"
+            break;
+        case "Nots-C-Card-Sex-health":
+            locationText = "Sexual Health C-Card Scheme"
+            break;
+        }
+        $(".introduction_text_content").remove();
 
-//        $(".introduction_text_content").remove();
-
-//        $(".introduction_text").append('<div class="introduction_text_content">Showing the nearest ' + window.searchResults.poi.length + ' result(s) to "' + (window.searchResults.location.name || window.searchResults.location.postcode).toUpperCase() + '" for ' + locationText + '.</div> ').fadeIn();
-//        var mapWrapHeight = window.mapNewHeight - $(".introduction_text").height();
- //       $(".map_wrap").height(mapWrapHeight);
+        $(".introduction_text").append('<div class="introduction_text_content">Showing the nearest ' + window.searchResults.poi.length + ' result(s) to "' + (window.searchResults.location.name || window.searchResults.location.postcode).toUpperCase() + '" for ' + locationText + '.</div> ').fadeIn();
+        var mapWrapHeight = window.mapNewHeight - $(".introduction_text").height();
+        $(".map_wrap").height(mapWrapHeight);
         var latlngbounds = new google.maps.LatLngBounds();
       
         centreMap();
