@@ -60,7 +60,7 @@ function windowResize() {
 
         $("body").removeClass("landscape").removeClass("portrait");
         $(".expander").hide();
-        $("#nav_toggle").hide();
+        $("#nav_toggle").css("display", "none");
         $(".home_content").height("auto");
         $('.nav li .icon img').height("auto").css("maxWidth", "auto").width("auto").css("maxHeight", "auto");
         $('.nav li .label').height("auto");
@@ -151,7 +151,7 @@ function windowResize() {
         } else {
             $('.nav li .icon img').width(Math.ceil(iconWidth)).css("maxheight", (iconHeight));
         }
-        $("#nav_toggle").show();
+   //    $("#nav_toggle").show();
 
         if (windowWidth > windowHeight) {
             nhsLogoHeight = $("#nhs_logo").height();
@@ -166,7 +166,11 @@ function windowResize() {
             $(".introduction_text").width("auto");
             $(".page_html, .list_html").width("auto");
         } else {
+   
             $('#tabgroup').width(windowWidth * 0.10).height(windowHeight - $("#nav_toggle").outerHeight(true));
+   
+           
+
             $('#tabgroup img').width(windowWidth * 0.10)
             //account for tabgroup width in content
             $(".page_html").width(windowWidth * 0.86);
@@ -218,8 +222,19 @@ function windowResize() {
 
         negativeHomeContentHeight = 0 - $(".home_content").outerHeight(true);
         negativePageHeight = 0 - windowHeight;
-
+//        if ($("#nav_toggle").is(':visible')) {
+//            window.navToggleVis = false;
+//        } else {
+//            window.navToggleVis = true;
+            $("#nav_toggle").show();
+//        }
+        
         navMarign = $(".nav").outerHeight(true) - $("#nav_toggle").outerHeight(true);
+       
+//        if (window.navToggleVis) {
+//            $("#nav_toggle").hide();
+//        }
+       
 
         if ($("body").hasClass("content-page")) {
 
@@ -551,3 +566,257 @@ function searchForm() {
 //    }
 
 //};
+
+function listInitialize() {
+
+    if (!window.searchResults) {
+        //          showMessage(
+        //                    "An error has occurred attempting to load the list data, please try restarting the app.",
+        //                    function(){},
+        //                    'Error',
+        //                    "OK"
+        //                );
+
+        navigator.notification.alert("An error has occurred attempting to load the list data, please try restarting the app.", function () { }, 'Error', "OK")
+    }
+    var locationText;
+    if (window.poiType == "Nots-pharmacies") {
+        locationText = "Pharmacies"
+
+    } else if (window.poiType == "Nots-gps") {
+        locationText = "GPs"
+
+    } else if (window.poiType == "Nots-walkin-centre") {
+        locationText = "Walk In Centres"
+
+    } else if (window.poiType == "Nots-AE") {
+        locationText = "A&Es"
+
+    } else if (window.poiType == "Nots-C-Card-Sex-health") {
+        locationText = "Sexual Health C-Card Scheme"
+    }
+
+    $(".introduction_text_content").remove();
+    $(".introduction_text").append('<div class="introduction_text_content">Showing the nearest ' + window.searchResults.poi.length + ' result(s) to "' + (window.searchResults.location.name || window.searchResults.location.postcode).toUpperCase() + '" for ' + locationText + '.</div> ').fadeIn();
+
+
+    $(".list-ul li").remove();
+    var listPois = window.searchResults.poi;
+
+
+    for (var i = 0; i < listPois.length; i++) {
+        var listPoi = listPois[i];
+
+
+
+        var key;
+        for (var d = 0, len = listPoi.detailsGroupOrder.length; d < len; d++) {
+            var key = listPoi.detailsGroupOrder[d];
+            //key, listPoi.details[key], listPoi.detailsPropertyOrder[key];
+        }
+
+        $(".list-ul").append('<li><div class="listtoggle" id="poiid_' + listPoi.id + '">' + listPoi.name + '</div>'
+                    + '<ul class="details' + i + '"><li class="detail_title">' + key + '</ul></li>'
+                );
+
+        //listPoi.distance
+
+        for (var p = 0, propLength = listPoi.detailsPropertyOrder[key].length; p < propLength; p++) {
+            var propKey = listPoi.detailsPropertyOrder[key];
+            $(".details" + i).append('<li><label>' + propKey[p] + ':</label><div class="details_info">' + listPoi.details[key][propKey[p]].replace(/\r\n|\r|\n/g, "<br />") + '</div></li>');
+        }
+
+
+    }
+
+    $('#nav_toggle img').clone().appendTo(".listtoggle");
+    $(".listtoggle").css("paddingRight", $('#nav_toggle img').width());
+
+
+
+    //list toggle
+    var lst = $(".listtoggle").click(function () {
+        if ($(this).parent().children("ul").hasClass("slid_down")) {
+            $(this).parent().children("ul").slideUp().removeClass("slid_down");
+            $(this).children("img").attr("src", "images/icons/" + window.imageSize + "/toggle.png");
+        } else {
+
+            var top = $(this).data("scollPos");
+            var functionScroolToView = function () {
+                //                $("html").animate({ scrollTop: top }, function () {
+                $(window).scrollTop(top);
+                //                });
+            }
+
+            $(".slid_down").slideUp().removeClass("slid_down");
+            $(".listtoggle img").attr("src", "images/icons/" + window.imageSize + "/toggle.png");
+
+            $(this).parent().children("ul").slideDown(function () {
+                functionScroolToView();
+            }).addClass("slid_down");
+
+            $(this).children("img").attr("src", "images/icons/" + window.imageSize + "/toggle_rotated.png");
+            functionScroolToView();
+
+        }
+
+    });
+    function caclulateScollOffsets() {
+        var detailsZeroParent = $(".details0").parent();
+        var detailsZeroOffset = detailsZeroParent.offset();
+        lst.each(function (i) {
+
+            var listToggleOffset = $(this).parent().offset();
+            var top = (listToggleOffset.top - detailsZeroOffset.top);
+            $(this).data("scollPos", top);
+        });
+    }
+    caclulateScollOffsets();
+    $(window).on("resizeWindow", caclulateScollOffsets);
+
+    if (!window.poiId == null || !window.poiId == "") {
+        $("#" + window.poiId).click();
+    }
+
+}
+
+
+var infowindow = null;
+
+function initialize() {
+
+    if (!window.searchResults) {
+        //        showMessage(
+        //       
+        //                    "An error has occurred attempting to load Google Maps, please restart the app.",
+        //                    function(){},
+        //                    'Error',
+        //                    "OK"
+        //                );
+        navigator.notification.alert("An error has occurred attempting to load Google Maps, please restart the app.", function () { }, 'Error', "OK");
+        $(".map_wrap").remove();
+    }
+
+    $(".map_wrap").append('<div id="map_canvas" style="width:100%; height:100%"></div>');
+    var locationText;
+    if (window.poiType == "Nots-pharmacies") {
+        locationText = "Pharmacies"
+
+    } else if (window.poiType == "Nots-gps") {
+        locationText = "GPs"
+
+    } else if (window.poiType == "Nots-walkin-centre") {
+        locationText = "Walk In Centres"
+
+    } else if (window.poiType == "Nots-AE") {
+        locationText = "A&Es"
+
+    } else if (window.poiType == "Nots-C-Card-Sex-health") {
+        locationText = "Sexual Health C-Card Scheme"
+    }
+
+    $(".introduction_text_content").remove();
+
+    $(".introduction_text").append('<div class="introduction_text_content">Showing the nearest ' + window.searchResults.poi.length + ' result(s) to "' + (window.searchResults.location.name || window.searchResults.location.postcode).toUpperCase() + '" for ' + locationText + '.</div> ').fadeIn();
+    var mapWrapHeight = window.mapNewHeight - $(".introduction_text").height();
+    $(".map_wrap").height(mapWrapHeight);
+    var latlngbounds = new google.maps.LatLngBounds();
+
+    centreMap();
+    var centreOn = new google.maps.LatLng(window.searchResults.location.lat, window.searchResults.location.lon);
+    var mapOptions = {
+        zoom: 11,
+        center: centreOn,
+
+        mapTypeControl: false,
+        //                mapTypeControlOptions: {
+        //                    style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+        //                },
+        zoomControl: true,
+        zoomControlOptions: {
+            style: google.maps.ZoomControlStyle.SMALL,
+            position: google.maps.ControlPosition.RIGHT_TOP
+        },
+        panControl: true,
+        panControlOptions: {
+
+            position: google.maps.ControlPosition.TOP_LEFT
+
+        },
+
+        streetViewControl: false,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    var map = new google.maps.Map(document.getElementById("map_canvas"),
+      mapOptions);
+
+
+    var pois = window.searchResults.poi;
+
+
+    map.setCenter(centreOn);
+    latlngbounds.extend(centreOn);
+
+    var contentString = null;
+
+    infowindow = new google.maps.InfoWindow({
+        content: "holding..."
+    });
+
+
+    for (var i = 0; i < pois.length; i++) {
+        var poi = pois[i];
+        var point = new google.maps.LatLng(poi.lat, poi.lon);
+
+        var marker = new google.maps.Marker({
+            position: point,
+            map: map,
+            title: poi.name,
+            html: '<div class="poi-description"><a href="#" data-id="poiid_' + poi.id + '">' + poi.name + '</a></div>'
+        });
+
+        latlngbounds.extend(point);
+
+        google.maps.event.addListener(marker, 'click', function () {
+            map.setCenter(this.position);
+            infowindow.setContent(this.html);
+            infowindow.open(map, this);
+        });
+    }
+    var centre = function () {
+
+        map.fitBounds(latlngbounds);
+
+
+
+        var fixZoom = function () {
+            if (map.getZoom() > 15) {
+                map.setZoom(15);
+            }
+        }
+
+        setTimeout(fixZoom, 200);
+        fixZoom();
+
+    }
+
+    centre();
+
+    $(document).on("click", ".poi-description a", function (e) {
+        e.preventDefault();
+        window.poiId = $(this).attr("data-id");
+        $(".map_wrap").fadeOut(400, function () {
+            $(".list_html").fadeIn(400).load("content/list.htm .page_body", function () {
+                listInitialize();
+
+            });
+
+        });
+
+    });
+
+}
+
+
+
+
