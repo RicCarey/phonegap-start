@@ -696,6 +696,8 @@ function initialize() {
         navigator.notification.alert("An error has occurred attempting to load Google Maps, please restart the app.", function () {
             $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&" + window.jsonLocation + "&callback=?&limit=15&type=" + window.poiType, function (data) {
                 window.searchResults = data;
+                $(".map_wrap").remove();
+                $("body").append('<div class="map_wrap"></div>');
                 initialize();
             });
         }, 'Error', "OK");
