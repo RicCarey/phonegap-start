@@ -280,13 +280,9 @@ function windowResize() {
 
 
                     $('html, body').animate({ scrollTop: 0 }, 'slow');
-                    if (window.dataLoaded) {
                         initialize();
                         searchForm();
-                    } else {
-
-
-                    }
+                   
 
                     //close menu if open
                     if ($("#nav_toggle").hasClass("fixed_nav_toggle")) {
