@@ -240,7 +240,9 @@ function windowResize() {
        
 
         if ($("body").hasClass("content-page")) {
-
+            
+            $(".home_content").css("overflow", "visible");
+            $("html,body").height("auto");
 
             if ($("body").hasClass("show_nav")) {
 
@@ -260,6 +262,8 @@ function windowResize() {
         $(document).on("click", "#map a", function (e) {
             e.preventDefault();
 
+            scrollEnabled = false;
+          
             $(".page_html").fadeOut(400, function () {
                 $(".list_html").fadeOut(400);
                 //            $.getScript("js/map.js");
@@ -313,7 +317,8 @@ function windowResize() {
         }
 
         $(window).trigger("resizeWindow");
-    }  
+    } 
+     
 };
 
 //NB - this needs to be bind so that the phone doesnt calculate the heights and such without images loaded.
@@ -328,9 +333,11 @@ $(document).ready(function () {
         if (!scrollEnabled) { e.preventDefault(); }
     });
 
+
     windowResize();
     $(".nav .internal-link a").click(function (e) {
         e.preventDefault();
+        scrollEnabled = true;
         pageLoad = $(this).attr("href");
         window.poiType = $(this).attr("data-poitype");
         centreMap();
@@ -369,6 +376,8 @@ $(document).ready(function () {
                     }
                     $("#info").click(function (event) {
                         event.preventDefault();
+                        scrollEnabled = true;
+               
                         $(".page_html, .map_wrap").fadeOut(400, function () {
                             $(".introduction_text").hide();
                             $(".list_html").hide();
@@ -388,6 +397,8 @@ $(document).ready(function () {
 
                     $("#list").click(function (listEvent) {
                         listEvent.preventDefault();
+                        scrollEnabled = true;
+
                         $(".map_wrap").fadeOut(400);
                         $(".page_html").fadeOut(400, function () {
                             $(".list_html").fadeIn(400).load("content/list.htm .page_body", function () {
