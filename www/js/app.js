@@ -215,7 +215,7 @@ function windowResize() {
 
 
         $('.iconSrcSwap').each(function (index) {
-            $(this).attr("src", $(this).attr("src").replace("/size/", "/" + window.imageSize + "/"));
+            $(this).attr("src", $(this).attr("data-src").replace("/size/", "/" + window.imageSize + "/"));
         });
 
 
@@ -355,7 +355,7 @@ $(document).ready(function () {
 
 
                 $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&" + window.jsonLocation + "&callback=?&limit=15&type=" + window.poiType, function (data) {
-                    alert(window.jsonLocation);
+                   
                     window.searchResults = data;
                     if (window.poiType == "" || window.poiType == null) {
                         $("#map, #list").addClass("disabled");
@@ -692,7 +692,7 @@ var infowindow = null;
 function initialize() {
 
     if (!window.searchResults) {
-        alert("no search results");
+        
         //        showMessage(
         //       
         //                    "An error has occurred attempting to load Google Maps, please restart the app.",
