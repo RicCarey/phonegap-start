@@ -58,7 +58,7 @@ var negativeNavToggleHeight;
 var tabGroupHeight;
 function windowResize() {
     if (resizeEnabled) {
-
+        //reset stuff
         $("body").removeClass("landscape").removeClass("portrait");
         $(".expander").hide();
         $("#nav_toggle").css("display", "none");
@@ -71,6 +71,7 @@ function windowResize() {
         $(".map_wrap").width("84%");
         iconHeight = 0;
         $(".home_content").css("marginTop", "0");
+        $("html,body").height("auto");
 
         //screen sizes
         screenHeight = screen.height;
@@ -107,11 +108,11 @@ function windowResize() {
         homeContentHeight = $(".home_content").outerHeight(true);
         homeContentHeightDiff = windowHeight - homeContentHeight;
 
-        if (homeContentHeight < windowHeight) {
+//        if (homeContentHeight < windowHeight) {
 
             $(".home_content").height(homeContentHeight + homeContentHeightDiff);
-
-        }
+            $("html,body").height(homeContentHeight + homeContentHeightDiff);
+//        }
 
         //apply height differnece to box to expand down to bottom
         expanderMargin = $(".nav ul").css("marginTop");
@@ -144,6 +145,7 @@ function windowResize() {
         iconHeight = listAnchorHeight - biggestHeight;
 
         $('.nav li .icon').height(Math.ceil(iconHeight));
+        $('#nav_toggle').height(Math.ceil(iconHeight) / 2).css("lineHeight", (Math.ceil(iconHeight) / 2)+"px");
         $('#nav_toggle img').height(Math.ceil(iconHeight) / 2).css("marginTop", 0 - Math.ceil(iconHeight) / 4);
         iconWidth = $(".nav ul li .icon").width();
 
@@ -335,7 +337,10 @@ $(document).ready(function () {
         $("#map, #list").addClass("disabled");
 
         if ($("body").hasClass("home")) {
+            $(".home_content").css("overflow", "visible");
+            $("html,body").height("auto");
             scrollEnabled = true;
+
             $("html,body").css("overflow", "auto");
             $(".nav").addClass("right_edge_rounded");
             $("#nav_toggle").show();
@@ -355,7 +360,7 @@ $(document).ready(function () {
 
 
                 $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&" + window.jsonLocation + "&callback=?&limit=15&type=" + window.poiType, function (data) {
-                   
+
                     window.searchResults = data;
                     if (window.poiType == "" || window.poiType == null) {
                         $("#map, #list").addClass("disabled");

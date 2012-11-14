@@ -387,6 +387,7 @@ margin-bottom: 1em;
     font-family: DroidSansBold; 
     padding: 2%;
     position: relative;
+    cursor: pointer;
 }
 .listtoggle img
 {
@@ -607,4 +608,12 @@ padding-right: 5%;
 .details_info a
 {
     color: #FFFFFF;
+}
+#info, #map, #list
+{
+    cursor: pointer;
+}
+.home_content
+{
+ overflow: hidden;   
 }
