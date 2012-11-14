@@ -13,6 +13,7 @@ var waitForFinalEvent = (function () {
 })();
 
 //Global Variables
+window.dataLoaded = false;
 var scrollEnabled;
 var screenHeight;
 var windowWidth;
@@ -269,7 +270,7 @@ function windowResize() {
                     naviagtionToggleHeight = $("#nav_toggle").innerHeight();
                     mapPageChrome = naviagtionToggleHeight + 20 + tabGroupinnerHeight;
 
-                    mapPaddingTop = $(".map_wrap").css("paddingTop") ;
+                    mapPaddingTop = $(".map_wrap").css("paddingTop");
                     mapPadding = parseInt(mapPaddingTop) * 2;
                     mapHeight = windowHeight - mapPageChrome;
                     window.mapNewHeight = mapHeight - (mapPadding + 20);
@@ -279,8 +280,14 @@ function windowResize() {
 
 
                     $('html, body').animate({ scrollTop: 0 }, 'slow');
-                    initialize();
-                    searchForm();
+                    if (window.dataLoaded) {
+                        initialize();
+                        searchForm();
+                    } else {
+
+
+                    }
+
                     //close menu if open
                     if ($("#nav_toggle").hasClass("fixed_nav_toggle")) {
 
@@ -348,8 +355,10 @@ $(document).ready(function () {
 
 
             $(".page_html").show().load(pageLoad + " .page_body", function () {
+                $("#map, #list").addClass("disabled");
+
                 $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&" + window.jsonLocation + "&callback=?&limit=15&type=" + window.poiType, function (data) {
-                    alert("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&" + window.jsonLocation + "&callback=?&limit=15&type=" + window.poiType);
+                   
                     window.searchResults = data;
                     if (window.poiType == "" || window.poiType == null) {
                         $("#map, #list").addClass("disabled");
@@ -408,8 +417,9 @@ $(document).ready(function () {
                 $("#nav_toggle").click();
                 $(".search").fadeOut(400);
                 $(".page_html").fadeIn(400).load(pageLoad + " .page_body", function () {
+                    $("#map, #list").addClass("disabled");
                     $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&" + window.jsonLocation + "&callback=?&limit=15&type=" + window.poiType, function (data) {
-                         window.searchResults = data;
+                        window.searchResults = data;
                         if (window.poiType == "" || window.poiType == null) {
                             $("#map, #list").addClass("disabled");
                         } else {
