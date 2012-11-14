@@ -263,7 +263,10 @@ function windowResize() {
             e.preventDefault();
 
             scrollEnabled = false;
-          
+            $(window).scrollTop("0");
+            $(window).scroll(function (e) {              
+                $(window).scrollTop("0");
+            });
             $(".page_html").fadeOut(400, function () {
                 $(".list_html").fadeOut(400);
                 //            $.getScript("js/map.js");
@@ -286,9 +289,9 @@ function windowResize() {
 
 
                     $('html, body').animate({ scrollTop: 0 }, 'slow');
-                        initialize();
-                        searchForm();
-                   
+                    initialize();
+                    searchForm();
+
 
                     //close menu if open
                     if ($("#nav_toggle").hasClass("fixed_nav_toggle")) {
@@ -332,12 +335,19 @@ $(document).ready(function () {
     $("html").on("touchmove", function (e) {
         if (!scrollEnabled) { e.preventDefault(); }
     });
+    $(window).scrollTop("0");
 
+    $(window).scroll(function (e) {
+        $(window).scrollTop("0");
+    });
+    
 
     windowResize();
     $(".nav .internal-link a").click(function (e) {
         e.preventDefault();
         scrollEnabled = true;
+        $(window).unbind("scroll");
+
         pageLoad = $(this).attr("href");
         window.poiType = $(this).attr("data-poitype");
         centreMap();
@@ -347,7 +357,7 @@ $(document).ready(function () {
             $(".home_content").css("overflow", "visible");
             $("html,body").height("auto");
             scrollEnabled = true;
-
+            $(window).unbind("scroll");
             $("html,body").css("overflow", "auto");
             $(".nav").addClass("right_edge_rounded");
             $("#nav_toggle").show();
@@ -377,7 +387,7 @@ $(document).ready(function () {
                     $("#info").click(function (event) {
                         event.preventDefault();
                         scrollEnabled = true;
-               
+                        $(window).unbind("scroll");
                         $(".page_html, .map_wrap").fadeOut(400, function () {
                             $(".introduction_text").hide();
                             $(".list_html").hide();
@@ -398,7 +408,7 @@ $(document).ready(function () {
                     $("#list").click(function (listEvent) {
                         listEvent.preventDefault();
                         scrollEnabled = true;
-
+                        $(window).unbind("scroll");
                         $(".map_wrap").fadeOut(400);
                         $(".page_html").fadeOut(400, function () {
                             $(".list_html").fadeIn(400).load("content/list.htm .page_body", function () {
