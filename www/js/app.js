@@ -264,8 +264,10 @@ function windowResize() {
 
             scrollEnabled = false;
             $(window).scrollTop("0");
-            $(window).scroll(function (e) {              
+            $("html,body").scrollTop("0");
+            $(window).scroll(function (e) {
                 $(window).scrollTop("0");
+                $("html,body").scrollTop("0");
             });
             $(".page_html").fadeOut(400, function () {
                 $(".list_html").fadeOut(400);
@@ -336,9 +338,10 @@ $(document).ready(function () {
         if (!scrollEnabled) { e.preventDefault(); }
     });
     $(window).scrollTop("0");
-
+    $("html,body").scrollTop("0");
     $(window).scroll(function (e) {
         $(window).scrollTop("0");
+        $("html,body").scrollTop("0");
     });
     
 
