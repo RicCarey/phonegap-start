@@ -28,7 +28,13 @@
               document.addEventListener("menubutton", onMenuKeyDown, false);
               document.addEventListener("searchbutton", onSearchKeyDown, false);
               document.addEventListener("backbutton", onBackKeyDown, false);
-              alert(device.platform);
+              
+              alert("name: " + device.name);
+              alert("phonegap: " + device.phonegap);
+              alert("platform: " + device.platform);
+              alert("uuid: " + device.uuid);
+              alert("version: " + device.version);
+          
           }
 
 
