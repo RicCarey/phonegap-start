@@ -343,9 +343,16 @@ $(document).ready(function () {
         $(window).scrollTop("0");
         $("html,body").scrollTop("0");
     });
-    
+
 
     windowResize();
+
+    alert("name: " + device.name);
+    alert("phonegap: " + device.phonegap);
+    alert("platform: " + device.platform);
+    alert("uuid: " + device.uuid);
+    alert("version: " + device.version);
+
     $(".nav .internal-link a").click(function (e) {
         e.preventDefault();
         scrollEnabled = true;
