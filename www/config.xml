@@ -24,7 +24,7 @@
     <preference name="webviewbounce" value="false" />
   
   
-    <icon src="icon.png" />
+    <icon src="res/icon/ios/icon-72-2x.jpg" />
     <icon src="res/icon/android/icon-36-ldpi.jpg"   gap:platform="android"    gap:density="ldpi" />
     <icon src="res/icon/android/icon-48-mdpi.jpg"   gap:platform="android"    gap:density="mdpi" />
     <icon src="res/icon/android/icon-72-hdpi.jpg"   gap:platform="android"    gap:density="hdpi" />
