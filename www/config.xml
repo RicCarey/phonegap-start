@@ -2,7 +2,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.icecreates.hello-world"
-        version   = "30">
+        version   = "31">
     <name>NHS Nottingham Health App</name>
 
     <description>
@@ -46,5 +46,5 @@
     <gap:splash src="res/screen/ios/screen-iphone-portrait-2x.png" gap:platform="ios"     width="640" height="960" />
     <gap:splash src="res/screen/ios/screen-ipad-portrait.png"      gap:platform="ios"     width="768" height="1024" />
     <gap:splash src="res/screen/ios/screen-ipad-landscape.png"     gap:platform="ios"     width="1024" height="768" />
-    <gap:splash src="res/screen/ios/Default-568h@2x.png"           gap:platform="ios"     width="640" height="1136" />
+    <gap:splash src="res/screen/ios/Default-568h-2x.png"           gap:platform="ios"     width="640" height="1136" />
 </widget>
