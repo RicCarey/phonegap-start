@@ -87,7 +87,7 @@ function windowResize() {
         if (windowWidth > windowHeight) {
             $("body").addClass("landscape");
             scaleMeasure = windowHeight;
-            if (device.platform == "iPhone" || device.platform == "iPod" || device.platform == "iPad") {
+            if (device.platform == "iPhone" || device.platform == "iPod" || device.platform == "iPad" || device.platform == "iOS") {
                 $('meta[name=viewport]').attr('content', 'width=device-height, initial-scale=1.0, user-scalable=no, height=device-width, target-densityDpi=device-dpi');
             } else {
                 $('meta[name=viewport]').attr('content', 'width=device-width, initial-scale=1.0, user-scalable=no, height=device-height, target-densityDpi=device-dpi');
