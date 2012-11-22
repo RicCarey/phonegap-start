@@ -2,7 +2,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.icecreates.hello-world"
-        version   = "1">
+        version   = "1.5">
     <name>NHS Nottingham Health App</name>
 
     <description>
@@ -23,7 +23,6 @@
     <preference name="fullscreen"       value="true" />
     <preference name="webviewbounce" value="false" />
 
-    <access />
   
     <icon src="res/icon/ios/icon-72-2x.png" />
     <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />

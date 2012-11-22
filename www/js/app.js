@@ -77,10 +77,6 @@ function windowResize() {
         screenHeight = screen.height;
         windowWidth = window.innerWidth;
         windowHeight = window.innerHeight;
-        if (windowWidth == 0 || windowWidth == "" || windowWidth == null) {
-            windowWidth = screen.width;
-            windowHeight = screen.height;
-        }
 
 
         //     $('meta[name=viewport]').attr('content', 'width=' + windowWidth + ', initial-scale=1, maximum-scale=1, user-scalable=no, height=' + windowHeight + ', target-densityDpi=device-dpi');
@@ -90,13 +86,13 @@ function windowResize() {
         if (windowWidth > windowHeight) {
             $("body").addClass("landscape");
             scaleMeasure = windowHeight;
-//            if (device.platform == "iPhone" || device.platform == "iPod" || device.platform == "iPad" || device.platform == "iOS") {
-//                $('meta[name=viewport]').attr('content', 'width=device-height, initial-scale=1.0, user-scalable=no, height=device-width, target-densityDpi=device-dpi');
-//            } else if(device.platform == undefined || device.platform == null || device.platform == ""){
-//                $('meta[name=viewport]').attr('content', 'width=device-width, initial-scale=1.0, user-scalable=no, height=device-height, target-densityDpi=device-dpi');
-//            }else{
+            if (device.platform == "iPhone" || device.platform == "iPod" || device.platform == "iPad" || device.platform == "iOS") {
+                $('meta[name=viewport]').attr('content', 'width=device-height, initial-scale=1.0, user-scalable=no, height=device-width, target-densityDpi=device-dpi');
+            } else if(device.platform == undefined || device.platform == null || device.platform == ""){
                 $('meta[name=viewport]').attr('content', 'width=device-width, initial-scale=1.0, user-scalable=no, height=device-height, target-densityDpi=device-dpi');
-//            }
+            }else{
+                $('meta[name=viewport]').attr('content', 'width=device-width, initial-scale=1.0, user-scalable=no, height=device-height, target-densityDpi=device-dpi');
+            }
         } else {
             $("body").addClass("portrait");
             scaleMeasure = windowWidth;
