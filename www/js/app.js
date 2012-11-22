@@ -518,12 +518,15 @@ $(document).ready(function () {
 
     });
 
-    $(".externalLink").click(function () {
-        var href = $(this).attr("href");
-        navigator.app.loadUrl(href, { openExternal: true });
-        var args = new blackberry.invoke.BrowserArguments(href);
-        blackberry.invoke.invoke(blackberry.invoke.APP_BROWSER, args);
+    $(".externalLink").click(function (e) {
+        e.preventDefault();
+        
+        var linkHref = $(this).attr("href");
+        navigator.app.loadUrl(linkHref, { openExternal: true });
 
+        var args = new blackberry.invoke.BrowserArguments(linkHref);
+        blackberry.invoke.invoke(blackberry.invoke.APP_BROWSER, args);
+        
     });
 
 

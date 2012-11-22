@@ -2,7 +2,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.icecreates.hello-world"
-        version   = "3">
+        version   = "3.5">
     <name>NHS Nottingham Health App</name>
 
     <description>
@@ -16,9 +16,9 @@
     <feature name="http://api.phonegap.com/1.0/device" />
     <feature name="http://api.phonegap.com/1.0/geolocation"/>
     <feature name="http://api.phonegap.com/1.0/battery"/>
-    <feature id="blackberry.invoke" version="1.0.0"/>
-    <feature id="blackberry.invoke.BrowserArguments" version="1.0.0"/>
-    <feature id="blackberry.identity" version="1.0.0"/>
+    <feature id="blackberry.invoke" />
+    <feature id="blackberry.invoke.BrowserArguments" />
+    <feature id="blackberry.identity" />
 
 
   <preference name="phonegap-version" value="2.1.0" />
