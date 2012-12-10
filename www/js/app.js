@@ -86,13 +86,13 @@ function windowResize() {
         if (windowWidth > windowHeight) {
             $("body").addClass("landscape");
             scaleMeasure = windowHeight;
-            //if (device.platform == "iPhone" || device.platform == "iPod" || device.platform == "iPad" || device.platform == "iOS") {
-            //    $('meta[name=viewport]').attr('content', 'width=device-height, initial-scale=1.0, user-scalable=no, height=device-width, target-densityDpi=device-dpi');
-            //} else if(device.platform == undefined || device.platform == null || device.platform == ""){
-            //    $('meta[name=viewport]').attr('content', 'width=device-width, initial-scale=1.0, user-scalable=no, height=device-height, target-densityDpi=device-dpi');
-           // }else{
+            if (device.platform == "iPhone" || device.platform == "iPod" || device.platform == "iPad" || device.platform == "iOS") {
+                $('meta[name=viewport]').attr('content', 'width=device-height, initial-scale=1.0, user-scalable=no, height=device-width, target-densityDpi=device-dpi');
+            } else if(device.platform == undefined || device.platform == null || device.platform == ""){
                 $('meta[name=viewport]').attr('content', 'width=device-width, initial-scale=1.0, user-scalable=no, height=device-height, target-densityDpi=device-dpi');
-           // }
+            }else{
+                $('meta[name=viewport]').attr('content', 'width=device-width, initial-scale=1.0, user-scalable=no, height=device-height, target-densityDpi=device-dpi');
+            }
         } else {
             $("body").addClass("portrait");
             scaleMeasure = windowWidth;
@@ -527,13 +527,24 @@ $(document).ready(function () {
     });
 
     $(".externalLink").click(function (e) {
-        e.preventDefault();
-        
-        var linkHref = $(this).attr("href");
-        navigator.app.loadUrl(linkHref, { openExternal: true });
 
-        var args = new blackberry.invoke.BrowserArguments(linkHref);
-        blackberry.invoke.invoke(blackberry.invoke.APP_BROWSER, args);
+        if (device.platform == "iPhone" || device.platform == "iPod" || device.platform == "iPad" || device.platform == "iOS") {
+
+        } else if (device.platform == undefined || device.platform == null || device.platform == "") {
+            e.preventDefault();
+            var linkHref = $(this).attr("href");
+            navigator.app.loadUrl(linkHref, { openExternal: true });
+
+            var args = new blackberry.invoke.BrowserArguments(linkHref);
+            blackberry.invoke.invoke(blackberry.invoke.APP_BROWSER, args);
+        } else {
+            e.preventDefault();
+            var linkHref = $(this).attr("href");
+            navigator.app.loadUrl(linkHref, { openExternal: true });
+
+            var args = new blackberry.invoke.BrowserArguments(linkHref);
+            blackberry.invoke.invoke(blackberry.invoke.APP_BROWSER, args);
+        }
         
     });
 

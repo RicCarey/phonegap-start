@@ -39,13 +39,26 @@ $(document).ready(function () {
   });
 
   $(".externalLink").click(function (e) {
-      e.preventDefault();
+      
 
-      var linkHref = $(this).attr("href");
-      navigator.app.loadUrl(linkHref, { openExternal: true });
+      if (device.platform == "iPhone" || device.platform == "iPod" || device.platform == "iPad" || device.platform == "iOS") {
+         
+      } else if (device.platform == undefined || device.platform == null || device.platform == "") {
+          e.preventDefault();
+          var linkHref = $(this).attr("href");
+          navigator.app.loadUrl(linkHref, { openExternal: true });
 
-      var args = new blackberry.invoke.BrowserArguments(linkHref);
-      blackberry.invoke.invoke(blackberry.invoke.APP_BROWSER, args);
+          var args = new blackberry.invoke.BrowserArguments(linkHref);
+          blackberry.invoke.invoke(blackberry.invoke.APP_BROWSER, args);
+      } else {
+          e.preventDefault();
+          var linkHref = $(this).attr("href");
+          navigator.app.loadUrl(linkHref, { openExternal: true });
+
+          var args = new blackberry.invoke.BrowserArguments(linkHref);
+          blackberry.invoke.invoke(blackberry.invoke.APP_BROWSER, args);
+      }
+     
 
   });
 
