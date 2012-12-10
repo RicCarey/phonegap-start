@@ -86,13 +86,13 @@ function windowResize() {
         if (windowWidth > windowHeight) {
             $("body").addClass("landscape");
             scaleMeasure = windowHeight;
-            if (device.platform == "iPhone" || device.platform == "iPod" || device.platform == "iPad" || device.platform == "iOS") {
-                $('meta[name=viewport]').attr('content', 'width=device-height, initial-scale=1.0, user-scalable=no, height=device-width, target-densityDpi=device-dpi');
-            } else if(device.platform == undefined || device.platform == null || device.platform == ""){
+            //if (device.platform == "iPhone" || device.platform == "iPod" || device.platform == "iPad" || device.platform == "iOS") {
+            //    $('meta[name=viewport]').attr('content', 'width=device-height, initial-scale=1.0, user-scalable=no, height=device-width, target-densityDpi=device-dpi');
+            //} else if(device.platform == undefined || device.platform == null || device.platform == ""){
+            //    $('meta[name=viewport]').attr('content', 'width=device-width, initial-scale=1.0, user-scalable=no, height=device-height, target-densityDpi=device-dpi');
+           // }else{
                 $('meta[name=viewport]').attr('content', 'width=device-width, initial-scale=1.0, user-scalable=no, height=device-height, target-densityDpi=device-dpi');
-            }else{
-                $('meta[name=viewport]').attr('content', 'width=device-width, initial-scale=1.0, user-scalable=no, height=device-height, target-densityDpi=device-dpi');
-            }
+           // }
         } else {
             $("body").addClass("portrait");
             scaleMeasure = windowWidth;
@@ -140,7 +140,7 @@ function windowResize() {
         //resize icons
 
         if ($("body").hasClass("portrait")) {
-            iconRows = 4;
+            iconRows = 3;
         } else {
             iconRows = 2;
         }
@@ -274,6 +274,7 @@ function windowResize() {
                 $(window).scrollTop("0");
                 $("html,body").scrollTop("0");
             });
+       
             $(".page_html").fadeOut(400, function () {
                 $(".list_html").fadeOut(400);
                 //            $.getScript("js/map.js");
@@ -360,6 +361,7 @@ $(document).ready(function () {
         pageLoad = $(this).attr("href");
         window.poiType = $(this).attr("data-poitype");
         centreMap();
+       
         $("#map, #list").addClass("disabled");
 
         if ($("body").hasClass("home")) {
@@ -384,7 +386,8 @@ $(document).ready(function () {
 
             $(".page_html").show().load(pageLoad + " .page_body", function () {
 
-
+                $.getScript("js/submenu.js");
+                
                 $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&" + window.jsonLocation + "&callback=?&limit=15&type=" + window.poiType, function (data) {
 
                     window.searchResults = data;
@@ -412,6 +415,7 @@ $(document).ready(function () {
                             $("#nav_toggle").click();
                         }
 
+                       
                     });
 
                     $("#list").click(function (listEvent) {
@@ -450,6 +454,8 @@ $(document).ready(function () {
                 $(".search").fadeOut(400);
                 $(".page_html").fadeIn(400).load(pageLoad + " .page_body", function () {
 
+                    $.getScript("js/submenu.js");
+
                     $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&" + window.jsonLocation + "&callback=?&limit=15&type=" + window.poiType, function (data) {
                         window.searchResults = data;
                         if (window.poiType == "" || window.poiType == null) {
@@ -457,6 +463,7 @@ $(document).ready(function () {
                         } else {
                             $("#map, #list").removeClass("disabled");
                         }
+                     
                     });
 
                     $('html, body').animate({ scrollTop: 0 }, 'slow');
@@ -465,6 +472,7 @@ $(document).ready(function () {
 
         }
     });
+
 
     //nav toggle business
 
@@ -528,6 +536,10 @@ $(document).ready(function () {
         blackberry.invoke.invoke(blackberry.invoke.APP_BROWSER, args);
         
     });
+
+    
+   
+
 
 
 });
@@ -739,7 +751,7 @@ var infowindow = null;
 function initialize() {
 
     if (!window.searchResults) {
-        
+
         //        showMessage(
         //       
         //                    "An error has occurred attempting to load Google Maps, please restart the app.",
@@ -757,50 +769,50 @@ function initialize() {
         }, 'Error', "OK");
         //        $(".map_wrap").remove();
     } else {
-       
-//        $("#map_canvas").remove();
-//        $(".map_wrap").append('<div id="map_canvas" style="width:100%; height:100%"></div>');
+
+        //        $("#map_canvas").remove();
+        //        $(".map_wrap").append('<div id="map_canvas" style="width:100%; height:100%"></div>');
         var locationText;
         if (window.poiType == "Nots-pharmacies") {
             locationText = "Pharmacies";
 
         } else if (window.poiType == "Nots-gps") {
-        locationText = "GPs";
+            locationText = "GPs";
 
         } else if (window.poiType == "Nots-walkin-centre") {
-        locationText = "Walk In Centres";
+            locationText = "Walk In Centres";
 
         } else if (window.poiType == "Nots-AE") {
-        locationText = "A&Es";
+            locationText = "A&Es";
 
         } else if (window.poiType == "Nots-C-Card-Sex-health") {
-        locationText = "Sexual Health C-Card Scheme";
-                }
-//    switch (window.poiType) {
-//        case "Nots-pharmacies":
-//            locationText = "Pharmacies";
-//            break;
-//        case "Nots-gps":
-//            locationText = "GPs";
-//            break;
-//        case "Nots-walkin-centre":
-//            locationText = "Walk In Centres";
-//            break;
-//        case "Nots-AE":
-//            locationText = "A&Es";
-//            break;
-//        case "Nots-C-Card-Sex-health":
-//            locationText = "Sexual Health C-Card Scheme";
-//            break;
-//        }
+            locationText = "Sexual Health C-Card Scheme";
+        }
+        //    switch (window.poiType) {
+        //        case "Nots-pharmacies":
+        //            locationText = "Pharmacies";
+        //            break;
+        //        case "Nots-gps":
+        //            locationText = "GPs";
+        //            break;
+        //        case "Nots-walkin-centre":
+        //            locationText = "Walk In Centres";
+        //            break;
+        //        case "Nots-AE":
+        //            locationText = "A&Es";
+        //            break;
+        //        case "Nots-C-Card-Sex-health":
+        //            locationText = "Sexual Health C-Card Scheme";
+        //            break;
+        //        }
         $(".introduction_text_content").remove();
 
-//        $(".introduction_text").append('<div class="introduction_text_content">Showing the nearest ' + window.searchResults.poi.length + ' result(s) to "' + (window.searchResults.location.name || window.searchResults.location.postcode).toUpperCase() + '" for ' + locationText + '.</div> ').fadeIn();
+        //        $(".introduction_text").append('<div class="introduction_text_content">Showing the nearest ' + window.searchResults.poi.length + ' result(s) to "' + (window.searchResults.location.name || window.searchResults.location.postcode).toUpperCase() + '" for ' + locationText + '.</div> ').fadeIn();
         $(".introduction_text").append('<div class="introduction_text_content">Showing the nearest result(s) for ' + locationText + '.</div> ').fadeIn();
         var mapWrapHeight = window.mapNewHeight - $(".introduction_text").height();
         $(".map_wrap").height(mapWrapHeight);
         var latlngbounds = new google.maps.LatLngBounds();
-      
+
         centreMap();
         var centreOn = new google.maps.LatLng(window.searchResults.location.lat, window.searchResults.location.lon);
         var mapOptions = {
@@ -896,8 +908,24 @@ function initialize() {
 
     });
 
-}
+};
 
+$(document).on("click", ".pagesubMenu a", function(e){
+    e.preventDefault();
+   
+    pageLoad = $(this).attr("href");
+    window.poiType = $(this).attr("data-poitype");
+         $(".page_html").fadeOut(400, function () {
+             $(".page_html").fadeIn(400).load(pageLoad + " .page_body", function () {
+                $.getJSON("http://poi.nationalservers.co.uk/v1/search?format=json&key=nottingham-city-nhs&" + window.jsonLocation + "&callback=?&limit=15&type=" + window.poiType, function (data) {
 
-
-
+                        window.searchResults = data;
+                        if (window.poiType == "" || window.poiType == null) {
+                            $("#map, #list").addClass("disabled");
+                        } else {
+                            $("#map, #list").removeClass("disabled");
+                        }
+                    });
+                });
+            });
+});
