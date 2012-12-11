@@ -33,6 +33,7 @@ var nhsLogoHeight;
 var straplineHeight;
 var straplineMargin;
 var dpr;
+var windowImageSize;
 var absoluteImageSize;
 var imageSize;
 var newImageHref;
@@ -203,27 +204,27 @@ function windowResize() {
         //calc which image to get
         if (167 < absoluteImageSize) {
             //ipad
-            window.imageSize = 284;
+            windowImageSize = 284;
         } else if (105 < absoluteImageSize && absoluteImageSize < 167) {
             //s3
-            window.imageSize = 166;
+            windowImageSize = 166;
         } else if (65 < absoluteImageSize && absoluteImageSize < 105) {
             //iphone4
-            window.imageSize = 105;
+            windowImageSize = 105;
         } else if (absoluteImageSize < 65) {
             //smaller
-            window.imageSize = 65;
+            windowImageSize = 65;
         }
         //if high density use double 
         if (dpr > 1) {
-            window.imageSize = window.imageSize * 2;
+            windowImageSize = windowImageSize * 2;
         }
         //swap images
 
 
         $('.iconSrcSwap').each(function (index) {
-            $(this).attr("src", $(this).attr("data-src").replace("/size/", "/" + window.imageSize + "/"));
-            alert( $(this).attr("data-src").replace("/size/", "/" + window.imageSize + "/"));
+            $(this).attr("src", $(this).attr("data-src").replace("/size/", "/" + windowImageSize + "/"));
+            alert($(this).attr("data-src").replace("/size/", "/" + windowImageSize + "/"));
         });
 
 
@@ -479,7 +480,7 @@ $(document).ready(function () {
 
     $("#nav_toggle").toggle(
     function () {
-        $("#nav_toggle img").attr("src", "images/icons/" + window.imageSize + "/toggle_rotated.png");
+        $("#nav_toggle img").attr("src", "images/icons/" + windowImageSize + "/toggle_rotated.png");
         $("#nav_toggle").removeClass("fixed_nav_toggle");
         $("body").addClass("show_nav");
         $(".nav").animate({ marginTop: 0 }, 1250);
@@ -490,7 +491,7 @@ $(document).ready(function () {
             $("#nav_toggle").addClass("fixed_nav_toggle");
 
         });
-        $("#nav_toggle img").attr("src", "images/icons/" + window.imageSize + "/toggle.png");
+        $("#nav_toggle img").attr("src", "images/icons/" + windowImageSize + "/toggle.png");
         $("body").removeClass("show_nav");
     });
 
@@ -715,7 +716,7 @@ function listInitialize() {
     var lst = $(".listtoggle").click(function () {
         if ($(this).parent().children("ul").hasClass("slid_down")) {
             $(this).parent().children("ul").slideUp().removeClass("slid_down");
-            $(this).children("img").attr("src", "images/icons/" + window.imageSize + "/toggle.png");
+            $(this).children("img").attr("src", "images/icons/" + windowImageSize + "/toggle.png");
         } else {
 
             var top = $(this).data("scollPos");
@@ -726,13 +727,13 @@ function listInitialize() {
             }
 
             $(".slid_down").slideUp().removeClass("slid_down");
-            $(".listtoggle img").attr("src", "images/icons/" + window.imageSize + "/toggle.png");
+            $(".listtoggle img").attr("src", "images/icons/" + windowImageSize + "/toggle.png");
 
             $(this).parent().children("ul").slideDown(function () {
                 functionScroolToView();
             }).addClass("slid_down");
 
-            $(this).children("img").attr("src", "images/icons/" + window.imageSize + "/toggle_rotated.png");
+            $(this).children("img").attr("src", "images/icons/" + windowImageSize + "/toggle_rotated.png");
             functionScroolToView();
 
         }
