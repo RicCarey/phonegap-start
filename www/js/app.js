@@ -211,7 +211,8 @@ function windowResize() {
         } else if (65 < absoluteImageSize && absoluteImageSize < 105) {
             //iphone4
             windowImageSize = 105;
-        } else if (absoluteImageSize < 65) {
+            //} else if (absoluteImageSize < 65) {
+        } else {
             //smaller
             windowImageSize = 65;
         }
