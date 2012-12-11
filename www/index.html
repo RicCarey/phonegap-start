@@ -87,7 +87,11 @@
           }
 
           function onBackKeyDown() {
-              document.location = "index.html"; 
+              if ($("body").hasClass("home")) {
+                  navigator.app.exitApp();
+              } else {
+                  document.location = "index.html";
+              }
           }
 
 
