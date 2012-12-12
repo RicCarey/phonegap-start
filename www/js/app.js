@@ -225,7 +225,7 @@ function windowResize() {
 
         $('.iconSrcSwap').each(function (index) {
             $(this).attr("src", $(this).attr("data-src").replace("/size/", "/" + windowImageSize + "/"));
-            alert($(this).attr("data-src").replace("/size/", "/" + windowImageSize + "/"));
+   
         });
 
 
