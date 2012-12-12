@@ -200,7 +200,10 @@ border: 0;
  float:left;   
 width:100%;
 }
-
+.landscape #nav_footer
+{
+    display: none;
+}
 /* content pages */
 #tabgroup
 {
