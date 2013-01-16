@@ -2,11 +2,11 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.icecreates.hello-world"
-        version   = "1.0.1">
+        version   = "1.0">
     <name>NHS Nottingham Health App</name>
 
     <description>
-     description to be sent over once confirmed by comms team. 
+     This app is your guide to choosing the right NHS service if you become ill or injured. It will help you find local NHS services and explain what each service does and when it should be used.
     </description>
 
     <author href="http://www.nottinghamcity.nhs.uk/" email="contact.app@nottinghamcity.nhs.uk">
@@ -21,7 +21,7 @@
     <feature id="blackberry.identity" />
 
 
-  <preference name="phonegap-version" value="2.2.0" />
+  <preference name="phonegap-version" value="2.3.0" />
     <preference name="orientation"      value="default" />
     <preference name="target-device"    value="universal" />
     <preference name="fullscreen"       value="true" />
